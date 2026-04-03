@@ -1,10 +1,12 @@
 # Dofus Retro Deobfuscator
 
-Automated deobfuscation pipeline for the Dofus Retro 1.48 Electron client.
+Automated deobfuscation pipeline for the **Dofus Retro 1.48** Electron client.
 
 Downloads `main.jsc` and `D1ElectronLauncher.js` from Ankama's Cytrus CDN, disassembles the V8 8.7 bytecode, decompiles it to readable JavaScript, and applies multiple deobfuscation passes.
 
 **One command. Full deobfuscation.**
+
+> For in-depth technical documentation on the client architecture, obfuscation layers, and research findings, see **[DOCS.md](DOCS.md)**.
 
 ## Quick Start
 
@@ -26,7 +28,7 @@ The pipeline runs 7 automated steps:
 |------|------|------|
 | 1 | Download `main.jsc` + `D1ElectronLauncher.js` from Cytrus CDN | Node.js |
 | 2 | Disassemble V8 8.7 Ignition bytecode | `v8dasm` (custom patched) |
-| 3 | Decompile bytecode → JavaScript (8600+ functions) | `v8decompiler.py` |
+| 3 | Decompile bytecode to JavaScript (8600+ functions) | `v8decompiler.py` |
 | 4 | Post-process: syntax fixes, Babel validation, webcrack | Python + Node.js |
 | 5 | Deobfuscate D1ElectronLauncher.js | webcrack |
 | 6 | Resolve obfuscated strings + annotate functions | `resolve-strings.py` |
@@ -47,7 +49,7 @@ output/
 │       ├── decompiled_webcrack.js  # After webcrack pass
 │       ├── decompiled_readable.js  # Final annotated version
 │       ├── index.json              # Function index with categories
-│       ├── crypto.js               # Extracted: crypto functions
+��       ├── crypto.js               # Extracted: crypto functions
 │       ├── shield.js               # Extracted: Shield anti-bot
 │       ├── network.js              # Extracted: network/socket
 │       ├── auth.js                 # Extracted: authentication
@@ -70,6 +72,43 @@ docker run --rm -v ./output:/output dofus-deob --platform darwin
 docker run --rm -v ./output:/output dofus-deob --skip-download
 ```
 
+## What Was Accomplished
+
+### Fully Working
+
+- **V8 8.7 bytecode disassembly** via custom-patched V8 build in Docker — bypasses version, flags, and checksum verification
+- **Full decompilation** of 8,611 functions from `main.jsc` (12.7 MB bytecode) to readable JavaScript
+- **155+ Ignition opcodes** handled (loads, stores, calls, jumps, closures, generators, try/catch, for-in, etc.)
+- **D1ElectronLauncher.js** fully deobfuscated: 644 KB obfuscated down to 29 KB clean, readable code
+- **Cytrus CDN downloader**: reverse-engineered FlatBuffers manifest parser, downloads latest game files automatically
+- **Function categorization**: auto-tags functions as crypto, shield, network, auth, electron, zaap, game
+- **84% Babel pass rate**: 7,238 out of 8,611 decompiled functions are syntactically valid JavaScript
+- **Runtime string capture**: Electron hook captures 229 unique string decoder indices across 76,947 calls
+
+### Partially Working
+
+- **String resolution**: direct `a0_0x102a()` decoder calls are resolved, but **6,838 wrapper-based calls** using closure slots remain obfuscated (they require runtime data)
+- **Dead code removal**: standalone opaque predicate evaluations are stripped, but conditional blocks (where we can't determine true/false statically) are kept
+- **Control flow**: try/catch and loops are reconstructed from the CFG, but complex switch-based control flow flattening is not fully reversed
+
+### What Didn't Work (Tools We Tried)
+
+| Tool | Why It Failed |
+|------|---------------|
+| [Ghidra_NodeJS](https://github.com/nicedoc/nicedoc.io) (PositiveTechnologies) | Max V8 8.6 — does NOT support 8.7. Abandoned since 2021 |
+| [View8](https://github.com/nicedoc/nicedoc.io) (suleram) | Supports V8 9.4+ only, not 8.7 |
+| [jsc2js](https://github.com/nicedoc/nicedoc.io) (xqy2006) | All 216 releases target V8 14.x only |
+| [jscdecompiler.com](https://jscdecompiler.com) | Targets Electron 17+, does not handle Electron 11 / V8 8.7 |
+| obfuscator-io-deobfuscator | Works for D1EL but crashes on 13 MB decompiled output |
+
+### What's Left To Do
+
+- **Complete wrapper resolution**: the ~6,800 obfuscator.io wrapper functions need runtime tracing or symbolic analysis to fully resolve
+- **Control flow unflattening**: switch-dispatch patterns from obfuscator.io are not yet reversed
+- **Full closure variable tracing**: only crypto/network/game categories have been sampled
+- **SWF decompilation integration**: `loader.swf` (4,258 AS2 scripts) is decompiled separately via JPEXS but not included in this pipeline
+- **Automated runtime hook**: the Electron preloader hook for live string capture exists but is not shipped in this repo (requires DYLD injection)
+
 ## How It Works
 
 ### V8 Bytecode Disassembly
@@ -85,44 +124,62 @@ Dofus Retro's `main.jsc` is a V8 8.7 compiled bytecode cache (produced by [byten
 
 `v8decompiler.py` is a full Ignition bytecode decompiler:
 
-- **Parser**: Streams v8dasm output, extracts functions/constants/handlers
+- **Parser**: Streams v8dasm output one function at a time (never more than 1 function in memory)
 - **CFG Builder**: Constructs basic blocks, identifies loops and exception handlers
-- **Symbolic Executor**: Translates each opcode to JavaScript expressions
-- **Categorizer**: Tags functions by domain (crypto, network, auth, shield, etc.)
+- **Symbolic Executor**: Translates each opcode to JavaScript expressions with register tracking and temp variable spilling
+- **Categorizer**: Tags functions by domain (crypto, network, auth, shield, electron, zaap, game)
 
-Handles all 155+ V8 8.7 Ignition opcodes.
+Handles all 155+ V8 8.7 Ignition opcodes including generators, async functions, for-in/of, destructuring, and spread.
 
-### Deobfuscation
+### Cytrus CDN
 
-The client uses [obfuscator.io](https://obfuscator.io/) with:
-- String array rotation + encoding
-- Wrapper functions (indirection layers)
-- Dead code injection (opaque predicates)
-- Control flow flattening (partial)
+Ankama distributes game files via their Cytrus v6 CDN. Our downloader:
 
-Our pipeline:
-1. Resolves the string array (8676 elements after rotation)
-2. Removes dead code evaluation statements
-3. Strips wrapper function definitions
-4. Annotates functions with metadata and resolved strings
-5. Uses [webcrack](https://github.com/nicedoc/webcrack) for additional cleanup
+1. Fetches `cytrus.json` for the latest version number
+2. Downloads the FlatBuffers binary manifest for the target platform
+3. Parses the manifest (reverse-engineered schema: fragments, files, bundles, chunks)
+4. Reconstructs target files by downloading and reassembling bundle chunks
+5. Verifies SHA-1 hash integrity
+
+### Obfuscation Layers
+
+The client uses [obfuscator.io](https://obfuscator.io/) with these protections:
+
+| Layer | Description | Status |
+|-------|-------------|--------|
+| String array | 8,676 strings encoded + rotated | Resolved |
+| Wrapper functions | ~6,800 indirection layers via closures | Partial (runtime needed) |
+| Dead code injection | Opaque predicates with random 5-char tags | Removed (standalone evals) |
+| Control flow flattening | Switch-dispatch state machines | Not yet reversed |
+| RC4 string encoding | Applied to D1EL launcher strings | Resolved (via webcrack) |
+
+### Post-Processing Pipeline
+
+1. **Syntax correction** — fixes decompiler artifacts (`t1.t1[` → `t1[`, `(...)` → `()`, etc.)
+2. **Babel validation** — parses each function individually, keeps only valid ones (84% pass rate)
+3. **String array prelude** — prepends the decoded 8,676-element string array + decoder functions
+4. **webcrack** — resolves remaining obfuscator.io patterns (variable renaming, constant folding)
+5. **String resolution** — replaces wrapper calls with resolved strings using runtime decoder log
+6. **Function annotation** — adds metadata comments (category, key strings, instruction count)
+7. **Dead code removal** — strips standalone opaque predicate evaluation statements
 
 ## Project Structure
 
 ```
 ├── Dockerfile              # Multi-stage build (V8 compiler + runtime)
+├── DOCS.md                 # In-depth technical documentation
 ├── v8dasm/
 │   ├── v8dasm.cc           # V8 bytecode disassembler source
-│   └── patch_v8.py         # Patches for V8 8.7 code-serializer.cc
+│   └── patch_v8.py         # 4 patches for V8 8.7 code-serializer.cc
 └── scripts/
     ├── deobfuscate.sh      # Pipeline orchestrator (7 steps)
     ├── v8decompiler.py     # Ignition bytecode → JavaScript decompiler
-    ├── clean-js.py         # Babel validation + string prelude
-    ├── resolve-strings.py  # String resolution + annotation
+    ├── clean-js.py         # Babel validation + string array prelude
+    ├── resolve-strings.py  # String resolution + annotation + dead code removal
     └── download/
-        ├── cytrus.mjs      # Cytrus v6 CDN client
-        ├── download.mjs    # File reconstruction from bundles
-        └── manifest.mjs    # FlatBuffers manifest parser
+        ├── cytrus.mjs      # Cytrus v6 CDN API client
+        ├── download.mjs    # File reconstruction from CDN bundles
+        └── manifest.mjs    # FlatBuffers manifest parser (reverse-engineered)
 ```
 
 ## Building Without Docker
@@ -136,6 +193,14 @@ npm install -g webcrack@2
 # Make sure v8dasm is in PATH, then:
 export OUTPUT_DIR=./output
 ./scripts/deobfuscate.sh --platform darwin
+```
+
+## CI/CD
+
+Docker images are built automatically on push via GitHub Actions (self-hosted runner) and published to:
+
+```
+ghcr.io/xkenzzo31/dofus-retro-deobfuscator:latest
 ```
 
 ## Disclaimer
