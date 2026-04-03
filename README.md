@@ -84,6 +84,7 @@ docker run --rm -v ./output:/output dofus-deob --skip-download
 - **Function categorization**: auto-tags functions as crypto, shield, network, auth, electron, zaap, game
 - **84% Babel pass rate**: 7,238 out of 8,611 decompiled functions are syntactically valid JavaScript
 - **Runtime string capture**: Electron hook captures 229 unique string decoder indices across 76,947 calls
+- **Ghidra integration**: custom SLEIGH processor for V8 8.7 bytecode + import scripts allow loading decompiled functions directly into Ghidra for analysis
 
 ### Partially Working
 
@@ -101,7 +102,7 @@ docker run --rm -v ./output:/output dofus-deob --skip-download
 | jscdecompiler.com | Targets Electron 17+, does not handle Electron 11 / V8 8.7 |
 | obfuscator-io-deobfuscator (ben-sb) | Works for D1EL but crashes on 13 MB decompiled output |
 
-> **Note**: Ghidra itself works fine for binary analysis. It's the *Ghidra_NodeJS plugin* (for V8 bytecode) that doesn't support our V8 version. We wrote custom Ghidra scripts for string array deobfuscation and control flow analysis that work independently.
+> **Note**: Ghidra itself works great — we built a **custom SLEIGH processor** (`V8:LE:32:8.7`) that lets Ghidra natively analyze V8 8.7 bytecode, plus import/annotation/deobfuscation scripts. It's the third-party *Ghidra_NodeJS plugin* (PositiveTechnologies) that doesn't support our V8 version.
 
 ### What's Left To Do
 

@@ -412,6 +412,48 @@ Every ~30 seconds, Shield scans the process list for:
 
 ---
 
+## Ghidra Integration
+
+Since no existing Ghidra plugin supports V8 8.7 bytecode, we built our own tooling:
+
+### Custom SLEIGH Processor
+
+A complete SLEIGH processor definition (`V8:LE:32:8.7`) that teaches Ghidra to understand V8 8.7 Ignition bytecode natively:
+
+- `v8_87.slaspec` — processor specification (auto-generated from V8 opcode table)
+- `v8_87.ldefs` — language definition
+- `v8_87.pspec` — processor parameters
+- `v8_87.cspec` — calling convention
+
+Memory layout: `ram` space (32-bit LE) with accumulator, registers, and context slots mapped to named regions.
+
+### Ghidra Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `ImportV8Binary.java` | Imports parsed bytecodes (`.bin` + `_functions.json`) into Ghidra, creates functions with names and string annotations |
+| `CountFunctions.java` | Verification utility — counts imported functions and memory blocks |
+| `import_v8_jsc.py` | Imports the JSON export into a Ghidra program with the V8 processor |
+| `annotate_v8_runtime.py` | Annotates runtime calls with symbolic names |
+| `deobfuscate_string_array.py` | In-situ string array resolution within Ghidra |
+| `deobfuscate_control_flow.py` | In-situ control flow deobfuscation |
+
+### Workflow
+
+```
+1. Export: node cli.js export main.jsc --output main.ghidra.json
+2. Ghidra: File > Import > main.jsc with processor V8:LE:32:8.7
+3. Run ImportV8Binary.java or import_v8_jsc.py → functions created
+4. (optional) annotate_v8_runtime.py → runtime call annotations
+5. (optional) deobfuscate_*.py → string/control flow deob passes
+```
+
+This gives you full Ghidra analysis capabilities (cross-references, call graphs, data flow) on the V8 bytecode — something no existing tool provides for V8 8.7.
+
+> **Note**: The SLEIGH processor and Ghidra scripts are not included in this Docker pipeline (they require a Ghidra installation). They were developed as part of the research and used alongside the automated pipeline.
+
+---
+
 ## Decompiler Design
 
 ### Architecture
@@ -486,7 +528,7 @@ During research, we evaluated every available V8 bytecode analysis tool:
 | **v8dasm** | Any (compile from source) | **Used** — core of our pipeline |
 | **bytenode** | V8 version-matched | Compiler only, no decompiler |
 | **Ghidra_NodeJS** (PositiveTechnologies) | V8 ≤ 8.6 | Plugin for Ghidra. Fails on 8.7 (version hash lookup). Abandoned since 2021 |
-| **Ghidra** (custom scripts) | N/A | **Used** — custom scripts for string array deob and control flow analysis |
+| **Ghidra** (custom SLEIGH processor) | V8 8.7 | **Used** — custom `V8:LE:32:8.7` processor + import/annotation/deob scripts |
 | **View8** (suleram) | V8 ≥ 9.4 | Too new for 8.7 |
 | **jsc2js** (xqy2006) | V8 14.x only | Wrong version entirely |
 | **jscdecompiler.com** | Electron 17+ | Too new for Electron 11 |
