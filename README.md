@@ -95,11 +95,13 @@ docker run --rm -v ./output:/output dofus-deob --skip-download
 
 | Tool | Why It Failed |
 |------|---------------|
-| [Ghidra_NodeJS](https://github.com/nicedoc/nicedoc.io) (PositiveTechnologies) | Max V8 8.6 — does NOT support 8.7. Abandoned since 2021 |
-| [View8](https://github.com/nicedoc/nicedoc.io) (suleram) | Supports V8 9.4+ only, not 8.7 |
-| [jsc2js](https://github.com/nicedoc/nicedoc.io) (xqy2006) | All 216 releases target V8 14.x only |
-| [jscdecompiler.com](https://jscdecompiler.com) | Targets Electron 17+, does not handle Electron 11 / V8 8.7 |
-| obfuscator-io-deobfuscator | Works for D1EL but crashes on 13 MB decompiled output |
+| Ghidra_NodeJS (PositiveTechnologies) | Plugin for Ghidra — max V8 8.6, does NOT support 8.7. Abandoned since 2021 |
+| View8 (suleram) | Supports V8 9.4+ only, not 8.7 |
+| jsc2js (xqy2006) | All 216 releases target V8 14.x only |
+| jscdecompiler.com | Targets Electron 17+, does not handle Electron 11 / V8 8.7 |
+| obfuscator-io-deobfuscator (ben-sb) | Works for D1EL but crashes on 13 MB decompiled output |
+
+> **Note**: Ghidra itself works fine for binary analysis. It's the *Ghidra_NodeJS plugin* (for V8 bytecode) that doesn't support our V8 version. We wrote custom Ghidra scripts for string array deobfuscation and control flow analysis that work independently.
 
 ### What's Left To Do
 

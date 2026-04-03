@@ -483,14 +483,15 @@ During research, we evaluated every available V8 bytecode analysis tool:
 
 | Tool | Version Support | Result |
 |------|----------------|--------|
-| **v8dasm** (nicedoc) | Any (compile from source) | **Used** — core of our pipeline |
+| **v8dasm** | Any (compile from source) | **Used** — core of our pipeline |
 | **bytenode** | V8 version-matched | Compiler only, no decompiler |
-| **Ghidra_NodeJS** | V8 ≤ 8.6 | Fails on 8.7 (version hash lookup) |
-| **View8** | V8 ≥ 9.4 | Too new for 8.7 |
-| **jsc2js** | V8 14.x only | Wrong version entirely |
+| **Ghidra_NodeJS** (PositiveTechnologies) | V8 ≤ 8.6 | Plugin for Ghidra. Fails on 8.7 (version hash lookup). Abandoned since 2021 |
+| **Ghidra** (custom scripts) | N/A | **Used** — custom scripts for string array deob and control flow analysis |
+| **View8** (suleram) | V8 ≥ 9.4 | Too new for 8.7 |
+| **jsc2js** (xqy2006) | V8 14.x only | Wrong version entirely |
 | **jscdecompiler.com** | Electron 17+ | Too new for Electron 11 |
 | **webcrack** | JS source | **Used** — excellent for obfuscator.io |
-| **obfuscator-io-deobfuscator** | JS source | Works on D1EL, crashes on large files |
+| **obfuscator-io-deobfuscator** (ben-sb) | JS source | Works on D1EL, crashes on large files |
 | **JPEXS FFDec** | SWF/AS2 | **Used** — for loader.swf (separate) |
 
 ### Why We Built Our Own Decompiler
