@@ -27,20 +27,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Docker login
-        if: github.event_name != 'pull_request'
-        shell: cmd
-        run: echo ${{ secrets.GITHUB_TOKEN }}| docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
       - name: Build image
         shell: cmd
-        run: docker build --platform linux/amd64 -t ghcr.io/%IMAGE_NAME%:latest -t ghcr.io/%IMAGE_NAME%:${{ github.sha }} .
+        run: docker build --platform linux/amd64 -t ghcr.io/%IMAGE_NAME%:latest .
 
-      - name: Push image
-        if: github.event_name != 'pull_request'
-        shell: cmd
-        timeout-minutes: 30
-        continue-on-error: true
-        run: |
-          docker push ghcr.io/%IMAGE_NAME%:latest
-          docker push ghcr.io/%IMAGE_NAME%:${{ github.sha }}
+      # Push is done manually via SSH due to runner network limitations
+      # ssh turbo@192.168.68.102 "docker push ghcr.io/xkenzzo31/dofus-retro-deobfuscator:latest"
