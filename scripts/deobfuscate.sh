@@ -2,9 +2,9 @@
 # ============================================================================
 # deobfuscate.sh — Dofus Retro deobfuscation pipeline
 #
-# Downloads, disassembles, decompiles, and cleans the Dofus Retro client.
-# Designed to run inside the Docker container, where v8dasm and webcrack
-# are already available. Can also run standalone with the right tools.
+# Downloads, disassembles, decompiles, and fully deobfuscates the Dofus Retro
+# client. Designed to run inside the Docker container, where v8dasm, webcrack,
+# and pre-captured resolution data are already available.
 #
 # Usage:
 #   ./deobfuscate.sh [--force] [--platform PLATFORM] [--skip-download]
@@ -15,6 +15,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 OUTPUT_DIR="${OUTPUT_DIR:-/output}"
+DATA_DIR="${DATA_DIR:-/app/data}"
 FORCE=false
 PLATFORM="linux"
 SKIP_DOWNLOAD=false
@@ -27,11 +28,13 @@ while [[ $# -gt 0 ]]; do
     --skip-download)  SKIP_DOWNLOAD=true;  shift ;;
     --platform)       PLATFORM="$2";       shift 2 ;;
     --output)         OUTPUT_DIR="$2";     shift 2 ;;
+    --data-dir)       DATA_DIR="$2";       shift 2 ;;
     -h|--help)
       cat <<'HELP'
 Dofus Retro Deobfuscator — by Luska
 
-Automated pipeline that downloads and deobfuscates the Dofus Retro client.
+Automated pipeline that downloads and fully deobfuscates the Dofus Retro client.
+Resolves 12,816+ wrapper calls using Ghidra analysis + runtime captures.
 
 Steps:
   1. Download main.jsc + D1ElectronLauncher.js from Cytrus CDN
@@ -40,7 +43,8 @@ Steps:
   4. Post-process: syntax fixes + Babel validation + webcrack
   5. Deobfuscate D1ElectronLauncher.js (webcrack)
   6. Annotate and resolve strings (resolve-strings.py)
-  7. Package results as a versioned ZIP
+  7. Advanced resolution: closure tracing + brute-force (apply_all_resolutions.py)
+  8. Package results as a versioned ZIP
 
 Usage:
   ./deobfuscate.sh [options]
@@ -50,6 +54,7 @@ Options:
   --platform NAME   Target platform: linux (default), darwin, windows
   --skip-download   Skip Cytrus download (use existing raw files)
   --output DIR      Output directory (default: /output)
+  --data-dir DIR    Resolution data directory (default: /app/data)
   -h, --help        Show this help
 
 Prerequisites (in Docker, all are pre-installed):
@@ -65,7 +70,8 @@ done
 mkdir -p \
   "$OUTPUT_DIR/raw" \
   "$OUTPUT_DIR/jsc_decompiled/v2" \
-  "$OUTPUT_DIR/webcrack_d1el"
+  "$OUTPUT_DIR/webcrack_d1el" \
+  "$OUTPUT_DIR/resolved"
 
 file_size() {
   if [ -f "$1" ]; then
@@ -84,13 +90,14 @@ echo " |____/ \\___|_|  \\__,_|___/   |____/ \\___/|_.__/ "
 echo ""
 echo "  Dofus Retro Deobfuscator — by Luska"
 echo "  Platform: $PLATFORM"
+echo "  Resolution data: $DATA_DIR"
 echo ""
 
 # ════════════════════════════════════════════════════════════════════════════
 # STEP 0: Check prerequisites
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [0/7] Prerequisites ==="
+echo "=== [0/8] Prerequisites ==="
 
 check_cmd() { command -v "$1" &>/dev/null; }
 
@@ -112,13 +119,20 @@ else
   echo "  warn  webcrack not found — steps 4c and 5 will be skipped"
 fi
 
+# Check resolution data
+if [ -d "$DATA_DIR" ] && [ -f "$DATA_DIR/decoder_log_full.json" ]; then
+  echo "  ok  Resolution data ($(ls "$DATA_DIR"/*.json 2>/dev/null | wc -l | tr -d ' ') files)"
+else
+  echo "  warn  Resolution data not found — step 7 will be skipped"
+fi
+
 echo ""
 
 # ════════════════════════════════════════════════════════════════════════════
 # STEP 1: Download from Cytrus CDN
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [1/7] Download from Cytrus CDN ==="
+echo "=== [1/8] Download from Cytrus CDN ==="
 
 CURRENT_VERSION="unknown"
 if [ "$SKIP_DOWNLOAD" = false ]; then
@@ -171,7 +185,7 @@ echo ""
 # STEP 2: Disassemble V8 bytecode
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [2/7] V8 bytecode disassembly ==="
+echo "=== [2/8] V8 bytecode disassembly ==="
 
 DISASM="$OUTPUT_DIR/jsc_decompiled/ignition_disasm.txt"
 
@@ -194,7 +208,7 @@ echo ""
 # STEP 3: Decompile bytecode -> JavaScript
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [3/7] Decompile bytecode -> JavaScript ==="
+echo "=== [3/8] Decompile bytecode -> JavaScript ==="
 
 if [ -f "$DISASM" ]; then
   python3 "$SCRIPT_DIR/v8decompiler.py" "$DISASM" "$OUTPUT_DIR/jsc_decompiled/v2/"
@@ -210,7 +224,7 @@ echo ""
 # STEP 4: Post-processing (syntax fix + Babel + webcrack)
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [4/7] Post-processing ==="
+echo "=== [4/8] Post-processing ==="
 
 DECOMPILED="$OUTPUT_DIR/jsc_decompiled/v2/decompiled.js"
 
@@ -261,7 +275,7 @@ echo ""
 # STEP 5: Deobfuscate D1ElectronLauncher.js
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [5/7] D1ElectronLauncher.js deobfuscation ==="
+echo "=== [5/8] D1ElectronLauncher.js deobfuscation ==="
 
 D1EL="$OUTPUT_DIR/raw/D1ElectronLauncher.js"
 if [ -n "$WEBCRACK_CMD" ] && [ -f "$D1EL" ]; then
@@ -274,10 +288,10 @@ fi
 echo ""
 
 # ════════════════════════════════════════════════════════════════════════════
-# STEP 6: Annotate and resolve strings
+# STEP 6: Annotate and resolve strings (basic)
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [6/7] String resolution and annotation ==="
+echo "=== [6/8] String resolution and annotation ==="
 
 WEBCRACK_JS="$OUTPUT_DIR/jsc_decompiled/v2/decompiled_webcrack.js"
 READABLE_JS="$OUTPUT_DIR/jsc_decompiled/v2/decompiled_readable.js"
@@ -298,10 +312,40 @@ fi
 echo ""
 
 # ════════════════════════════════════════════════════════════════════════════
-# STEP 7: Package
+# STEP 7: Advanced resolution (closure tracing + brute-force + Ghidra data)
 # ════════════════════════════════════════════════════════════════════════════
 
-echo "=== [7/7] Packaging ==="
+echo "=== [7/8] Advanced wrapper resolution ==="
+
+RESOLVED_DIR="$OUTPUT_DIR/resolved"
+
+if [ -f "$OUTPUT_DIR/jsc_decompiled/v2/decompiled.js" ] && [ -f "$DATA_DIR/decoder_log_full.json" ]; then
+  echo "  Running apply_all_resolutions.py..."
+  echo "  (closure tracing + brute-force + Ghidra formulas)"
+  python3 "$SCRIPT_DIR/apply_all_resolutions.py" \
+    --input "$OUTPUT_DIR/jsc_decompiled/v2/decompiled.js" \
+    --index "$OUTPUT_DIR/jsc_decompiled/v2/index.json" \
+    --output-dir "$RESOLVED_DIR" \
+    --data-dir "$DATA_DIR" \
+    2>&1 | while IFS= read -r line; do echo "  $line"; done || true
+
+  echo ""
+  echo "  Output files:"
+  for f in "$RESOLVED_DIR"/*.js; do
+    [ -f "$f" ] && printf "    %-30s %6s\n" "$(basename "$f")" "$(file_size "$f")"
+  done
+  [ -f "$RESOLVED_DIR/report.json" ] && printf "    %-30s %6s\n" "report.json" "$(file_size "$RESOLVED_DIR/report.json")"
+else
+  echo "  SKIP: decompiled.js or resolution data not found"
+fi
+
+echo ""
+
+# ════════════════════════════════════════════════════════════════════════════
+# STEP 8: Package
+# ════════════════════════════════════════════════════════════════════════════
+
+echo "=== [8/8] Packaging ==="
 
 echo "$CURRENT_VERSION" > "$OUTPUT_DIR/.version"
 date -u +"%Y-%m-%dT%H:%M:%SZ" >> "$OUTPUT_DIR/.version"
@@ -313,6 +357,7 @@ ZIP_PATH="$OUTPUT_DIR/$ZIP_NAME"
 cd "$OUTPUT_DIR"
 zip -r "$ZIP_PATH" \
   jsc_decompiled/v2/ \
+  resolved/ \
   webcrack_d1el/ \
   raw/D1ElectronLauncher.js \
   .version \
@@ -342,9 +387,21 @@ printf "    jsc_decompiled/ignition_disasm  %6s  disassembly\n" "$(file_size "$D
 printf "    v2/decompiled.js               %6s  decompiled JS\n" "$(file_size "$V2/decompiled.js")"
 printf "    v2/decompiled_valid.js         %6s  Babel-valid JS\n" "$(file_size "$V2/decompiled_valid.js")"
 printf "    v2/decompiled_webcrack.js      %6s  webcrack output\n" "$(file_size "$V2/decompiled_webcrack.js")"
-printf "    v2/decompiled_readable.js      %6s  annotated final\n" "$(file_size "$READABLE_JS")"
+printf "    v2/decompiled_readable.js      %6s  annotated basic\n" "$(file_size "$READABLE_JS")"
 printf "    v2/index.json                  %6s  function index\n" "$(file_size "$V2/index.json")"
 printf "    webcrack_d1el/D1EL_clean.js    %6s  launcher (clean)\n" "$(file_size "$OUTPUT_DIR/webcrack_d1el/D1EL_clean.js")"
+echo ""
+echo "  Advanced resolution (resolved/):"
+printf "    all_resolved.js                %6s  fully resolved JS\n" "$(file_size "$RESOLVED_DIR/all_resolved.js")"
+printf "    shield_crypto.js               %6s  crypto functions\n" "$(file_size "$RESOLVED_DIR/shield_crypto.js")"
+printf "    network.js                     %6s  network functions\n" "$(file_size "$RESOLVED_DIR/network.js")"
+printf "    auth.js                        %6s  auth functions\n" "$(file_size "$RESOLVED_DIR/auth.js")"
+printf "    electron.js                    %6s  electron functions\n" "$(file_size "$RESOLVED_DIR/electron.js")"
+printf "    zaap.js                        %6s  zaap/launcher\n" "$(file_size "$RESOLVED_DIR/zaap.js")"
+printf "    game.js                        %6s  game functions\n" "$(file_size "$RESOLVED_DIR/game.js")"
+printf "    business_logic.js              %6s  uncategorized\n" "$(file_size "$RESOLVED_DIR/business_logic.js")"
+printf "    report.json                    %6s  resolution report\n" "$(file_size "$RESOLVED_DIR/report.json")"
+echo ""
 printf "    %s     %6s  archive\n" "$ZIP_NAME" "$(file_size "$ZIP_PATH")"
 echo ""
 echo "========================================================"

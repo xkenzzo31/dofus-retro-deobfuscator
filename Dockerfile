@@ -68,6 +68,9 @@ WORKDIR /app
 COPY scripts/ /app/scripts/
 RUN chmod +x /app/scripts/deobfuscate.sh
 
+# Copy pre-captured resolution data (Ghidra analysis + runtime captures)
+COPY data/ /app/data/
+
 # Output directory (mount point)
 VOLUME /output
 
