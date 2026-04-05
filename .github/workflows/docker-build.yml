@@ -40,6 +40,7 @@ jobs:
         if: github.event_name != 'pull_request'
         shell: cmd
         timeout-minutes: 30
+        continue-on-error: true
         run: |
           docker push ghcr.io/%IMAGE_NAME%:latest
           docker push ghcr.io/%IMAGE_NAME%:${{ github.sha }}
