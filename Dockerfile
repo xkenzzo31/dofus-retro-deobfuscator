@@ -36,7 +36,7 @@ RUN python3 /tmp/patch_v8.py
 RUN mkdir -p out/Default \
     && printf 'is_debug = false\ntarget_cpu = "x64"\nv8_enable_disassembler = true\nv8_enable_object_print = true\nis_component_build = false\nv8_monolithic = true\nuse_custom_libcxx = false\nv8_use_external_startup_data = false\ntreat_warnings_as_errors = false\n' > out/Default/args.gn \
     && gn gen out/Default \
-    && /usr/bin/ninja -C out/Default v8_monolith -j$(nproc)
+    && /usr/bin/ninja -C out/Default v8_monolith -j4
 
 # Compile v8dasm against the monolith
 COPY v8dasm/v8dasm.cc /tmp/v8dasm.cc
