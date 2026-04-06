@@ -5,13 +5,105 @@ on:
     tags: ['v*']
   workflow_dispatch:
 
-defaults:
-  run:
-    shell: cmd
-
 jobs:
+  # ── Job 1: Build v8dasm on GitHub-hosted runner (clean IPs, no 429) ──
+  build-v8dasm:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache v8dasm binary
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: v8dasm-bin/v8dasm
+          key: v8dasm-linux-x64-8.7.220.31-v1
+
+      - name: Install build dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git curl python3 python3-pip pkg-config \
+            build-essential clang lld ninja-build
+
+      - name: Install depot_tools
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git /tmp/depot_tools
+          echo "/tmp/depot_tools" >> $GITHUB_PATH
+
+      - name: Fetch V8 8.7.220.31
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          DEPOT_TOOLS_UPDATE: "0"
+        run: |
+          mkdir -p /tmp/v8_build && cd /tmp/v8_build
+          echo 'solutions = [{"name": "v8", "url": "https://chromium.googlesource.com/v8/v8.git", "deps_file": "DEPS", "managed": False}]' > .gclient
+          for attempt in 1 2 3; do
+            echo "=== gclient sync attempt $attempt/3 ==="
+            if gclient sync --no-history --shallow --revision v8@8.7.220.31 -D --jobs 4; then
+              echo "=== sync succeeded ===" && break
+            fi
+            if [ "$attempt" -eq 3 ]; then echo "=== all attempts failed ===" && exit 1; fi
+            echo "=== retrying in 60s ===" && rm -rf v8 _bad_scm && sleep 60
+          done
+
+      - name: Patch V8 source
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          cp v8dasm/patch_v8.py /tmp/v8_build/v8/
+          cd /tmp/v8_build/v8
+          python3 patch_v8.py
+
+      - name: Build V8 monolith
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          cd /tmp/v8_build/v8
+          mkdir -p out/Default
+          cat > out/Default/args.gn << 'GN'
+          is_debug = false
+          target_cpu = "x64"
+          v8_enable_disassembler = true
+          v8_enable_object_print = true
+          is_component_build = false
+          v8_monolithic = true
+          use_custom_libcxx = false
+          v8_use_external_startup_data = false
+          treat_warnings_as_errors = false
+          GN
+          gn gen out/Default
+          ninja -C out/Default v8_monolith -j$(nproc)
+
+      - name: Compile v8dasm
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          cd /tmp/v8_build/v8
+          g++ -std=c++17 -O2 \
+            -DV8_COMPRESS_POINTERS -DV8_31BIT_SMIS_ON_64BIT_ARCH \
+            -I include -I . \
+            $GITHUB_WORKSPACE/v8dasm/v8dasm.cc \
+            -o v8dasm \
+            -lv8_monolith -L out/Default/obj \
+            -lm -ldl -lpthread -lz
+          mkdir -p $GITHUB_WORKSPACE/v8dasm-bin
+          cp v8dasm $GITHUB_WORKSPACE/v8dasm-bin/v8dasm
+          echo "v8dasm built successfully"
+
+      - name: Upload v8dasm artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: v8dasm-linux-x64
+          path: v8dasm-bin/v8dasm
+          retention-days: 90
+
+  # ── Job 2: Run pipeline on VPS and create release ──
   deobfuscate:
     runs-on: self-hosted
+    needs: build-v8dasm
+    timeout-minutes: 30
 
     permissions:
       contents: write
@@ -20,13 +112,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure Docker is running
-        run: docker info
+      - name: Download v8dasm binary
+        uses: actions/download-artifact@v4
+        with:
+          name: v8dasm-linux-x64
+          path: v8dasm-bin
 
-      - name: Build Docker image
-        run: docker build --platform linux/amd64 -t dofus-deob .
+      - name: Build lightweight Docker image
+        shell: cmd
+        run: docker build --platform linux/amd64 -t dofus-deob -f Dockerfile.runtime .
 
       - name: Run deobfuscation pipeline
+        shell: cmd
         run: |
           if not exist output mkdir output
           docker run --rm --platform linux/amd64 -v "%cd%\output:/output" dofus-deob

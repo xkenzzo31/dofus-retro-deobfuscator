@@ -1,0 +1,32 @@
+# ============================================================================
+# Dockerfile.runtime — Lightweight runtime (v8dasm pre-built)
+#
+# Skips V8 compilation entirely. Expects v8dasm binary in v8dasm-bin/
+# Built by the GitHub Actions workflow (v8dasm compiled on ubuntu runner).
+# ============================================================================
+FROM node:18-slim
+
+RUN apt-get update && apt-get install -y \
+    python3 curl zip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy pre-built v8dasm binary (built on GitHub-hosted runner)
+COPY v8dasm-bin/v8dasm /usr/local/bin/v8dasm
+RUN chmod +x /usr/local/bin/v8dasm
+
+# Install webcrack globally
+RUN npm install -g webcrack@2 2>/dev/null
+
+# Copy pipeline scripts
+WORKDIR /app
+COPY scripts/ /app/scripts/
+RUN chmod +x /app/scripts/deobfuscate.sh
+
+# Copy pre-captured resolution data (Ghidra analysis + runtime captures)
+COPY data/ /app/data/
+
+# Output directory (mount point)
+VOLUME /output
+
+ENTRYPOINT ["/app/scripts/deobfuscate.sh"]
+CMD ["--help"]
