@@ -59,7 +59,7 @@ RUN python3 /tmp/patch_v8.py
 
 # Configure and build V8 as a static monolith (no ICU, no custom libc++)
 RUN mkdir -p out/Default \
-    && printf 'is_debug = false\ntarget_cpu = "x64"\nv8_enable_disassembler = true\nv8_enable_object_print = true\nis_component_build = false\nv8_monolithic = true\nuse_custom_libcxx = false\nv8_use_external_startup_data = false\nv8_enable_i18n_support = false\ntreat_warnings_as_errors = false\nuse_sysroot = false\nclang_use_chrome_plugins = false\nuse_glib = false\n' > out/Default/args.gn \
+    && printf 'is_debug = false\ntarget_cpu = "x64"\nv8_enable_disassembler = true\nv8_enable_object_print = true\nis_component_build = false\nv8_monolithic = true\nuse_custom_libcxx = false\nv8_use_external_startup_data = false\nv8_enable_i18n_support = false\ntreat_warnings_as_errors = false\nuse_sysroot = false\nclang_use_chrome_plugins = false\nuse_glib = false\nclang_base_path = "/usr"\n' > out/Default/args.gn \
     && gn gen out/Default \
     && /usr/bin/ninja -C out/Default v8_monolith -j$(nproc)
 
