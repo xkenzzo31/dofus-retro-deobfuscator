@@ -18,7 +18,7 @@ ENV PATH="/depot_tools:${PATH}"
 ENV DEPOT_TOOLS_UPDATE=0
 
 RUN apt-get update && apt-get install -y \
-    git curl python3 python3-pip pkg-config \
+    git curl unzip python3 python3-pip pkg-config \
     build-essential clang lld ninja-build \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && rm -rf /var/lib/apt/lists/*
