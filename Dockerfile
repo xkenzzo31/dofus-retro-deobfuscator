@@ -108,4 +108,4 @@ COPY data/ /app/data/
 VOLUME /output
 
 ENTRYPOINT ["/app/scripts/deobfuscate.sh"]
-CMD ["--help"]
+CMD []

@@ -37,19 +37,23 @@ jobs:
         shell: powershell
         run: |
           $zip = Get-ChildItem -Path output -Filter "dofus-retro_*.zip" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $zip) {
+            $zip = Get-ChildItem -Path output -Filter "*.zip" -ErrorAction SilentlyContinue | Select-Object -First 1
+          }
           if ($zip) {
             echo "zip_path=$($zip.FullName)" >> $env:GITHUB_OUTPUT
             echo "zip_name=$($zip.Name)" >> $env:GITHUB_OUTPUT
           } else {
-            Compress-Archive -Path output\* -DestinationPath dofus-retro-deobfuscated.zip
-            echo "zip_path=${{ github.workspace }}\dofus-retro-deobfuscated.zip" >> $env:GITHUB_OUTPUT
+            Compress-Archive -Path output\* -DestinationPath output\dofus-retro-deobfuscated.zip -Force
+            echo "zip_path=output/dofus-retro-deobfuscated.zip" >> $env:GITHUB_OUTPUT
             echo "zip_name=dofus-retro-deobfuscated.zip" >> $env:GITHUB_OUTPUT
           }
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.zip.outputs.zip_path }}
+          files: |
+            output/*.zip
           generate_release_notes: true
           name: "Dofus Retro Deobfuscated — ${{ github.ref_name }}"
           body: |
