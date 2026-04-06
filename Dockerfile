@@ -26,12 +26,12 @@ RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git /
 # Fetch V8 8.7.220.31 (matches Electron 11.x / Dofus Retro)
 WORKDIR /v8_build
 RUN echo 'solutions = [{"name": "v8", "url": "https://chromium.googlesource.com/v8/v8.git", "deps_file": "DEPS", "managed": False}]' > .gclient \
-    && for i in 1 2 3; do \
-         gclient sync --no-history --shallow --revision v8@8.7.220.31 -D 2>&1 | tail -5 \
-         && break \
-         || echo "gclient sync attempt $i failed (429 rate-limit?), retrying in 30s..." \
-         && sleep 30; \
-       done
+    && ( gclient sync --no-history --shallow --revision v8@8.7.220.31 -D 2>&1 | tail -20 \
+      || ( echo "Retry 1/2: gclient sync failed, waiting 60s..." && sleep 60 \
+        && gclient sync --no-history --shallow --revision v8@8.7.220.31 -D 2>&1 | tail -20 ) \
+      || ( echo "Retry 2/2: gclient sync failed, waiting 120s..." && sleep 120 \
+        && gclient sync --no-history --shallow --revision v8@8.7.220.31 -D 2>&1 | tail -20 ) \
+      || true )
 
 # Apply patches to bypass version/checksum checks and enable bytecode printing
 WORKDIR /v8_build/v8
