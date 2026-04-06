@@ -51,6 +51,10 @@ RUN mkdir -p buildtools/linux64 \
     && chmod +x buildtools/linux64/gn \
     && rm /tmp/gn.zip
 
+# Create stub tools/clang/scripts/update.py (we use system clang)
+RUN mkdir -p tools/clang/scripts \
+    && printf '#!/usr/bin/env python\nimport sys\nif "--print-revision" in sys.argv: print("12.0.0")\n' > tools/clang/scripts/update.py
+
 RUN python3 /tmp/patch_v8.py
 
 # Configure and build V8 as a static monolith (no ICU, no custom libc++)
