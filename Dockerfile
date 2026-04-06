@@ -4,8 +4,10 @@
 # Stage 1 (v8-builder): Compiles V8 8.7.220.31 with bytecode disassembly patches
 # Stage 2 (runtime):    Node.js + Python3 runtime with the full deobfuscation pipeline
 #
-# Uses GitHub mirrors for V8 deps to avoid HTTP 429 rate-limiting
-# from chromium.googlesource.com.
+# ZERO requests to chromium.googlesource.com:
+#   - V8 source from github.com/v8/v8
+#   - Essential deps from GitHub mirrors (gsource-mirror, QPDFium)
+#   - All unnecessary deps skipped via custom_deps
 #
 # Author: Luska
 # ============================================================================
@@ -24,38 +26,23 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Chromium depot_tools (provides gclient, gn)
-RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git /depot_tools
+RUN git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git /depot_tools
 
-# Redirect rate-limited googlesource repos to GitHub mirrors
-# This lets gclient sync work unchanged while fetching from GitHub
-RUN git config --global url."https://github.com/gsource-mirror/chromium-src-build".insteadOf "https://chromium.googlesource.com/chromium/src/build" \
-    && git config --global url."https://github.com/gsource-mirror/chromium-src-buildtools".insteadOf "https://chromium.googlesource.com/chromium/src/buildtools" \
-    && git config --global url."https://github.com/QPDFium/common".insteadOf "https://chromium.googlesource.com/chromium/src/base/trace_event/common" \
-    && git config --global url."https://github.com/gsource-mirror/chromium-src-third_party-zlib".insteadOf "https://chromium.googlesource.com/chromium/src/third_party/zlib" \
-    && git config --global url."https://github.com/QPDFium/instrumented_libraries".insteadOf "https://chromium.googlesource.com/chromium/src/third_party/instrumented_libraries"
-
-# Fetch V8 8.7.220.31 (matches Electron 11.x / Dofus Retro)
+# Generate .gclient with GitHub mirrors and skipped deps
 WORKDIR /v8_build
-RUN echo 'solutions = [{"name": "v8", "url": "https://chromium.googlesource.com/v8/v8.git", "deps_file": "DEPS", "managed": False}]' > .gclient \
-    && for attempt in 1 2 3; do \
-         echo "=== gclient sync attempt $attempt/3 ===" ; \
-         if gclient sync --no-history --shallow --revision v8@8.7.220.31 -D --jobs 4; then \
-           echo "=== sync succeeded ===" ; break ; \
-         fi ; \
-         if [ "$attempt" -eq 3 ]; then echo "=== all attempts failed ===" ; exit 1; fi ; \
-         echo "=== cleaning state and retrying in 30s ===" ; \
-         rm -rf /v8_build/v8 /v8_build/_bad_scm ; \
-         sleep 30 ; \
-       done
+COPY gclient_spec.py /tmp/gclient_spec.py
+RUN python3 /tmp/gclient_spec.py > .gclient \
+    && cat .gclient \
+    && gclient sync --no-history --shallow --revision v8@8.7.220.31 -D --nohooks --jobs 4
 
 # Apply patches to bypass version/checksum checks and enable bytecode printing
 WORKDIR /v8_build/v8
 COPY v8dasm/patch_v8.py /tmp/patch_v8.py
 RUN python3 /tmp/patch_v8.py
 
-# Configure and build V8 as a static monolith
+# Configure and build V8 as a static monolith (no ICU, no custom libc++)
 RUN mkdir -p out/Default \
-    && printf 'is_debug = false\ntarget_cpu = "x64"\nv8_enable_disassembler = true\nv8_enable_object_print = true\nis_component_build = false\nv8_monolithic = true\nuse_custom_libcxx = false\nv8_use_external_startup_data = false\ntreat_warnings_as_errors = false\n' > out/Default/args.gn \
+    && printf 'is_debug = false\ntarget_cpu = "x64"\nv8_enable_disassembler = true\nv8_enable_object_print = true\nis_component_build = false\nv8_monolithic = true\nuse_custom_libcxx = false\nv8_use_external_startup_data = false\nv8_enable_i18n_support = false\ntreat_warnings_as_errors = false\n' > out/Default/args.gn \
     && gn gen out/Default \
     && /usr/bin/ninja -C out/Default v8_monolith -j$(nproc)
 
