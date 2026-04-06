@@ -29,7 +29,7 @@ jobs:
 
       - name: Build image
         shell: cmd
-        run: docker build --platform linux/amd64 -t ghcr.io/%IMAGE_NAME%:latest .
+        run: docker build --platform linux/amd64 --cpu-quota=600000 --memory=8g -t ghcr.io/%IMAGE_NAME%:latest .
 
       # Push is done manually via SSH due to runner network limitations
       # ssh turbo@192.168.68.102 "docker push ghcr.io/xkenzzo31/dofus-retro-deobfuscator:latest"
