@@ -48,8 +48,7 @@ RUN g++ -std=c++17 -O2 \
     -o /usr/local/bin/v8dasm \
     -lv8_monolith -L out/Default/obj \
     -lm -ldl -lpthread -lz \
-    && echo "v8dasm built successfully" \
-    && v8dasm --help 2>&1 || true
+    && echo "v8dasm built successfully"
 
 
 # ── Stage 2: Build Ghidra V8 plugin ────────────────────────────────────────
@@ -63,7 +62,7 @@ RUN apt-get update && apt-get install -y \
 
 # Download Ghidra 12.0.4
 RUN curl -fsSL -o /tmp/ghidra.zip \
-    "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.4_build/ghidra_12.0.4_PUBLIC_20250108.zip" \
+    "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.4_build/ghidra_12.0.4_PUBLIC_20260303.zip" \
     && unzip -q /tmp/ghidra.zip -d /opt \
     && rm /tmp/ghidra.zip \
     && ln -s /opt/ghidra_12.0.4_PUBLIC /opt/ghidra
