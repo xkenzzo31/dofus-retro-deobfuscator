@@ -15,6 +15,7 @@ DEPS = [
     ("third_party/jinja2",       f"{GH}/QPDFium/jinja2.git",                               "a82a4944a7f2496639f34a89c9923be5908b80aa"),
     ("third_party/markupsafe",   f"{GH}/QPDFium/markupsafe.git",                           "f2fb0f21ef1e1d4ffd43be8c63fc3d4928dea7ab"),
     ("third_party/googletest/src", f"{GH}/google/googletest.git",                          "4fe018038f87675c083d0cfb6a6b57c274fb1753"),
+    ("third_party/icu",            f"{GH}/denoland/icu.git",                               "aef20f06d47ba76fdf13abcdb033e2a408b5a94d"),
 ]
 
 def run(cmd, **kw):
