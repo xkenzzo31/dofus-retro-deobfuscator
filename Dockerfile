@@ -52,7 +52,7 @@ RUN g++ -std=c++17 -O2 \
 
 
 # ── Stage 2: Build Ghidra V8 plugin ────────────────────────────────────────
-FROM eclipse-temurin:17-jdk-jammy AS ghidra-builder
+FROM eclipse-temurin:21-jdk-jammy AS ghidra-builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -84,7 +84,7 @@ RUN gradle buildExtension \
 
 
 # ── Stage 3: Runtime ───────────────────────────────────────────────────────
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 
 RUN apt-get update && apt-get install -y \
     python3 curl zip nodejs npm \
