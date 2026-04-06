@@ -1,0 +1,698 @@
+[
+	{
+		"Name": "scope_info"
+	},
+	{
+		"Name": "previous"
+	},
+	{
+		"Name": "extension"
+	},
+	{
+		"Name": "global_proxy_object"
+	},
+	{
+		"Name": "embedder_data"
+	},
+	{
+		"Name": "continuation_preserved_embedder_data"
+	},
+	{
+		"Name": "generator_next_internal"
+	},
+	{
+		"Name": "async_module_evaluate_internal"
+	},
+	{
+		"Name": "object_create"
+	},
+	{
+		"Name": "reflect_apply"
+	},
+	{
+		"Name": "reflect_construct"
+	},
+	{
+		"Name": "math_floor"
+	},
+	{
+		"Name": "math_pow"
+	},
+	{
+		"Name": "promise_internal_constructor"
+	},
+	{
+		"Name": "promise_then"
+	},
+	{
+		"Name": "accessor_property_descriptor_map"
+	},
+	{
+		"Name": "allow_code_gen_from_strings"
+	},
+	{
+		"Name": "array_buffer_fun"
+	},
+	{
+		"Name": "array_buffer_map"
+	},
+	{
+		"Name": "array_buffer_noinit_fun"
+	},
+	{
+		"Name": "array_function"
+	},
+	{
+		"Name": "array_join_stack"
+	},
+	{
+		"Name": "async_from_sync_iterator_map"
+	},
+	{
+		"Name": "async_function_constructor"
+	},
+	{
+		"Name": "async_function_object_map"
+	},
+	{
+		"Name": "async_generator_function_function"
+	},
+	{
+		"Name": "atomics_object"
+	},
+	{
+		"Name": "bigint_function"
+	},
+	{
+		"Name": "boolean_function"
+	},
+	{
+		"Name": "bound_function_with_constructor_map"
+	},
+	{
+		"Name": "bound_function_without_constructor_map"
+	},
+	{
+		"Name": "call_as_constructor_delegate"
+	},
+	{
+		"Name": "call_as_function_delegate"
+	},
+	{
+		"Name": "call_async_module_fulfilled"
+	},
+	{
+		"Name": "call_async_module_rejected"
+	},
+	{
+		"Name": "callsite_function"
+	},
+	{
+		"Name": "context_extension_function"
+	},
+	{
+		"Name": "data_property_descriptor_map"
+	},
+	{
+		"Name": "data_view_fun"
+	},
+	{
+		"Name": "date_function"
+	},
+	{
+		"Name": "debug_context_id"
+	},
+	{
+		"Name": "empty_function"
+	},
+	{
+		"Name": "error_message_for_code_gen_from_strings"
+	},
+	{
+		"Name": "errors_thrown"
+	},
+	{
+		"Name": "extras_binding_object"
+	},
+	{
+		"Name": "fast_aliased_arguments_map"
+	},
+	{
+		"Name": "fast_template_instantiations_cache"
+	},
+	{
+		"Name": "function_function"
+	},
+	{
+		"Name": "generator_function_function"
+	},
+	{
+		"Name": "generator_object_prototype_map"
+	},
+	{
+		"Name": "async_generator_object_prototype_map"
+	},
+	{
+		"Name": "initial_array_iterator_map"
+	},
+	{
+		"Name": "initial_array_iterator_prototype"
+	},
+	{
+		"Name": "initial_array_prototype"
+	},
+	{
+		"Name": "initial_error_prototype"
+	},
+	{
+		"Name": "initial_generator_prototype"
+	},
+	{
+		"Name": "initial_async_iterator_prototype"
+	},
+	{
+		"Name": "initial_async_generator_prototype"
+	},
+	{
+		"Name": "initial_iterator_prototype"
+	},
+	{
+		"Name": "initial_map_iterator_prototype"
+	},
+	{
+		"Name": "initial_map_prototype_map"
+	},
+	{
+		"Name": "initial_object_prototype"
+	},
+	{
+		"Name": "initial_set_iterator_prototype"
+	},
+	{
+		"Name": "initial_set_prototype"
+	},
+	{
+		"Name": "initial_set_prototype_map"
+	},
+	{
+		"Name": "initial_string_iterator_map"
+	},
+	{
+		"Name": "initial_string_iterator_prototype"
+	},
+	{
+		"Name": "initial_string_prototype"
+	},
+	{
+		"Name": "initial_weakmap_prototype_map"
+	},
+	{
+		"Name": "initial_weakset_prototype_map"
+	},
+	{
+		"Name": "intl_collator_function"
+	},
+	{
+		"Name": "intl_date_time_format_function"
+	},
+	{
+		"Name": "intl_display_names_function"
+	},
+	{
+		"Name": "intl_number_format_function"
+	},
+	{
+		"Name": "intl_locale_function"
+	},
+	{
+		"Name": "intl_list_format_function"
+	},
+	{
+		"Name": "intl_plural_rules_function"
+	},
+	{
+		"Name": "intl_relative_time_format_function"
+	},
+	{
+		"Name": "intl_segmenter_function"
+	},
+	{
+		"Name": "intl_segments_map"
+	},
+	{
+		"Name": "intl_segment_iterator_map"
+	},
+	{
+		"Name": "iterator_result_map"
+	},
+	{
+		"Name": "js_array_packed_smi_elements_map"
+	},
+	{
+		"Name": "js_array_holey_smi_elements_map"
+	},
+	{
+		"Name": "js_array_packed_elements_map"
+	},
+	{
+		"Name": "js_array_holey_elements_map"
+	},
+	{
+		"Name": "js_array_packed_double_elements_map"
+	},
+	{
+		"Name": "js_array_holey_double_elements_map"
+	},
+	{
+		"Name": "js_map_fun"
+	},
+	{
+		"Name": "js_map_map"
+	},
+	{
+		"Name": "js_module_namespace_map"
+	},
+	{
+		"Name": "js_set_fun"
+	},
+	{
+		"Name": "js_set_map"
+	},
+	{
+		"Name": "js_weak_map_fun"
+	},
+	{
+		"Name": "js_weak_set_fun"
+	},
+	{
+		"Name": "js_weak_ref_fun"
+	},
+	{
+		"Name": "js_finalization_registry_fun"
+	},
+	{
+		"Name": "native_context_map"
+	},
+	{
+		"Name": "function_context_map"
+	},
+	{
+		"Name": "module_context_map"
+	},
+	{
+		"Name": "eval_context_map"
+	},
+	{
+		"Name": "script_context_map"
+	},
+	{
+		"Name": "await_context_map"
+	},
+	{
+		"Name": "block_context_map"
+	},
+	{
+		"Name": "catch_context_map"
+	},
+	{
+		"Name": "with_context_map"
+	},
+	{
+		"Name": "debug_evaluate_context_map"
+	},
+	{
+		"Name": "map_cache"
+	},
+	{
+		"Name": "map_key_iterator_map"
+	},
+	{
+		"Name": "map_key_value_iterator_map"
+	},
+	{
+		"Name": "map_value_iterator_map"
+	},
+	{
+		"Name": "math_random_index"
+	},
+	{
+		"Name": "math_random_state"
+	},
+	{
+		"Name": "math_random_cache"
+	},
+	{
+		"Name": "message_listeners"
+	},
+	{
+		"Name": "normalized_map_cache"
+	},
+	{
+		"Name": "number_function"
+	},
+	{
+		"Name": "object_function"
+	},
+	{
+		"Name": "object_function_prototype_map"
+	},
+	{
+		"Name": "proxy_callable_map"
+	},
+	{
+		"Name": "proxy_constructor_map"
+	},
+	{
+		"Name": "proxy_function"
+	},
+	{
+		"Name": "proxy_map"
+	},
+	{
+		"Name": "proxy_revocable_result_map"
+	},
+	{
+		"Name": "promise_prototype"
+	},
+	{
+		"Name": "recorder_context_id"
+	},
+	{
+		"Name": "regexp_exec_function"
+	},
+	{
+		"Name": "regexp_function"
+	},
+	{
+		"Name": "regexp_last_match_info"
+	},
+	{
+		"Name": "regexp_match_all_function"
+	},
+	{
+		"Name": "regexp_match_function"
+	},
+	{
+		"Name": "regexp_prototype"
+	},
+	{
+		"Name": "regexp_prototype_map"
+	},
+	{
+		"Name": "regexp_replace_function"
+	},
+	{
+		"Name": "regexp_result_map"
+	},
+	{
+		"Name": "regexp_result_indices_map"
+	},
+	{
+		"Name": "regexp_search_function"
+	},
+	{
+		"Name": "regexp_split_function"
+	},
+	{
+		"Name": "initial_regexp_string_iterator_prototype_map"
+	},
+	{
+		"Name": "script_context_table"
+	},
+	{
+		"Name": "script_execution_callback"
+	},
+	{
+		"Name": "security_token"
+	},
+	{
+		"Name": "serialized_objects"
+	},
+	{
+		"Name": "set_value_iterator_map"
+	},
+	{
+		"Name": "set_key_value_iterator_map"
+	},
+	{
+		"Name": "shared_array_buffer_fun"
+	},
+	{
+		"Name": "sloppy_arguments_map"
+	},
+	{
+		"Name": "slow_aliased_arguments_map"
+	},
+	{
+		"Name": "strict_arguments_map"
+	},
+	{
+		"Name": "slow_object_with_null_prototype_map"
+	},
+	{
+		"Name": "slow_object_with_object_prototype_map"
+	},
+	{
+		"Name": "slow_template_instantiations_cache"
+	},
+	{
+		"Name": "atomics_waitasync_promises"
+	},
+	{
+		"Name": "regexp_species_protector"
+	},
+	{
+		"Name": "sloppy_function_map"
+	},
+	{
+		"Name": "sloppy_function_with_name_map"
+	},
+	{
+		"Name": "sloppy_function_without_prototype_map"
+	},
+	{
+		"Name": "sloppy_function_with_readonly_prototype_map"
+	},
+	{
+		"Name": "strict_function_map"
+	},
+	{
+		"Name": "strict_function_with_name_map"
+	},
+	{
+		"Name": "strict_function_with_readonly_prototype_map"
+	},
+	{
+		"Name": "strict_function_without_prototype_map"
+	},
+	{
+		"Name": "method_with_name_map"
+	},
+	{
+		"Name": "method_with_home_object_map"
+	},
+	{
+		"Name": "method_with_name_and_home_object_map"
+	},
+	{
+		"Name": "async_function_map"
+	},
+	{
+		"Name": "async_function_with_name_map"
+	},
+	{
+		"Name": "async_function_with_home_object_map"
+	},
+	{
+		"Name": "async_function_with_name_and_home_object_map"
+	},
+	{
+		"Name": "generator_function_map"
+	},
+	{
+		"Name": "generator_function_with_name_map"
+	},
+	{
+		"Name": "generator_function_with_home_object_map"
+	},
+	{
+		"Name": "generator_function_with_name_and_home_object_map"
+	},
+	{
+		"Name": "async_generator_function_map"
+	},
+	{
+		"Name": "async_generator_function_with_name_map"
+	},
+	{
+		"Name": "async_generator_function_with_home_object_map"
+	},
+	{
+		"Name": "async_generator_function_with_name_and_home_object_map"
+	},
+	{
+		"Name": "class_function_map"
+	},
+	{
+		"Name": "string_function"
+	},
+	{
+		"Name": "string_function_prototype_map"
+	},
+	{
+		"Name": "symbol_function"
+	},
+	{
+		"Name": "wasm_exported_function_map"
+	},
+	{
+		"Name": "wasm_exception_constructor"
+	},
+	{
+		"Name": "wasm_global_constructor"
+	},
+	{
+		"Name": "wasm_instance_constructor"
+	},
+	{
+		"Name": "wasm_memory_constructor"
+	},
+	{
+		"Name": "wasm_module_constructor"
+	},
+	{
+		"Name": "wasm_table_constructor"
+	},
+	{
+		"Name": "template_weakmap"
+	},
+	{
+		"Name": "typed_array_function"
+	},
+	{
+		"Name": "typed_array_prototype"
+	},
+	{
+		"Name": "array_entries_iterator"
+	},
+	{
+		"Name": "array_for_each_iterator"
+	},
+	{
+		"Name": "array_keys_iterator"
+	},
+	{
+		"Name": "array_values_iterator"
+	},
+	{
+		"Name": "error_function"
+	},
+	{
+		"Name": "error_to_string"
+	},
+	{
+		"Name": "eval_error_function"
+	},
+	{
+		"Name": "aggregate_error_function"
+	},
+	{
+		"Name": "global_eval_fun"
+	},
+	{
+		"Name": "global_proxy_function"
+	},
+	{
+		"Name": "map_delete"
+	},
+	{
+		"Name": "map_get"
+	},
+	{
+		"Name": "map_has"
+	},
+	{
+		"Name": "map_set"
+	},
+	{
+		"Name": "finalization_registry_cleanup_some"
+	},
+	{
+		"Name": "function_has_instance"
+	},
+	{
+		"Name": "object_to_string"
+	},
+	{
+		"Name": "object_value_of_function"
+	},
+	{
+		"Name": "promise_all"
+	},
+	{
+		"Name": "promise_any"
+	},
+	{
+		"Name": "promise_catch"
+	},
+	{
+		"Name": "promise_function"
+	},
+	{
+		"Name": "range_error_function"
+	},
+	{
+		"Name": "reference_error_function"
+	},
+	{
+		"Name": "set_add"
+	},
+	{
+		"Name": "set_delete"
+	},
+	{
+		"Name": "set_has"
+	},
+	{
+		"Name": "syntax_error_function"
+	},
+	{
+		"Name": "type_error_function"
+	},
+	{
+		"Name": "uri_error_function"
+	},
+	{
+		"Name": "wasm_compile_error_function"
+	},
+	{
+		"Name": "wasm_link_error_function"
+	},
+	{
+		"Name": "wasm_runtime_error_function"
+	},
+	{
+		"Name": "weakmap_set"
+	},
+	{
+		"Name": "weakmap_get"
+	},
+	{
+		"Name": "weakset_add"
+	},
+	{
+		"Name": "retained_maps"
+	},
+	{
+		"Name": "osr_code_cache"
+	},
+	{
+		"Name": "optimized_code_list"
+	},
+	{
+		"Name": "deoptimized_code_list"
+	},
+	{
+		"Name": "next_context_link"
+	}
+]

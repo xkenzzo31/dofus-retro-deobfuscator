@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processor_spec>
+  <programcounter register="pc"/>
+  <register_data>
+    <register name="acc" group="Accumulator"/>
+    <register name="context" group="Context"/>
+    <register name="sp" group="Stack"/>
+  </register_data>
+</processor_spec>

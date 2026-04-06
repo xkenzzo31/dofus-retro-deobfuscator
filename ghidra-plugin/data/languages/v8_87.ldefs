@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language_definitions>
+  <language processor="V8"
+           endian="little"
+           size="32"
+           variant="8.7"
+           version="1.0"
+           slafile="v8_87.sla"
+           processorspec="v8_87.pspec"
+           id="V8:LE:32:8.7">
+    <description>V8 JavaScript Engine Bytecode 8.7 (Electron 11 / Node 15.x / bytenode)</description>
+    <compiler name="default" spec="v8_87.cspec" id="default"/>
+  </language>
+</language_definitions>

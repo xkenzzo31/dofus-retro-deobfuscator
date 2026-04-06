@@ -1,0 +1,2486 @@
+[
+    {
+        "Name": "FreeSpaceMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OnePointerFillerMap",
+        "Type": "object"
+    },
+    {
+        "Name": "TwoPointerFillerMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UninitializedValue",
+        "Type": "object"
+    },
+    {
+        "Name": "UndefinedValue",
+        "Type": "None"
+    },
+    {
+        "Name": "TheHoleValue",
+        "Type": "object"
+    },
+    {
+        "Name": "NullValue",
+        "Type": "object"
+    },
+    {
+        "Name": "TrueValue",
+        "Type": "bool"
+    },
+    {
+        "Name": "FalseValue",
+        "Type": "bool"
+    },
+    {
+        "Name": "empty_string",
+        "Type": "str"
+    },
+    {
+        "Name": "MetaMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ByteArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FixedArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FixedCOWArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "HashTableMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SymbolMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OneByteStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OneByteInternalizedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ScopeInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SharedFunctionInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CodeMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CellMap",
+        "Type": "object"
+    },
+    {
+        "Name": "GlobalPropertyCellMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ForeignMap",
+        "Type": "object"
+    },
+    {
+        "Name": "HeapNumberMap",
+        "Type": "object"
+    },
+    {
+        "Name": "TransitionArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ThinOneByteStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FeedbackVectorMap",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyScopeInfo",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyFixedArray",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyDescriptorArray",
+        "Type": "list"
+    },
+    {
+        "Name": "ArgumentsMarker",
+        "Type": "object"
+    },
+    {
+        "Name": "Exception",
+        "Type": "object"
+    },
+    {
+        "Name": "TerminationException",
+        "Type": "object"
+    },
+    {
+        "Name": "OptimizedOut",
+        "Type": "object"
+    },
+    {
+        "Name": "StaleRegister",
+        "Type": "object"
+    },
+    {
+        "Name": "ScriptContextTableMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ClosureFeedbackCellArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FeedbackMetadataArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ArrayListMap",
+        "Type": "object"
+    },
+    {
+        "Name": "BigIntMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ObjectBoilerplateDescriptionMap",
+        "Type": "object"
+    },
+    {
+        "Name": "BytecodeArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CodeDataContainerMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CoverageInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "DescriptorArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FixedDoubleArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "GlobalDictionaryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ManyClosuresCellMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ModuleInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "NameDictionaryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "NoClosuresCellMap",
+        "Type": "object"
+    },
+    {
+        "Name": "NumberDictionaryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OneClosureCellMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OrderedHashMapMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OrderedHashSetMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OrderedNameDictionaryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PreparseDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PropertyArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SideEffectCallHandlerInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SideEffectFreeCallHandlerInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "NextCallSideEffectFreeCallHandlerInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SimpleNumberDictionaryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SmallOrderedHashMapMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SmallOrderedHashSetMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SmallOrderedNameDictionaryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SourceTextModuleMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SyntheticModuleMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UncompiledDataWithoutPreparseDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UncompiledDataWithPreparseDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmTypeInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WeakFixedArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WeakArrayListMap",
+        "Type": "object"
+    },
+    {
+        "Name": "EphemeronHashTableMap",
+        "Type": "object"
+    },
+    {
+        "Name": "EmbedderDataArrayMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WeakCellMap",
+        "Type": "object"
+    },
+    {
+        "Name": "StringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ConsOneByteStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ConsStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ThinStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SlicedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SlicedOneByteStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ExternalStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ExternalOneByteStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UncachedExternalStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "InternalizedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ExternalInternalizedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ExternalOneByteInternalizedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UncachedExternalInternalizedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UncachedExternalOneByteInternalizedStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UncachedExternalOneByteStringMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UndefinedMap",
+        "Type": "object"
+    },
+    {
+        "Name": "TheHoleMap",
+        "Type": "object"
+    },
+    {
+        "Name": "NullMap",
+        "Type": "object"
+    },
+    {
+        "Name": "BooleanMap",
+        "Type": "object"
+    },
+    {
+        "Name": "UninitializedMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ArgumentsMarkerMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ExceptionMap",
+        "Type": "object"
+    },
+    {
+        "Name": "TerminationExceptionMap",
+        "Type": "object"
+    },
+    {
+        "Name": "OptimizedOutMap",
+        "Type": "object"
+    },
+    {
+        "Name": "StaleRegisterMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SelfReferenceMarkerMap",
+        "Type": "object"
+    },
+    {
+        "Name": "BasicBlockCountersMarkerMap",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyEnumCache",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyPropertyArray",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyByteArray",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyObjectBoilerplateDescription",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyArrayBoilerplateDescription",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyClosureFeedbackCellArray",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptySlowElementDictionary",
+        "Type": "set"
+    },
+    {
+        "Name": "EmptyOrderedHashMap",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyOrderedHashSet",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyFeedbackMetadata",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyPropertyCell",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyPropertyDictionary",
+        "Type": "set"
+    },
+    {
+        "Name": "NoOpInterceptorInfo",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyWeakFixedArray",
+        "Type": "list"
+    },
+    {
+        "Name": "EmptyWeakArrayList",
+        "Type": "list"
+    },
+    {
+        "Name": "NanValue",
+        "Type": "float"
+    },
+    {
+        "Name": "HoleNanValue",
+        "Type": "float"
+    },
+    {
+        "Name": "InfinityValue",
+        "Type": "float"
+    },
+    {
+        "Name": "MinusZeroValue",
+        "Type": "float"
+    },
+    {
+        "Name": "MinusInfinityValue",
+        "Type": "float"
+    },
+    {
+        "Name": "SelfReferenceMarker",
+        "Type": "object"
+    },
+    {
+        "Name": "BasicBlockCountersMarker",
+        "Type": "object"
+    },
+    {
+        "Name": "OffHeapTrampolineRelocationInfo",
+        "Type": "list"
+    },
+    {
+        "Name": "TrampolineTrivialCodeDataContainer",
+        "Type": "object"
+    },
+    {
+        "Name": "TrampolinePromiseRejectionCodeDataContainer",
+        "Type": "object"
+    },
+    {
+        "Name": "GlobalThisBindingScopeInfo",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyFunctionScopeInfo",
+        "Type": "object"
+    },
+    {
+        "Name": "NativeScopeInfo",
+        "Type": "object"
+    },
+    {
+        "Name": "HashSeed",
+        "Type": "list"
+    },
+    {
+        "Name": "adoptText",
+        "Type": "str"
+    },
+    {
+        "Name": "baseName",
+        "Type": "str"
+    },
+    {
+        "Name": "accounting",
+        "Type": "str"
+    },
+    {
+        "Name": "breakType",
+        "Type": "str"
+    },
+    {
+        "Name": "calendar",
+        "Type": "str"
+    },
+    {
+        "Name": "cardinal",
+        "Type": "str"
+    },
+    {
+        "Name": "caseFirst",
+        "Type": "str"
+    },
+    {
+        "Name": "compare",
+        "Type": "str"
+    },
+    {
+        "Name": "collation",
+        "Type": "str"
+    },
+    {
+        "Name": "compact",
+        "Type": "str"
+    },
+    {
+        "Name": "compactDisplay",
+        "Type": "str"
+    },
+    {
+        "Name": "currency",
+        "Type": "str"
+    },
+    {
+        "Name": "currencyDisplay",
+        "Type": "str"
+    },
+    {
+        "Name": "currencySign",
+        "Type": "str"
+    },
+    {
+        "Name": "dateStyle",
+        "Type": "str"
+    },
+    {
+        "Name": "dateTimeField",
+        "Type": "str"
+    },
+    {
+        "Name": "day",
+        "Type": "str"
+    },
+    {
+        "Name": "dayPeriod",
+        "Type": "str"
+    },
+    {
+        "Name": "decimal",
+        "Type": "str"
+    },
+    {
+        "Name": "endRange",
+        "Type": "str"
+    },
+    {
+        "Name": "engineering",
+        "Type": "str"
+    },
+    {
+        "Name": "era",
+        "Type": "str"
+    },
+    {
+        "Name": "exceptZero",
+        "Type": "str"
+    },
+    {
+        "Name": "exponentInteger",
+        "Type": "str"
+    },
+    {
+        "Name": "exponentMinusSign",
+        "Type": "str"
+    },
+    {
+        "Name": "exponentSeparator",
+        "Type": "str"
+    },
+    {
+        "Name": "fallback",
+        "Type": "str"
+    },
+    {
+        "Name": "first",
+        "Type": "str"
+    },
+    {
+        "Name": "format",
+        "Type": "str"
+    },
+    {
+        "Name": "fraction",
+        "Type": "str"
+    },
+    {
+        "Name": "fractionalSecond",
+        "Type": "str"
+    },
+    {
+        "Name": "fractionalSecondDigits",
+        "Type": "str"
+    },
+    {
+        "Name": "full",
+        "Type": "str"
+    },
+    {
+        "Name": "granularity",
+        "Type": "str"
+    },
+    {
+        "Name": "grapheme",
+        "Type": "str"
+    },
+    {
+        "Name": "group",
+        "Type": "str"
+    },
+    {
+        "Name": "h11",
+        "Type": "str"
+    },
+    {
+        "Name": "h12",
+        "Type": "str"
+    },
+    {
+        "Name": "h23",
+        "Type": "str"
+    },
+    {
+        "Name": "h24",
+        "Type": "str"
+    },
+    {
+        "Name": "hour",
+        "Type": "str"
+    },
+    {
+        "Name": "hour12",
+        "Type": "str"
+    },
+    {
+        "Name": "hourCycle",
+        "Type": "str"
+    },
+    {
+        "Name": "ideo",
+        "Type": "str"
+    },
+    {
+        "Name": "ignorePunctuation",
+        "Type": "str"
+    },
+    {
+        "Name": "Invalid Date",
+        "Type": "str"
+    },
+    {
+        "Name": "integer",
+        "Type": "str"
+    },
+    {
+        "Name": "isWordLike",
+        "Type": "str"
+    },
+    {
+        "Name": "kana",
+        "Type": "str"
+    },
+    {
+        "Name": "language",
+        "Type": "str"
+    },
+    {
+        "Name": "letter",
+        "Type": "str"
+    },
+    {
+        "Name": "list",
+        "Type": "str"
+    },
+    {
+        "Name": "literal",
+        "Type": "str"
+    },
+    {
+        "Name": "locale",
+        "Type": "str"
+    },
+    {
+        "Name": "loose",
+        "Type": "str"
+    },
+    {
+        "Name": "lower",
+        "Type": "str"
+    },
+    {
+        "Name": "maximumFractionDigits",
+        "Type": "str"
+    },
+    {
+        "Name": "maximumSignificantDigits",
+        "Type": "str"
+    },
+    {
+        "Name": "minimumFractionDigits",
+        "Type": "str"
+    },
+    {
+        "Name": "minimumIntegerDigits",
+        "Type": "str"
+    },
+    {
+        "Name": "minimumSignificantDigits",
+        "Type": "str"
+    },
+    {
+        "Name": "minusSign",
+        "Type": "str"
+    },
+    {
+        "Name": "minute",
+        "Type": "str"
+    },
+    {
+        "Name": "month",
+        "Type": "str"
+    },
+    {
+        "Name": "nan",
+        "Type": "str"
+    },
+    {
+        "Name": "narrowSymbol",
+        "Type": "str"
+    },
+    {
+        "Name": "never",
+        "Type": "str"
+    },
+    {
+        "Name": "none",
+        "Type": "str"
+    },
+    {
+        "Name": "notation",
+        "Type": "str"
+    },
+    {
+        "Name": "normal",
+        "Type": "str"
+    },
+    {
+        "Name": "numberingSystem",
+        "Type": "str"
+    },
+    {
+        "Name": "numeric",
+        "Type": "str"
+    },
+    {
+        "Name": "ordinal",
+        "Type": "str"
+    },
+    {
+        "Name": "percentSign",
+        "Type": "str"
+    },
+    {
+        "Name": "plusSign",
+        "Type": "str"
+    },
+    {
+        "Name": "quarter",
+        "Type": "str"
+    },
+    {
+        "Name": "region",
+        "Type": "str"
+    },
+    {
+        "Name": "relatedYear",
+        "Type": "str"
+    },
+    {
+        "Name": "scientific",
+        "Type": "str"
+    },
+    {
+        "Name": "second",
+        "Type": "str"
+    },
+    {
+        "Name": "segment",
+        "Type": "str"
+    },
+    {
+        "Name": "Segment Iterator",
+        "Type": "str"
+    },
+    {
+        "Name": "Segments",
+        "Type": "str"
+    },
+    {
+        "Name": "sensitivity",
+        "Type": "str"
+    },
+    {
+        "Name": "sep",
+        "Type": "str"
+    },
+    {
+        "Name": "shared",
+        "Type": "str"
+    },
+    {
+        "Name": "signDisplay",
+        "Type": "str"
+    },
+    {
+        "Name": "standard",
+        "Type": "str"
+    },
+    {
+        "Name": "startRange",
+        "Type": "str"
+    },
+    {
+        "Name": "strict",
+        "Type": "str"
+    },
+    {
+        "Name": "style",
+        "Type": "str"
+    },
+    {
+        "Name": "term",
+        "Type": "str"
+    },
+    {
+        "Name": "timeStyle",
+        "Type": "str"
+    },
+    {
+        "Name": "timeZone",
+        "Type": "str"
+    },
+    {
+        "Name": "timeZoneName",
+        "Type": "str"
+    },
+    {
+        "Name": "type",
+        "Type": "str"
+    },
+    {
+        "Name": "unknown",
+        "Type": "str"
+    },
+    {
+        "Name": "upper",
+        "Type": "str"
+    },
+    {
+        "Name": "usage",
+        "Type": "str"
+    },
+    {
+        "Name": "useGrouping",
+        "Type": "str"
+    },
+    {
+        "Name": "UTC",
+        "Type": "str"
+    },
+    {
+        "Name": "unit",
+        "Type": "str"
+    },
+    {
+        "Name": "unitDisplay",
+        "Type": "str"
+    },
+    {
+        "Name": "weekday",
+        "Type": "str"
+    },
+    {
+        "Name": "year",
+        "Type": "str"
+    },
+    {
+        "Name": "yearName",
+        "Type": "str"
+    },
+    {
+        "Name": "add",
+        "Type": "str"
+    },
+    {
+        "Name": "AggregateError",
+        "Type": "str"
+    },
+    {
+        "Name": "always",
+        "Type": "str"
+    },
+    {
+        "Name": "(anonymous function)",
+        "Type": "str"
+    },
+    {
+        "Name": "anonymous",
+        "Type": "str"
+    },
+    {
+        "Name": "apply",
+        "Type": "str"
+    },
+    {
+        "Name": "Arguments",
+        "Type": "str"
+    },
+    {
+        "Name": "arguments",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Arguments]",
+        "Type": "str"
+    },
+    {
+        "Name": "Array",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Array]",
+        "Type": "str"
+    },
+    {
+        "Name": "ArrayBuffer",
+        "Type": "str"
+    },
+    {
+        "Name": "Array Iterator",
+        "Type": "str"
+    },
+    {
+        "Name": "as",
+        "Type": "str"
+    },
+    {
+        "Name": "async",
+        "Type": "str"
+    },
+    {
+        "Name": "auto",
+        "Type": "str"
+    },
+    {
+        "Name": "await",
+        "Type": "str"
+    },
+    {
+        "Name": "BigInt",
+        "Type": "str"
+    },
+    {
+        "Name": "bigint",
+        "Type": "str"
+    },
+    {
+        "Name": "BigInt64Array",
+        "Type": "str"
+    },
+    {
+        "Name": "BigUint64Array",
+        "Type": "str"
+    },
+    {
+        "Name": "bind",
+        "Type": "str"
+    },
+    {
+        "Name": "Boolean",
+        "Type": "str"
+    },
+    {
+        "Name": "boolean",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Boolean]",
+        "Type": "str"
+    },
+    {
+        "Name": "bound ",
+        "Type": "str"
+    },
+    {
+        "Name": "buffer",
+        "Type": "str"
+    },
+    {
+        "Name": "byteLength",
+        "Type": "str"
+    },
+    {
+        "Name": "byteOffset",
+        "Type": "str"
+    },
+    {
+        "Name": "CompileError",
+        "Type": "str"
+    },
+    {
+        "Name": "callee",
+        "Type": "str"
+    },
+    {
+        "Name": "caller",
+        "Type": "str"
+    },
+    {
+        "Name": "character",
+        "Type": "str"
+    },
+    {
+        "Name": "(closure)",
+        "Type": "str"
+    },
+    {
+        "Name": "code",
+        "Type": "str"
+    },
+    {
+        "Name": "column",
+        "Type": "str"
+    },
+    {
+        "Name": "<computed>",
+        "Type": "str"
+    },
+    {
+        "Name": "configurable",
+        "Type": "str"
+    },
+    {
+        "Name": "conjunction",
+        "Type": "str"
+    },
+    {
+        "Name": "construct",
+        "Type": "str"
+    },
+    {
+        "Name": "constructor",
+        "Type": "str"
+    },
+    {
+        "Name": "current",
+        "Type": "str"
+    },
+    {
+        "Name": "Date",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Date]",
+        "Type": "str"
+    },
+    {
+        "Name": "default",
+        "Type": "str"
+    },
+    {
+        "Name": "defineProperty",
+        "Type": "str"
+    },
+    {
+        "Name": "deleteProperty",
+        "Type": "str"
+    },
+    {
+        "Name": "disjunction",
+        "Type": "str"
+    },
+    {
+        "Name": "displayName",
+        "Type": "str"
+    },
+    {
+        "Name": "done",
+        "Type": "str"
+    },
+    {
+        "Name": ".brand",
+        "Type": "str"
+    },
+    {
+        "Name": ".catch",
+        "Type": "str"
+    },
+    {
+        "Name": ".default",
+        "Type": "str"
+    },
+    {
+        "Name": ".for",
+        "Type": "str"
+    },
+    {
+        "Name": ".generator_object",
+        "Type": "str"
+    },
+    {
+        "Name": ".result",
+        "Type": "str"
+    },
+    {
+        "Name": ".repl_result",
+        "Type": "str"
+    },
+    {
+        "Name": ".",
+        "Type": "str"
+    },
+    {
+        "Name": ".switch_tag",
+        "Type": "str"
+    },
+    {
+        "Name": "dotAll",
+        "Type": "str"
+    },
+    {
+        "Name": "enumerable",
+        "Type": "str"
+    },
+    {
+        "Name": "element",
+        "Type": "str"
+    },
+    {
+        "Name": "Error",
+        "Type": "str"
+    },
+    {
+        "Name": "errors",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Error]",
+        "Type": "str"
+    },
+    {
+        "Name": "eval",
+        "Type": "str"
+    },
+    {
+        "Name": "EvalError",
+        "Type": "str"
+    },
+    {
+        "Name": "exec",
+        "Type": "str"
+    },
+    {
+        "Name": "false",
+        "Type": "str"
+    },
+    {
+        "Name": "FinalizationRegistry",
+        "Type": "str"
+    },
+    {
+        "Name": "flags",
+        "Type": "str"
+    },
+    {
+        "Name": "Float32Array",
+        "Type": "str"
+    },
+    {
+        "Name": "Float64Array",
+        "Type": "str"
+    },
+    {
+        "Name": "from",
+        "Type": "str"
+    },
+    {
+        "Name": "Function",
+        "Type": "str"
+    },
+    {
+        "Name": "function () { [native code] }",
+        "Type": "str"
+    },
+    {
+        "Name": "function",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Function]",
+        "Type": "str"
+    },
+    {
+        "Name": "Generator",
+        "Type": "str"
+    },
+    {
+        "Name": "get ",
+        "Type": "str"
+    },
+    {
+        "Name": "get",
+        "Type": "str"
+    },
+    {
+        "Name": "getOwnPropertyDescriptor",
+        "Type": "str"
+    },
+    {
+        "Name": "getPrototypeOf",
+        "Type": "str"
+    },
+    {
+        "Name": "global",
+        "Type": "str"
+    },
+    {
+        "Name": "globalThis",
+        "Type": "str"
+    },
+    {
+        "Name": "groups",
+        "Type": "str"
+    },
+    {
+        "Name": "has",
+        "Type": "str"
+    },
+    {
+        "Name": "ignoreCase",
+        "Type": "str"
+    },
+    {
+        "Name": "illegal access",
+        "Type": "str"
+    },
+    {
+        "Name": "illegal argument",
+        "Type": "str"
+    },
+    {
+        "Name": "index",
+        "Type": "str"
+    },
+    {
+        "Name": "indices",
+        "Type": "str"
+    },
+    {
+        "Name": "Infinity",
+        "Type": "str"
+    },
+    {
+        "Name": "infinity",
+        "Type": "str"
+    },
+    {
+        "Name": "input",
+        "Type": "str"
+    },
+    {
+        "Name": "Int16Array",
+        "Type": "str"
+    },
+    {
+        "Name": "Int32Array",
+        "Type": "str"
+    },
+    {
+        "Name": "Int8Array",
+        "Type": "str"
+    },
+    {
+        "Name": "isExtensible",
+        "Type": "str"
+    },
+    {
+        "Name": "jsMemoryEstimate",
+        "Type": "str"
+    },
+    {
+        "Name": "jsMemoryRange",
+        "Type": "str"
+    },
+    {
+        "Name": "keys",
+        "Type": "str"
+    },
+    {
+        "Name": "lastIndex",
+        "Type": "str"
+    },
+    {
+        "Name": "length",
+        "Type": "str"
+    },
+    {
+        "Name": "let",
+        "Type": "str"
+    },
+    {
+        "Name": "line",
+        "Type": "str"
+    },
+    {
+        "Name": "LinkError",
+        "Type": "str"
+    },
+    {
+        "Name": "long",
+        "Type": "str"
+    },
+    {
+        "Name": "Map",
+        "Type": "str"
+    },
+    {
+        "Name": "Map Iterator",
+        "Type": "str"
+    },
+    {
+        "Name": "medium",
+        "Type": "str"
+    },
+    {
+        "Name": "message",
+        "Type": "str"
+    },
+    {
+        "Name": "meta",
+        "Type": "str"
+    },
+    {
+        "Name": "-Infinity",
+        "Type": "str"
+    },
+    {
+        "Name": "Module",
+        "Type": "str"
+    },
+    {
+        "Name": "multiline",
+        "Type": "str"
+    },
+    {
+        "Name": "name",
+        "Type": "str"
+    },
+    {
+        "Name": "NaN",
+        "Type": "str"
+    },
+    {
+        "Name": "narrow",
+        "Type": "str"
+    },
+    {
+        "Name": "native",
+        "Type": "str"
+    },
+    {
+        "Name": ".new.target",
+        "Type": "str"
+    },
+    {
+        "Name": "next",
+        "Type": "str"
+    },
+    {
+        "Name": "NFC",
+        "Type": "str"
+    },
+    {
+        "Name": "NFD",
+        "Type": "str"
+    },
+    {
+        "Name": "NFKC",
+        "Type": "str"
+    },
+    {
+        "Name": "NFKD",
+        "Type": "str"
+    },
+    {
+        "Name": "not-equal",
+        "Type": "str"
+    },
+    {
+        "Name": "null",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Null]",
+        "Type": "str"
+    },
+    {
+        "Name": "Number",
+        "Type": "str"
+    },
+    {
+        "Name": "number",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Number]",
+        "Type": "str"
+    },
+    {
+        "Name": "Object",
+        "Type": "str"
+    },
+    {
+        "Name": "object",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Object]",
+        "Type": "str"
+    },
+    {
+        "Name": "of",
+        "Type": "str"
+    },
+    {
+        "Name": "ok",
+        "Type": "str"
+    },
+    {
+        "Name": "1",
+        "Type": "str"
+    },
+    {
+        "Name": "other",
+        "Type": "str"
+    },
+    {
+        "Name": "ownKeys",
+        "Type": "str"
+    },
+    {
+        "Name": "percent",
+        "Type": "str"
+    },
+    {
+        "Name": "position",
+        "Type": "str"
+    },
+    {
+        "Name": "preventExtensions",
+        "Type": "str"
+    },
+    {
+        "Name": "#constructor",
+        "Type": "str"
+    },
+    {
+        "Name": "Promise",
+        "Type": "str"
+    },
+    {
+        "Name": "__proto__",
+        "Type": "str"
+    },
+    {
+        "Name": "prototype",
+        "Type": "str"
+    },
+    {
+        "Name": "proxy",
+        "Type": "str"
+    },
+    {
+        "Name": "Proxy",
+        "Type": "str"
+    },
+    {
+        "Name": "(?:)",
+        "Type": "str"
+    },
+    {
+        "Name": "RangeError",
+        "Type": "str"
+    },
+    {
+        "Name": "raw",
+        "Type": "str"
+    },
+    {
+        "Name": "ReferenceError",
+        "Type": "str"
+    },
+    {
+        "Name": "Reflect.get",
+        "Type": "str"
+    },
+    {
+        "Name": "Reflect.has",
+        "Type": "str"
+    },
+    {
+        "Name": "RegExp",
+        "Type": "str"
+    },
+    {
+        "Name": "[object RegExp]",
+        "Type": "str"
+    },
+    {
+        "Name": "resolve",
+        "Type": "str"
+    },
+    {
+        "Name": "return",
+        "Type": "str"
+    },
+    {
+        "Name": "revoke",
+        "Type": "str"
+    },
+    {
+        "Name": "RuntimeError",
+        "Type": "str"
+    },
+    {
+        "Name": "Script",
+        "Type": "str"
+    },
+    {
+        "Name": "script",
+        "Type": "str"
+    },
+    {
+        "Name": "short",
+        "Type": "str"
+    },
+    {
+        "Name": "Set",
+        "Type": "str"
+    },
+    {
+        "Name": "sentence",
+        "Type": "str"
+    },
+    {
+        "Name": "set ",
+        "Type": "str"
+    },
+    {
+        "Name": "set",
+        "Type": "str"
+    },
+    {
+        "Name": "Set Iterator",
+        "Type": "str"
+    },
+    {
+        "Name": "setPrototypeOf",
+        "Type": "str"
+    },
+    {
+        "Name": "SharedArrayBuffer",
+        "Type": "str"
+    },
+    {
+        "Name": "source",
+        "Type": "str"
+    },
+    {
+        "Name": "sourceText",
+        "Type": "str"
+    },
+    {
+        "Name": "stack",
+        "Type": "str"
+    },
+    {
+        "Name": "stackTraceLimit",
+        "Type": "str"
+    },
+    {
+        "Name": "sticky",
+        "Type": "str"
+    },
+    {
+        "Name": "String",
+        "Type": "str"
+    },
+    {
+        "Name": "string",
+        "Type": "str"
+    },
+    {
+        "Name": "[object String]",
+        "Type": "str"
+    },
+    {
+        "Name": "[Symbol.species]",
+        "Type": "str"
+    },
+    {
+        "Name": "Symbol",
+        "Type": "str"
+    },
+    {
+        "Name": "symbol",
+        "Type": "str"
+    },
+    {
+        "Name": "SyntaxError",
+        "Type": "str"
+    },
+    {
+        "Name": "target",
+        "Type": "str"
+    },
+    {
+        "Name": "then",
+        "Type": "str"
+    },
+    {
+        "Name": ".this_function",
+        "Type": "str"
+    },
+    {
+        "Name": "this",
+        "Type": "str"
+    },
+    {
+        "Name": "throw",
+        "Type": "str"
+    },
+    {
+        "Name": "timed-out",
+        "Type": "str"
+    },
+    {
+        "Name": "toJSON",
+        "Type": "str"
+    },
+    {
+        "Name": "toString",
+        "Type": "str"
+    },
+    {
+        "Name": "true",
+        "Type": "str"
+    },
+    {
+        "Name": "total",
+        "Type": "str"
+    },
+    {
+        "Name": "TypeError",
+        "Type": "str"
+    },
+    {
+        "Name": "Uint16Array",
+        "Type": "str"
+    },
+    {
+        "Name": "Uint32Array",
+        "Type": "str"
+    },
+    {
+        "Name": "Uint8Array",
+        "Type": "str"
+    },
+    {
+        "Name": "Uint8ClampedArray",
+        "Type": "str"
+    },
+    {
+        "Name": "undefined",
+        "Type": "str"
+    },
+    {
+        "Name": "[object Undefined]",
+        "Type": "str"
+    },
+    {
+        "Name": "unicode",
+        "Type": "str"
+    },
+    {
+        "Name": "URIError",
+        "Type": "str"
+    },
+    {
+        "Name": "value",
+        "Type": "str"
+    },
+    {
+        "Name": "valueOf",
+        "Type": "str"
+    },
+    {
+        "Name": "WeakMap",
+        "Type": "str"
+    },
+    {
+        "Name": "WeakRef",
+        "Type": "str"
+    },
+    {
+        "Name": "WeakSet",
+        "Type": "str"
+    },
+    {
+        "Name": "week",
+        "Type": "str"
+    },
+    {
+        "Name": "word",
+        "Type": "str"
+    },
+    {
+        "Name": "writable",
+        "Type": "str"
+    },
+    {
+        "Name": "0",
+        "Type": "str"
+    },
+    {
+        "Name": "call_site_frame_array_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "call_site_frame_index_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "console_context_id_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "console_context_name_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "class_fields_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "class_positions_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "detailed_stack_trace_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "elements_transition_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "error_end_pos_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "error_script_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "error_start_pos_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "frozen_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "generic_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "home_object_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "interpreter_trampoline_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "megamorphic_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "native_context_index_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "nonextensible_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "not_mapped_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "promise_debug_marker_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "promise_debug_message_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "promise_forwarding_handler_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "promise_handled_by_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "regexp_result_cached_indices_or_regexp_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "regexp_result_names_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "regexp_result_regexp_input_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "regexp_result_regexp_last_index_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "sealed_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "stack_trace_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "strict_function_transition_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "wasm_exception_tag_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "wasm_exception_values_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "wasm_uncatchable_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "wasm_wrapped_object_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "uninitialized_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "async_iterator_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "iterator_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "intl_fallback_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "match_all_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "match_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "replace_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "search_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "species_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "split_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "to_primitive_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "unscopables_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "has_instance_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "is_concat_spreadable_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "to_string_tag_symbol",
+        "Type": "callable"
+    },
+    {
+        "Name": "PromiseFulfillReactionJobTaskMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseRejectReactionJobTaskMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CallableTaskMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CallbackTaskMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseResolveThenableJobTaskMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FunctionTemplateInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ObjectTemplateInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AccessCheckInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AccessorInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AccessorPairMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AliasedArgumentsEntryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AllocationMementoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ArrayBoilerplateDescriptionMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AsmWasmDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorRequestMap",
+        "Type": "object"
+    },
+    {
+        "Name": "BreakPointMap",
+        "Type": "object"
+    },
+    {
+        "Name": "BreakPointInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "CachedTemplateObjectMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ClassPositionsMap",
+        "Type": "object"
+    },
+    {
+        "Name": "DebugInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "EnumCacheMap",
+        "Type": "object"
+    },
+    {
+        "Name": "FunctionTemplateRareDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "InterceptorInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "InterpreterDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseCapabilityMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseReactionMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PropertyDescriptorObjectMap",
+        "Type": "object"
+    },
+    {
+        "Name": "PrototypeInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "ScriptMap",
+        "Type": "object"
+    },
+    {
+        "Name": "SourceTextModuleInfoEntryMap",
+        "Type": "object"
+    },
+    {
+        "Name": "StackFrameInfoMap",
+        "Type": "object"
+    },
+    {
+        "Name": "StackTraceFrameMap",
+        "Type": "object"
+    },
+    {
+        "Name": "TemplateObjectDescriptionMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmCapiFunctionDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmExceptionTagMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmExportedFunctionDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmIndirectFunctionTableMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmJSFunctionDataMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmValueMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AllocationSiteWithWeakNextMap",
+        "Type": "object"
+    },
+    {
+        "Name": "AllocationSiteWithoutWeakNextMap",
+        "Type": "object"
+    },
+    {
+        "Name": "LoadHandler1Map",
+        "Type": "object"
+    },
+    {
+        "Name": "LoadHandler2Map",
+        "Type": "object"
+    },
+    {
+        "Name": "LoadHandler3Map",
+        "Type": "object"
+    },
+    {
+        "Name": "StoreHandler0Map",
+        "Type": "object"
+    },
+    {
+        "Name": "StoreHandler1Map",
+        "Type": "object"
+    },
+    {
+        "Name": "StoreHandler2Map",
+        "Type": "object"
+    },
+    {
+        "Name": "StoreHandler3Map",
+        "Type": "object"
+    },
+    {
+        "Name": "ExternalMap",
+        "Type": "object"
+    },
+    {
+        "Name": "JSMessageObjectMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmRttEqrefMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmRttExternrefMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmRttFuncrefMap",
+        "Type": "object"
+    },
+    {
+        "Name": "WasmRttI31refMap",
+        "Type": "object"
+    },
+    {
+        "Name": "EmptyScript",
+        "Type": "object"
+    },
+    {
+        "Name": "ManyClosuresCell",
+        "Type": "object"
+    },
+    {
+        "Name": "InvalidPrototypeValidityCell",
+        "Type": "object"
+    },
+    {
+        "Name": "ArrayConstructorProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "NoElementsProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "IsConcatSpreadableProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "ArraySpeciesProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "TypedArraySpeciesProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseSpeciesProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "RegExpSpeciesProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "StringLengthProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "ArrayIteratorProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "ArrayBufferDetachingProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseHookProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseResolveProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "MapIteratorProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseThenProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "SetIteratorProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "StringIteratorProtector",
+        "Type": "object"
+    },
+    {
+        "Name": "SingleCharacterStringCache",
+        "Type": "list"
+    },
+    {
+        "Name": "StringSplitCache",
+        "Type": "list"
+    },
+    {
+        "Name": "RegExpMultipleCache",
+        "Type": "list"
+    },
+    {
+        "Name": "BuiltinsConstantsTable",
+        "Type": "list"
+    },
+    {
+        "Name": "AsyncFunctionAwaitRejectSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncFunctionAwaitResolveSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorAwaitRejectSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorAwaitResolveSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorYieldResolveSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorReturnResolveSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorReturnClosedRejectSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncGeneratorReturnClosedResolveSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "AsyncIteratorValueUnwrapSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseAllResolveElementSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseAllSettledResolveElementSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseAllSettledRejectElementSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseAnyRejectElementSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseCapabilityDefaultRejectSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseCapabilityDefaultResolveSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseCatchFinallySharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseGetCapabilitiesExecutorSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseThenFinallySharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseThrowerFinallySharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "PromiseValueThunkFinallySharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "ProxyRevokeSharedFun",
+        "Type": "object"
+    },
+    {
+        "Name": "NumberStringCache",
+        "Type": "list"
+    },
+    {
+        "Name": "PublicSymbolTable",
+        "Type": "set"
+    },
+    {
+        "Name": "ApiSymbolTable",
+        "Type": "set"
+    },
+    {
+        "Name": "ApiPrivateSymbolTable",
+        "Type": "set"
+    },
+    {
+        "Name": "ScriptList",
+        "Type": "list"
+    },
+    {
+        "Name": "MaterializedObjects",
+        "Type": "list"
+    },
+    {
+        "Name": "DetachedContexts",
+        "Type": "list"
+    },
+    {
+        "Name": "RetainingPathTargets",
+        "Type": "list"
+    },
+    {
+        "Name": "FeedbackVectorsForProfilingTools",
+        "Type": "object"
+    },
+    {
+        "Name": "SerializedObjects",
+        "Type": "list"
+    },
+    {
+        "Name": "SerializedGlobalProxySizes",
+        "Type": "list"
+    },
+    {
+        "Name": "MessageListeners",
+        "Type": "list"
+    },
+    {
+        "Name": "CurrentMicrotask",
+        "Type": "object"
+    },
+    {
+        "Name": "WeakRefsKeepDuringJob",
+        "Type": "object"
+    },
+    {
+        "Name": "InterpreterEntryTrampolineForProfiling",
+        "Type": "object"
+    },
+    {
+        "Name": "PendingOptimizeForTestBytecode",
+        "Type": "object"
+    },
+    {
+        "Name": "BasicBlockProfilingData",
+        "Type": "list"
+    },
+    {
+        "Name": "SharedWasmMemories",
+        "Type": "list"
+    },
+    {
+        "Name": "LastScriptId",
+        "Type": "int"
+    },
+    {
+        "Name": "LastDebuggingId",
+        "Type": "int"
+    },
+    {
+        "Name": "NextTemplateSerialNumber",
+        "Type": "int"
+    },
+    {
+        "Name": "ArgumentsAdaptorDeoptPCOffset",
+        "Type": "int"
+    },
+    {
+        "Name": "ConstructStubCreateDeoptPCOffset",
+        "Type": "int"
+    },
+    {
+        "Name": "ConstructStubInvokeDeoptPCOffset",
+        "Type": "int"
+    },
+    {
+        "Name": "InterpreterEntryReturnPCOffset",
+        "Type": "int"
+    }
+]

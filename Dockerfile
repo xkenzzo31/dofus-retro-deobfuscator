@@ -1,8 +1,9 @@
 # ============================================================================
 # dofus-retro-deobfuscator — Multi-stage Docker build
 #
-# Stage 1 (v8-builder): Compiles V8 8.7.220.31 with bytecode disassembly patches
-# Stage 2 (runtime):    Node.js + Python3 runtime with the full deobfuscation pipeline
+# Stage 1 (v8-builder):     Compiles V8 8.7.220.31 + v8dasm (with --decode-strings)
+# Stage 2 (ghidra-builder): Compiles Ghidra V8 8.7 plugin for headless analysis
+# Stage 3 (runtime):        Full deobfuscation pipeline (autonomous, no pre-captured data)
 #
 # Author: Luska
 # ============================================================================
@@ -38,7 +39,7 @@ RUN mkdir -p out/Default \
     && gn gen out/Default \
     && /usr/bin/ninja -C out/Default v8_monolith -j4
 
-# Compile v8dasm against the monolith
+# Compile v8dasm against the monolith (now with --decode-strings support)
 COPY v8dasm/v8dasm.cc /tmp/v8dasm.cc
 RUN g++ -std=c++17 -O2 \
     -DV8_COMPRESS_POINTERS -DV8_31BIT_SMIS_ON_64BIT_ARCH \
@@ -47,29 +48,68 @@ RUN g++ -std=c++17 -O2 \
     -o /usr/local/bin/v8dasm \
     -lv8_monolith -L out/Default/obj \
     -lm -ldl -lpthread -lz \
-    && echo "v8dasm built successfully"
+    && echo "v8dasm built successfully" \
+    && v8dasm --help 2>&1 || true
 
 
-# ── Stage 2: Runtime ────────────────────────────────────────────────────────
-FROM node:18-slim
+# ── Stage 2: Build Ghidra V8 plugin ────────────────────────────────────────
+FROM eclipse-temurin:17-jdk-jammy AS ghidra-builder
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
-    python3 curl zip \
+    curl unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download Ghidra 12.0.4
+RUN curl -fsSL -o /tmp/ghidra.zip \
+    "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.4_build/ghidra_12.0.4_PUBLIC_20250108.zip" \
+    && unzip -q /tmp/ghidra.zip -d /opt \
+    && rm /tmp/ghidra.zip \
+    && ln -s /opt/ghidra_12.0.4_PUBLIC /opt/ghidra
+
+# Download Gradle
+RUN curl -fsSL -o /tmp/gradle.zip \
+    "https://services.gradle.org/distributions/gradle-8.5-bin.zip" \
+    && unzip -q /tmp/gradle.zip -d /opt \
+    && rm /tmp/gradle.zip \
+    && ln -s /opt/gradle-8.5/bin/gradle /usr/local/bin/gradle
+
+# Copy plugin source and build
+COPY ghidra-plugin/ /tmp/ghidra-plugin/
+WORKDIR /tmp/ghidra-plugin
+ENV GHIDRA_INSTALL_DIR=/opt/ghidra
+RUN gradle buildExtension \
+    && echo "Ghidra V8 plugin built successfully" \
+    && ls dist/*.zip
+
+
+# ── Stage 3: Runtime ───────────────────────────────────────────────────────
+FROM eclipse-temurin:17-jre-jammy
+
+RUN apt-get update && apt-get install -y \
+    python3 curl zip nodejs npm \
+    && npm install -g webcrack@2 2>/dev/null \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy v8dasm binary from builder
 COPY --from=v8-builder /usr/local/bin/v8dasm /usr/local/bin/v8dasm
 
-# Install webcrack globally
-RUN npm install -g webcrack@2 2>/dev/null
+# Copy Ghidra + plugin from builder
+COPY --from=ghidra-builder /opt/ghidra /opt/ghidra
+COPY --from=ghidra-builder /tmp/ghidra-plugin/dist/*.zip /tmp/ghidra-plugin.zip
+RUN mkdir -p /opt/ghidra/Ghidra/Extensions \
+    && unzip -q /tmp/ghidra-plugin.zip -d /opt/ghidra/Ghidra/Extensions \
+    && rm /tmp/ghidra-plugin.zip
+ENV GHIDRA_INSTALL_DIR=/opt/ghidra
+
+# Copy Ghidra analysis scripts
+COPY ghidra-plugin/ghidra_scripts/ /app/ghidra_scripts/
 
 # Copy pipeline scripts
 WORKDIR /app
 COPY scripts/ /app/scripts/
 RUN chmod +x /app/scripts/deobfuscate.sh
-
-# Copy pre-captured resolution data (Ghidra analysis + runtime captures)
-COPY data/ /app/data/
 
 # Output directory (mount point)
 VOLUME /output

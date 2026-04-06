@@ -1,0 +1,3199 @@
+# V8 8.7 Bytecode Processor — auto-generated from opcodes.js
+# Ghidra SLEIGH Specification
+#
+# V8 Ignition interpreter: register-based VM with implicit accumulator.
+# Instruction format: [prefix?] [opcode] [operands...]
+# Prefixes: 0x01 = Wide (16-bit operands), 0x02 = ExtraWide (32-bit operands)
+
+define endian=little;
+define alignment=1;
+
+define space ram      type=ram_space      size=4 default;
+define space constpool type=ram_space     size=4;
+define space register type=register_space size=4;
+
+# ── Registers ────────────────────────────────────────────────────────────────
+# Accumulator (implicit dest/src for most ops), general registers r0-r255,
+# context, and control registers.
+
+define register offset=0x0000 size=4 [
+  acc
+  r0   r1   r2   r3   r4   r5   r6   r7
+  r8   r9   r10  r11  r12  r13  r14  r15
+  r16  r17  r18  r19  r20  r21  r22  r23
+  r24  r25  r26  r27  r28  r29  r30  r31
+  r32  r33  r34  r35  r36  r37  r38  r39
+  r40  r41  r42  r43  r44  r45  r46  r47
+  r48  r49  r50  r51  r52  r53  r54  r55
+  r56  r57  r58  r59  r60  r61  r62  r63
+];
+
+define register offset=0x0108 size=4 [
+  context
+  closure
+  sp
+  pc
+];
+
+# Parameter registers (V8 uses negative indices for params)
+define register offset=0x0200 size=4 [
+  this_val
+  param0 param1 param2 param3 param4 param5 param6 param7
+  param8 param9 param10 param11 param12 param13 param14 param15
+];
+
+# ── Tokens ───────────────────────────────────────────────────────────────────
+
+define token opbyte (8)
+  op = (0,7)
+;
+
+define token op8_1 (8)
+  reg8_1   = (0,7)
+  idx8_1   = (0,7)
+  imm8_1   = (0,7) signed
+  uimm8_1  = (0,7)
+  flag8_1  = (0,7)
+;
+
+define token op8_2 (8)
+  reg8_2   = (0,7)
+  idx8_2   = (0,7)
+  imm8_2   = (0,7) signed
+  uimm8_2  = (0,7)
+  flag8_2  = (0,7)
+;
+
+define token op8_3 (8)
+  reg8_3   = (0,7)
+  idx8_3   = (0,7)
+  imm8_3   = (0,7) signed
+  uimm8_3  = (0,7)
+  flag8_3  = (0,7)
+;
+
+define token op8_4 (8)
+  reg8_4   = (0,7)
+  idx8_4   = (0,7)
+  imm8_4   = (0,7) signed
+  uimm8_4  = (0,7)
+  flag8_4  = (0,7)
+;
+
+define token op8_5 (8)
+  reg8_5   = (0,7)
+  idx8_5   = (0,7)
+  imm8_5   = (0,7) signed
+  uimm8_5  = (0,7)
+  flag8_5  = (0,7)
+;
+
+define token op8_6 (8)
+  reg8_6   = (0,7)
+  idx8_6   = (0,7)
+  imm8_6   = (0,7) signed
+  uimm8_6  = (0,7)
+;
+
+define token op16_1 (16)
+  reg16_1  = (0,15)
+  idx16_1  = (0,15)
+  imm16_1  = (0,15) signed
+  uimm16_1 = (0,15)
+  flag16_1 = (0,15)
+  rt16_1   = (0,15)
+;
+
+define token op16_2 (16)
+  reg16_2  = (0,15)
+  idx16_2  = (0,15)
+  imm16_2  = (0,15) signed
+  uimm16_2 = (0,15)
+  flag16_2 = (0,15)
+;
+
+define token op16_3 (16)
+  reg16_3  = (0,15)
+  idx16_3  = (0,15)
+  imm16_3  = (0,15) signed
+  uimm16_3 = (0,15)
+  flag16_3 = (0,15)
+;
+
+define token op16_4 (16)
+  reg16_4  = (0,15)
+  idx16_4  = (0,15)
+  imm16_4  = (0,15) signed
+  uimm16_4 = (0,15)
+  flag16_4 = (0,15)
+;
+
+define token op16_5 (16)
+  reg16_5  = (0,15)
+  idx16_5  = (0,15)
+  imm16_5  = (0,15) signed
+  uimm16_5 = (0,15)
+  flag16_5 = (0,15)
+;
+
+define token op16_6 (16)
+  reg16_6  = (0,15)
+  idx16_6  = (0,15)
+  imm16_6  = (0,15) signed
+  uimm16_6 = (0,15)
+;
+
+define token op32_1 (32)
+  reg32_1  = (0,31)
+  idx32_1  = (0,31)
+  imm32_1  = (0,31) signed
+  uimm32_1 = (0,31)
+;
+
+define token op32_2 (32)
+  reg32_2  = (0,31)
+  idx32_2  = (0,31)
+  imm32_2  = (0,31) signed
+  uimm32_2 = (0,31)
+;
+
+define token op32_3 (32)
+  reg32_3  = (0,31)
+  idx32_3  = (0,31)
+  imm32_3  = (0,31) signed
+  uimm32_3 = (0,31)
+;
+
+define token op32_4 (32)
+  reg32_4  = (0,31)
+  idx32_4  = (0,31)
+  imm32_4  = (0,31) signed
+  uimm32_4 = (0,31)
+;
+
+define token op32_5 (32)
+  reg32_5  = (0,31)
+  idx32_5  = (0,31)
+  imm32_5  = (0,31) signed
+  uimm32_5 = (0,31)
+;
+
+define token op32_6 (32)
+  reg32_6  = (0,31)
+  idx32_6  = (0,31)
+  imm32_6  = (0,31) signed
+  uimm32_6 = (0,31)
+;
+
+# Runtime/intrinsic tokens (always 16-bit in normal mode)
+define token rt16 (16)
+  runtime_id = (0,15)
+  intrinsic_id = (0,15)
+;
+
+# ── PCODEOP declarations for complex V8 operations ──────────────────────────
+# Only used for truly opaque operations that cannot be modeled with native
+# p-code.  Property access, register moves, type coercions, and comparisons
+# are now expressed as native p-code so the decompiler produces readable
+# pseudo-JavaScript.
+
+# -- Calls (kept as pcodeops — decompiler shows them as function calls) --
+define pcodeop V8_CallProperty;
+define pcodeop V8_CallFunction;
+define pcodeop V8_CallJSRuntime;
+define pcodeop V8_CallRuntime;
+define pcodeop V8_InvokeIntrinsic;
+define pcodeop V8_Construct;
+
+# -- Iteration / for-in --
+define pcodeop V8_GetIterator;
+define pcodeop V8_ForInEnumerate;
+define pcodeop V8_ForInNext;
+define pcodeop V8_ForInPrepare;
+
+# -- Type tests (instanceof / in / typeof produce booleans) --
+define pcodeop V8_TestInstanceOf;
+define pcodeop V8_TestIn;
+define pcodeop V8_TestTypeOf;
+
+# -- Control / exception --
+define pcodeop V8_Throw;
+define pcodeop V8_SuspendGenerator;
+define pcodeop V8_ResumeGenerator;
+define pcodeop V8_SwitchOnSmi;
+
+# -- Object creation (model as allocation) --
+define pcodeop V8_CreateClosure;
+define pcodeop V8_CreateArrayLiteral;
+define pcodeop V8_CreateObjectLiteral;
+define pcodeop V8_CreateRegExpLiteral;
+define pcodeop V8_CloneObject;
+define pcodeop V8_GetTemplateObject;
+
+# -- Context management --
+define pcodeop V8_CreateContext;
+
+# -- Property delete --
+define pcodeop V8_DeleteProperty;
+define pcodeop V8_GetSuperConstructor;
+
+# -- Error --
+define pcodeop V8_ThrowReferenceError;
+
+# -- Lookup slot (dynamic scoping, cannot simplify) --
+define pcodeop V8_LookupSlot;
+define pcodeop V8_StaLookupSlot;
+
+# -- Misc --
+define pcodeop V8_SetPendingMessage;
+define pcodeop V8_CollectTypeProfile;
+define pcodeop V8_Debugger;
+define pcodeop V8_IncBlockCounter;
+define pcodeop V8_Abort;
+define pcodeop V8_Illegal;
+define pcodeop V8_Exp;
+define pcodeop V8_ExpSmi;
+
+# ── Instructions ─────────────────────────────────────────────────────────────
+
+:LdaZero is op=0x03 {
+  acc = 0;
+}
+
+:LdaSmi "#"^imm8_1 is op=0x04; imm8_1 {
+  local _tmp:1 = imm8_1;
+  acc = sext(_tmp);
+}
+
+:Wide.LdaSmi "#"^imm16_1 is op=0x01; op=0x04; imm16_1 {
+  local _tmp:2 = imm16_1;
+  acc = sext(_tmp);
+}
+
+:ExtraWide.LdaSmi "#"^imm32_1 is op=0x02; op=0x04; imm32_1 {
+  local _imm32_1:4 = imm32_1;
+  acc = _imm32_1;
+}
+
+:LdaUndefined is op=0x05 {
+  acc = 0;
+}
+
+:LdaNull is op=0x06 {
+  acc = 0;
+}
+
+:LdaTheHole is op=0x07 {
+  acc = 0;
+}
+
+:LdaTrue is op=0x08 {
+  acc = 1;
+}
+
+:LdaFalse is op=0x09 {
+  acc = 0;
+}
+
+:LdaConstant "["^idx8_1^"]" is op=0x0a; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:Wide.LdaConstant "["^idx16_1^"]" is op=0x01; op=0x0a; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:ExtraWide.LdaConstant "["^idx32_1^"]" is op=0x02; op=0x0a; idx32_1 {
+  local _idx:4 = idx32_1;
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:LdaGlobal "["^idx8_1^"]", "["^idx8_2^"]" is op=0x0b; idx8_1; idx8_2 {
+  local _idx:4 = zext(idx8_1:1);
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:Wide.LdaGlobal "["^idx16_1^"]", "["^idx16_2^"]" is op=0x01; op=0x0b; idx16_1; idx16_2 {
+  local _idx:4 = zext(idx16_1:2);
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:ExtraWide.LdaGlobal "["^idx32_1^"]", "["^idx32_2^"]" is op=0x02; op=0x0b; idx32_1; idx32_2 {
+  local _idx:4 = idx32_1;
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:LdaGlobalInsideTypeof "["^idx8_1^"]", "["^idx8_2^"]" is op=0x0c; idx8_1; idx8_2 {
+  local _idx:4 = zext(idx8_1:1);
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:Wide.LdaGlobalInsideTypeof "["^idx16_1^"]", "["^idx16_2^"]" is op=0x01; op=0x0c; idx16_1; idx16_2 {
+  local _idx:4 = zext(idx16_1:2);
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:ExtraWide.LdaGlobalInsideTypeof "["^idx32_1^"]", "["^idx32_2^"]" is op=0x02; op=0x0c; idx32_1; idx32_2 {
+  local _idx:4 = idx32_1;
+  acc = *[constpool]:4 (_idx * 4);
+}
+
+:StaGlobal "["^idx8_1^"]", "["^idx8_2^"]" is op=0x0d; idx8_1; idx8_2 {
+  local _idx:4 = zext(idx8_1:1);
+  *[constpool]:4 (_idx * 4) = acc;
+}
+
+:Wide.StaGlobal "["^idx16_1^"]", "["^idx16_2^"]" is op=0x01; op=0x0d; idx16_1; idx16_2 {
+  local _idx:4 = zext(idx16_1:2);
+  *[constpool]:4 (_idx * 4) = acc;
+}
+
+:ExtraWide.StaGlobal "["^idx32_1^"]", "["^idx32_2^"]" is op=0x02; op=0x0d; idx32_1; idx32_2 {
+  local _idx:4 = idx32_1;
+  *[constpool]:4 (_idx * 4) = acc;
+}
+
+:PushContext "r"^reg8_1 is op=0x0e; reg8_1 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  *[register]:4 _roff = context;
+  context = acc;
+}
+
+:Wide.PushContext "r"^reg16_1 is op=0x01; op=0x0e; reg16_1 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  *[register]:4 _roff = context;
+  context = acc;
+}
+
+:ExtraWide.PushContext "r"^reg32_1 is op=0x02; op=0x0e; reg32_1 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  *[register]:4 _roff = context;
+  context = acc;
+}
+
+:PopContext "r"^reg8_1 is op=0x0f; reg8_1 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  context = *[register]:4 _roff;
+}
+
+:Wide.PopContext "r"^reg16_1 is op=0x01; op=0x0f; reg16_1 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  context = *[register]:4 _roff;
+}
+
+:ExtraWide.PopContext "r"^reg32_1 is op=0x02; op=0x0f; reg32_1 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  context = *[register]:4 _roff;
+}
+
+:LdaContextSlot "r"^reg8_1, "["^idx8_2^"]", "#"^uimm8_3 is op=0x10; reg8_1; idx8_2; uimm8_3 {
+  local _reg:4 = zext(reg8_1:1);
+  local _slot:4 = zext(idx8_2:1);
+  acc = *[ram]:4 (_reg + (_slot * 4));
+}
+
+:Wide.LdaContextSlot "r"^reg16_1, "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x10; reg16_1; idx16_2; uimm16_3 {
+  local _reg:4 = zext(reg16_1:2);
+  local _slot:4 = zext(idx16_2:2);
+  acc = *[ram]:4 (_reg + (_slot * 4));
+}
+
+:ExtraWide.LdaContextSlot "r"^reg32_1, "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x10; reg32_1; idx32_2; uimm32_3 {
+  local _reg:4 = reg32_1;
+  local _slot:4 = idx32_2;
+  acc = *[ram]:4 (_reg + (_slot * 4));
+}
+
+:LdaImmutableContextSlot "r"^reg8_1, "["^idx8_2^"]", "#"^uimm8_3 is op=0x11; reg8_1; idx8_2; uimm8_3 {
+  local _reg:4 = zext(reg8_1:1);
+  local _slot:4 = zext(idx8_2:1);
+  acc = *[ram]:4 (_reg + (_slot * 4));
+}
+
+:Wide.LdaImmutableContextSlot "r"^reg16_1, "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x11; reg16_1; idx16_2; uimm16_3 {
+  local _reg:4 = zext(reg16_1:2);
+  local _slot:4 = zext(idx16_2:2);
+  acc = *[ram]:4 (_reg + (_slot * 4));
+}
+
+:ExtraWide.LdaImmutableContextSlot "r"^reg32_1, "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x11; reg32_1; idx32_2; uimm32_3 {
+  local _reg:4 = reg32_1;
+  local _slot:4 = idx32_2;
+  acc = *[ram]:4 (_reg + (_slot * 4));
+}
+
+:LdaCurrentContextSlot "["^idx8_1^"]" is op=0x12; idx8_1 {
+  local _slot:4 = zext(idx8_1:1);
+  acc = *[ram]:4 (closure + (_slot * 4));
+}
+
+:Wide.LdaCurrentContextSlot "["^idx16_1^"]" is op=0x01; op=0x12; idx16_1 {
+  local _slot:4 = zext(idx16_1:2);
+  acc = *[ram]:4 (closure + (_slot * 4));
+}
+
+:ExtraWide.LdaCurrentContextSlot "["^idx32_1^"]" is op=0x02; op=0x12; idx32_1 {
+  local _slot:4 = idx32_1;
+  acc = *[ram]:4 (closure + (_slot * 4));
+}
+
+:LdaImmutableCurrentContextSlot "["^idx8_1^"]" is op=0x13; idx8_1 {
+  local _slot:4 = zext(idx8_1:1);
+  acc = *[ram]:4 (closure + (_slot * 4));
+}
+
+:Wide.LdaImmutableCurrentContextSlot "["^idx16_1^"]" is op=0x01; op=0x13; idx16_1 {
+  local _slot:4 = zext(idx16_1:2);
+  acc = *[ram]:4 (closure + (_slot * 4));
+}
+
+:ExtraWide.LdaImmutableCurrentContextSlot "["^idx32_1^"]" is op=0x02; op=0x13; idx32_1 {
+  local _slot:4 = idx32_1;
+  acc = *[ram]:4 (closure + (_slot * 4));
+}
+
+:StaContextSlot "r"^reg8_1, "["^idx8_2^"]", "#"^uimm8_3 is op=0x14; reg8_1; idx8_2; uimm8_3 {
+  local _reg:4 = zext(reg8_1:1);
+  local _slot:4 = zext(idx8_2:1);
+  *[ram]:4 (_reg + (_slot * 4)) = acc;
+}
+
+:Wide.StaContextSlot "r"^reg16_1, "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x14; reg16_1; idx16_2; uimm16_3 {
+  local _reg:4 = zext(reg16_1:2);
+  local _slot:4 = zext(idx16_2:2);
+  *[ram]:4 (_reg + (_slot * 4)) = acc;
+}
+
+:ExtraWide.StaContextSlot "r"^reg32_1, "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x14; reg32_1; idx32_2; uimm32_3 {
+  local _reg:4 = reg32_1;
+  local _slot:4 = idx32_2;
+  *[ram]:4 (_reg + (_slot * 4)) = acc;
+}
+
+:StaCurrentContextSlot "["^idx8_1^"]" is op=0x15; idx8_1 {
+  local _slot:4 = zext(idx8_1:1);
+  *[ram]:4 (closure + (_slot * 4)) = acc;
+}
+
+:Wide.StaCurrentContextSlot "["^idx16_1^"]" is op=0x01; op=0x15; idx16_1 {
+  local _slot:4 = zext(idx16_1:2);
+  *[ram]:4 (closure + (_slot * 4)) = acc;
+}
+
+:ExtraWide.StaCurrentContextSlot "["^idx32_1^"]" is op=0x02; op=0x15; idx32_1 {
+  local _slot:4 = idx32_1;
+  *[ram]:4 (closure + (_slot * 4)) = acc;
+}
+
+:LdaLookupSlot "["^idx8_1^"]" is op=0x16; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_LookupSlot(_idx8_1);
+}
+
+:Wide.LdaLookupSlot "["^idx16_1^"]" is op=0x01; op=0x16; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_LookupSlot(_idx16_1);
+}
+
+:ExtraWide.LdaLookupSlot "["^idx32_1^"]" is op=0x02; op=0x16; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_LookupSlot(_idx32_1);
+}
+
+:LdaLookupContextSlot "["^idx8_1^"]", "["^idx8_2^"]", "#"^uimm8_3 is op=0x17; idx8_1; idx8_2; uimm8_3 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_LookupSlot(_idx8_1);
+}
+
+:Wide.LdaLookupContextSlot "["^idx16_1^"]", "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x17; idx16_1; idx16_2; uimm16_3 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_LookupSlot(_idx16_1);
+}
+
+:ExtraWide.LdaLookupContextSlot "["^idx32_1^"]", "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x17; idx32_1; idx32_2; uimm32_3 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_LookupSlot(_idx32_1);
+}
+
+:LdaLookupGlobalSlot "["^idx8_1^"]", "["^idx8_2^"]", "#"^uimm8_3 is op=0x18; idx8_1; idx8_2; uimm8_3 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_LookupSlot(_idx8_1);
+}
+
+:Wide.LdaLookupGlobalSlot "["^idx16_1^"]", "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x18; idx16_1; idx16_2; uimm16_3 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_LookupSlot(_idx16_1);
+}
+
+:ExtraWide.LdaLookupGlobalSlot "["^idx32_1^"]", "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x18; idx32_1; idx32_2; uimm32_3 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_LookupSlot(_idx32_1);
+}
+
+:LdaLookupSlotInsideTypeof "["^idx8_1^"]" is op=0x19; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_LookupSlot(_idx8_1);
+}
+
+:Wide.LdaLookupSlotInsideTypeof "["^idx16_1^"]" is op=0x01; op=0x19; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_LookupSlot(_idx16_1);
+}
+
+:ExtraWide.LdaLookupSlotInsideTypeof "["^idx32_1^"]" is op=0x02; op=0x19; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_LookupSlot(_idx32_1);
+}
+
+:LdaLookupContextSlotInsideTypeof "["^idx8_1^"]", "["^idx8_2^"]", "#"^uimm8_3 is op=0x1a; idx8_1; idx8_2; uimm8_3 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_LookupSlot(_idx8_1);
+}
+
+:Wide.LdaLookupContextSlotInsideTypeof "["^idx16_1^"]", "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x1a; idx16_1; idx16_2; uimm16_3 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_LookupSlot(_idx16_1);
+}
+
+:ExtraWide.LdaLookupContextSlotInsideTypeof "["^idx32_1^"]", "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x1a; idx32_1; idx32_2; uimm32_3 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_LookupSlot(_idx32_1);
+}
+
+:LdaLookupGlobalSlotInsideTypeof "["^idx8_1^"]", "["^idx8_2^"]", "#"^uimm8_3 is op=0x1b; idx8_1; idx8_2; uimm8_3 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_LookupSlot(_idx8_1);
+}
+
+:Wide.LdaLookupGlobalSlotInsideTypeof "["^idx16_1^"]", "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0x1b; idx16_1; idx16_2; uimm16_3 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_LookupSlot(_idx16_1);
+}
+
+:ExtraWide.LdaLookupGlobalSlotInsideTypeof "["^idx32_1^"]", "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0x1b; idx32_1; idx32_2; uimm32_3 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_LookupSlot(_idx32_1);
+}
+
+:StaLookupSlot "["^idx8_1^"]", "#"^flag8_2 is op=0x1c; idx8_1; flag8_2 {
+  local _idx8_1:1 = idx8_1;
+  V8_StaLookupSlot(_idx8_1);
+}
+
+:Wide.StaLookupSlot "["^idx16_1^"]", "#"^flag16_2 is op=0x01; op=0x1c; idx16_1; flag16_2 {
+  local _idx16_1:2 = idx16_1;
+  V8_StaLookupSlot(_idx16_1);
+}
+
+:ExtraWide.StaLookupSlot "["^idx32_1^"]", "#"^flag16_2 is op=0x02; op=0x1c; idx32_1; flag16_2 {
+  local _idx32_1:4 = idx32_1;
+  V8_StaLookupSlot(_idx32_1);
+}
+
+:Ldar "r"^reg8_1 is op=0x1d; reg8_1 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  acc = *[register]:4 _roff;
+}
+
+:Wide.Ldar "r"^reg16_1 is op=0x01; op=0x1d; reg16_1 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  acc = *[register]:4 _roff;
+}
+
+:ExtraWide.Ldar "r"^reg32_1 is op=0x02; op=0x1d; reg32_1 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  acc = *[register]:4 _roff;
+}
+
+:Star "r"^reg8_1 is op=0x1e; reg8_1 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  *[register]:4 _roff = acc;
+}
+
+:Wide.Star "r"^reg16_1 is op=0x01; op=0x1e; reg16_1 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  *[register]:4 _roff = acc;
+}
+
+:ExtraWide.Star "r"^reg32_1 is op=0x02; op=0x1e; reg32_1 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  *[register]:4 _roff = acc;
+}
+
+:Star0 is op=0x1f {
+  r0 = acc;
+}
+
+:Star1 is op=0x20 {
+  r1 = acc;
+}
+
+:Star2 is op=0x21 {
+  r2 = acc;
+}
+
+:Star3 is op=0x22 {
+  r3 = acc;
+}
+
+:Star4 is op=0x23 {
+  r4 = acc;
+}
+
+:Star5 is op=0x24 {
+  r5 = acc;
+}
+
+:Star6 is op=0x25 {
+  r6 = acc;
+}
+
+:Star7 is op=0x26 {
+  r7 = acc;
+}
+
+:Star8 is op=0x27 {
+  r8 = acc;
+}
+
+:Star9 is op=0x28 {
+  r9 = acc;
+}
+
+:Star10 is op=0x29 {
+  r10 = acc;
+}
+
+:Star11 is op=0x2a {
+  r11 = acc;
+}
+
+:Star12 is op=0x2b {
+  r12 = acc;
+}
+
+:Star13 is op=0x2c {
+  r13 = acc;
+}
+
+:Star14 is op=0x2d {
+  r14 = acc;
+}
+
+:Star15 is op=0x2e {
+  r15 = acc;
+}
+
+:Mov "r"^reg8_1, "r"^reg8_2 is op=0x2f; reg8_1; reg8_2 {
+  local _soff:4 = 0x04 + (zext(reg8_2:1) * 4);
+  local _doff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _val:4 = *[register]:4 _soff;
+  *[register]:4 _doff = _val;
+}
+
+:Wide.Mov "r"^reg16_1, "r"^reg16_2 is op=0x01; op=0x2f; reg16_1; reg16_2 {
+  local _soff:4 = 0x04 + (zext(reg16_2:2) * 4);
+  local _doff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _val:4 = *[register]:4 _soff;
+  *[register]:4 _doff = _val;
+}
+
+:ExtraWide.Mov "r"^reg32_1, "r"^reg32_2 is op=0x02; op=0x2f; reg32_1; reg32_2 {
+  local _soff:4 = 0x04 + (reg32_2 * 4);
+  local _doff:4 = 0x04 + (reg32_1 * 4);
+  local _val:4 = *[register]:4 _soff;
+  *[register]:4 _doff = _val;
+}
+
+:LdaNamedProperty "r"^reg8_1, "["^idx8_2^"]", "["^idx8_3^"]" is op=0x30; reg8_1; idx8_2; idx8_3 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx8_2:1) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  acc = *[ram]:4 (_obj + _prop);
+}
+
+:Wide.LdaNamedProperty "r"^reg16_1, "["^idx16_2^"]", "["^idx16_3^"]" is op=0x01; op=0x30; reg16_1; idx16_2; idx16_3 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx16_2:2) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  acc = *[ram]:4 (_obj + _prop);
+}
+
+:ExtraWide.LdaNamedProperty "r"^reg32_1, "["^idx32_2^"]", "["^idx32_3^"]" is op=0x02; op=0x30; reg32_1; idx32_2; idx32_3 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = idx32_2 * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  acc = *[ram]:4 (_obj + _prop);
+}
+
+:LdaNamedPropertyFromSuper "r"^reg8_1, "["^idx8_2^"]", "["^idx8_3^"]" is op=0x31; reg8_1; idx8_2; idx8_3 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx8_2:1) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  acc = *[ram]:4 (_obj + _prop);
+}
+
+:Wide.LdaNamedPropertyFromSuper "r"^reg16_1, "["^idx16_2^"]", "["^idx16_3^"]" is op=0x01; op=0x31; reg16_1; idx16_2; idx16_3 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx16_2:2) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  acc = *[ram]:4 (_obj + _prop);
+}
+
+:ExtraWide.LdaNamedPropertyFromSuper "r"^reg32_1, "["^idx32_2^"]", "["^idx32_3^"]" is op=0x02; op=0x31; reg32_1; idx32_2; idx32_3 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = idx32_2 * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  acc = *[ram]:4 (_obj + _prop);
+}
+
+:LdaKeyedProperty "r"^reg8_1, "["^idx8_2^"]" is op=0x32; reg8_1; idx8_2 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _addr:4 = _obj + (acc * 4);
+  acc = *[ram]:4 _addr;
+}
+
+:Wide.LdaKeyedProperty "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x32; reg16_1; idx16_2 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _addr:4 = _obj + (acc * 4);
+  acc = *[ram]:4 _addr;
+}
+
+:ExtraWide.LdaKeyedProperty "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x32; reg32_1; idx32_2 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _addr:4 = _obj + (acc * 4);
+  acc = *[ram]:4 _addr;
+}
+
+:LdaModuleVariable "#"^imm8_1, "#"^uimm8_2 is op=0x33; imm8_1; uimm8_2 {
+  local _cell:4 = sext(imm8_1:1);
+  local _depth:4 = zext(uimm8_2:1);
+  acc = *[ram]:4 (_cell + (_depth * 4));
+}
+
+:Wide.LdaModuleVariable "#"^imm16_1, "#"^uimm16_2 is op=0x01; op=0x33; imm16_1; uimm16_2 {
+  local _cell:4 = sext(imm16_1:2);
+  local _depth:4 = zext(uimm16_2:2);
+  acc = *[ram]:4 (_cell + (_depth * 4));
+}
+
+:ExtraWide.LdaModuleVariable "#"^imm32_1, "#"^uimm32_2 is op=0x02; op=0x33; imm32_1; uimm32_2 {
+  local _cell:4 = imm32_1;
+  local _depth:4 = uimm32_2;
+  acc = *[ram]:4 (_cell + (_depth * 4));
+}
+
+:StaModuleVariable "#"^imm8_1, "#"^uimm8_2 is op=0x34; imm8_1; uimm8_2 {
+  local _cell:4 = sext(imm8_1:1);
+  local _depth:4 = zext(uimm8_2:1);
+  *[ram]:4 (_cell + (_depth * 4)) = acc;
+}
+
+:Wide.StaModuleVariable "#"^imm16_1, "#"^uimm16_2 is op=0x01; op=0x34; imm16_1; uimm16_2 {
+  local _cell:4 = sext(imm16_1:2);
+  local _depth:4 = zext(uimm16_2:2);
+  *[ram]:4 (_cell + (_depth * 4)) = acc;
+}
+
+:ExtraWide.StaModuleVariable "#"^imm32_1, "#"^uimm32_2 is op=0x02; op=0x34; imm32_1; uimm32_2 {
+  local _cell:4 = imm32_1;
+  local _depth:4 = uimm32_2;
+  *[ram]:4 (_cell + (_depth * 4)) = acc;
+}
+
+:StaNamedProperty "r"^reg8_1, "["^idx8_2^"]", "["^idx8_3^"]" is op=0x35; reg8_1; idx8_2; idx8_3 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx8_2:1) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  local _addr:4 = _obj + _prop;
+  *[ram]:4 _addr = acc;
+}
+
+:Wide.StaNamedProperty "r"^reg16_1, "["^idx16_2^"]", "["^idx16_3^"]" is op=0x01; op=0x35; reg16_1; idx16_2; idx16_3 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx16_2:2) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  local _addr:4 = _obj + _prop;
+  *[ram]:4 _addr = acc;
+}
+
+:ExtraWide.StaNamedProperty "r"^reg32_1, "["^idx32_2^"]", "["^idx32_3^"]" is op=0x02; op=0x35; reg32_1; idx32_2; idx32_3 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = idx32_2 * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  local _addr:4 = _obj + _prop;
+  *[ram]:4 _addr = acc;
+}
+
+:StaNamedOwnProperty "r"^reg8_1, "["^idx8_2^"]", "["^idx8_3^"]" is op=0x36; reg8_1; idx8_2; idx8_3 {
+  local _roff:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx8_2:1) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  local _addr:4 = _obj + _prop;
+  *[ram]:4 _addr = acc;
+}
+
+:Wide.StaNamedOwnProperty "r"^reg16_1, "["^idx16_2^"]", "["^idx16_3^"]" is op=0x01; op=0x36; reg16_1; idx16_2; idx16_3 {
+  local _roff:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = zext(idx16_2:2) * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  local _addr:4 = _obj + _prop;
+  *[ram]:4 _addr = acc;
+}
+
+:ExtraWide.StaNamedOwnProperty "r"^reg32_1, "["^idx32_2^"]", "["^idx32_3^"]" is op=0x02; op=0x36; reg32_1; idx32_2; idx32_3 {
+  local _roff:4 = 0x04 + (reg32_1 * 4);
+  local _obj:4 = *[register]:4 _roff;
+  local _cpoff:4 = idx32_2 * 4;
+  local _prop:4 = *[constpool]:4 _cpoff;
+  local _addr:4 = _obj + _prop;
+  *[ram]:4 _addr = acc;
+}
+
+:StaKeyedProperty "r"^reg8_1, "r"^reg8_2, "["^idx8_3^"]" is op=0x37; reg8_1; reg8_2; idx8_3 {
+  local _roff1:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _roff2:4 = 0x04 + (zext(reg8_2:1) * 4);
+  local _obj:4 = *[register]:4 _roff1;
+  local _key:4 = *[register]:4 _roff2;
+  local _addr:4 = _obj + (_key * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:Wide.StaKeyedProperty "r"^reg16_1, "r"^reg16_2, "["^idx16_3^"]" is op=0x01; op=0x37; reg16_1; reg16_2; idx16_3 {
+  local _roff1:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _roff2:4 = 0x04 + (zext(reg16_2:2) * 4);
+  local _obj:4 = *[register]:4 _roff1;
+  local _key:4 = *[register]:4 _roff2;
+  local _addr:4 = _obj + (_key * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:ExtraWide.StaKeyedProperty "r"^reg32_1, "r"^reg32_2, "["^idx32_3^"]" is op=0x02; op=0x37; reg32_1; reg32_2; idx32_3 {
+  local _roff1:4 = 0x04 + (reg32_1 * 4);
+  local _roff2:4 = 0x04 + (reg32_2 * 4);
+  local _obj:4 = *[register]:4 _roff1;
+  local _key:4 = *[register]:4 _roff2;
+  local _addr:4 = _obj + (_key * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:StaInArrayLiteral "r"^reg8_1, "r"^reg8_2, "["^idx8_3^"]" is op=0x38; reg8_1; reg8_2; idx8_3 {
+  local _roff1:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _roff2:4 = 0x04 + (zext(reg8_2:1) * 4);
+  local _arr:4 = *[register]:4 _roff1;
+  local _idx:4 = *[register]:4 _roff2;
+  local _addr:4 = _arr + (_idx * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:Wide.StaInArrayLiteral "r"^reg16_1, "r"^reg16_2, "["^idx16_3^"]" is op=0x01; op=0x38; reg16_1; reg16_2; idx16_3 {
+  local _roff1:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _roff2:4 = 0x04 + (zext(reg16_2:2) * 4);
+  local _arr:4 = *[register]:4 _roff1;
+  local _idx:4 = *[register]:4 _roff2;
+  local _addr:4 = _arr + (_idx * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:ExtraWide.StaInArrayLiteral "r"^reg32_1, "r"^reg32_2, "["^idx32_3^"]" is op=0x02; op=0x38; reg32_1; reg32_2; idx32_3 {
+  local _roff1:4 = 0x04 + (reg32_1 * 4);
+  local _roff2:4 = 0x04 + (reg32_2 * 4);
+  local _arr:4 = *[register]:4 _roff1;
+  local _idx:4 = *[register]:4 _roff2;
+  local _addr:4 = _arr + (_idx * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:StaDataPropertyInLiteral "r"^reg8_1, "r"^reg8_2, "["^idx8_3^"]", "#"^flag8_4 is op=0x39; reg8_1; reg8_2; idx8_3; flag8_4 {
+  local _roff1:4 = 0x04 + (zext(reg8_1:1) * 4);
+  local _roff2:4 = 0x04 + (zext(reg8_2:1) * 4);
+  local _obj:4 = *[register]:4 _roff1;
+  local _key:4 = *[register]:4 _roff2;
+  local _addr:4 = _obj + (_key * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:Wide.StaDataPropertyInLiteral "r"^reg16_1, "r"^reg16_2, "["^idx16_3^"]", "#"^flag16_4 is op=0x01; op=0x39; reg16_1; reg16_2; idx16_3; flag16_4 {
+  local _roff1:4 = 0x04 + (zext(reg16_1:2) * 4);
+  local _roff2:4 = 0x04 + (zext(reg16_2:2) * 4);
+  local _obj:4 = *[register]:4 _roff1;
+  local _key:4 = *[register]:4 _roff2;
+  local _addr:4 = _obj + (_key * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:ExtraWide.StaDataPropertyInLiteral "r"^reg32_1, "r"^reg32_2, "["^idx32_3^"]", "#"^flag16_4 is op=0x02; op=0x39; reg32_1; reg32_2; idx32_3; flag16_4 {
+  local _roff1:4 = 0x04 + (reg32_1 * 4);
+  local _roff2:4 = 0x04 + (reg32_2 * 4);
+  local _obj:4 = *[register]:4 _roff1;
+  local _key:4 = *[register]:4 _roff2;
+  local _addr:4 = _obj + (_key * 4);
+  *[ram]:4 _addr = acc;
+}
+
+:CollectTypeProfile "#"^imm8_1 is op=0x3a; imm8_1 {
+  local _imm8_1:1 = imm8_1;
+  V8_CollectTypeProfile(_imm8_1);
+}
+
+:Wide.CollectTypeProfile "#"^imm16_1 is op=0x01; op=0x3a; imm16_1 {
+  local _imm16_1:2 = imm16_1;
+  V8_CollectTypeProfile(_imm16_1);
+}
+
+:ExtraWide.CollectTypeProfile "#"^imm32_1 is op=0x02; op=0x3a; imm32_1 {
+  local _imm32_1:4 = imm32_1;
+  V8_CollectTypeProfile(_imm32_1);
+}
+
+:Add "r"^reg8_1, "["^idx8_2^"]" is op=0x3b; reg8_1; idx8_2 {
+  local _z:1 = reg8_1;
+  local _zv:4 = zext(_z);
+  acc = acc + _zv;
+}
+
+:Wide.Add "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x3b; reg16_1; idx16_2 {
+  local _z:2 = reg16_1;
+  local _zv:4 = zext(_z);
+  acc = acc + _zv;
+}
+
+:ExtraWide.Add "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x3b; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = acc + _reg32_1;
+}
+
+:Sub "r"^reg8_1, "["^idx8_2^"]" is op=0x3c; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r - acc;
+}
+
+:Wide.Sub "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x3c; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r - acc;
+}
+
+:ExtraWide.Sub "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x3c; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 - acc;
+}
+
+:Mul "r"^reg8_1, "["^idx8_2^"]" is op=0x3d; reg8_1; idx8_2 {
+  local _z:1 = reg8_1;
+  local _zv:4 = zext(_z);
+  acc = acc * _zv;
+}
+
+:Wide.Mul "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x3d; reg16_1; idx16_2 {
+  local _z:2 = reg16_1;
+  local _zv:4 = zext(_z);
+  acc = acc * _zv;
+}
+
+:ExtraWide.Mul "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x3d; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = acc * _reg32_1;
+}
+
+:Div "r"^reg8_1, "["^idx8_2^"]" is op=0x3e; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r / acc;
+}
+
+:Wide.Div "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x3e; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r / acc;
+}
+
+:ExtraWide.Div "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x3e; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 / acc;
+}
+
+:Mod "r"^reg8_1, "["^idx8_2^"]" is op=0x3f; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r % acc;
+}
+
+:Wide.Mod "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x3f; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r % acc;
+}
+
+:ExtraWide.Mod "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x3f; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 % acc;
+}
+
+:Exp "r"^reg8_1, "["^idx8_2^"]" is op=0x40; reg8_1; idx8_2 {
+  local _base:4 = zext(reg8_1:1);
+  acc = V8_Exp(_base, acc);
+}
+
+:Wide.Exp "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x40; reg16_1; idx16_2 {
+  local _base:4 = zext(reg16_1:2);
+  acc = V8_Exp(_base, acc);
+}
+
+:ExtraWide.Exp "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x40; reg32_1; idx32_2 {
+  local _base:4 = reg32_1;
+  acc = V8_Exp(_base, acc);
+}
+
+:BitwiseOr "r"^reg8_1, "["^idx8_2^"]" is op=0x41; reg8_1; idx8_2 {
+  local _z:1 = reg8_1;
+  local _zv:4 = zext(_z);
+  acc = acc | _zv;
+}
+
+:Wide.BitwiseOr "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x41; reg16_1; idx16_2 {
+  local _z:2 = reg16_1;
+  local _zv:4 = zext(_z);
+  acc = acc | _zv;
+}
+
+:ExtraWide.BitwiseOr "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x41; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = acc | _reg32_1;
+}
+
+:BitwiseXor "r"^reg8_1, "["^idx8_2^"]" is op=0x42; reg8_1; idx8_2 {
+  local _z:1 = reg8_1;
+  local _zv:4 = zext(_z);
+  acc = acc ^ _zv;
+}
+
+:Wide.BitwiseXor "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x42; reg16_1; idx16_2 {
+  local _z:2 = reg16_1;
+  local _zv:4 = zext(_z);
+  acc = acc ^ _zv;
+}
+
+:ExtraWide.BitwiseXor "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x42; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = acc ^ _reg32_1;
+}
+
+:BitwiseAnd "r"^reg8_1, "["^idx8_2^"]" is op=0x43; reg8_1; idx8_2 {
+  local _z:1 = reg8_1;
+  local _zv:4 = zext(_z);
+  acc = acc & _zv;
+}
+
+:Wide.BitwiseAnd "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x43; reg16_1; idx16_2 {
+  local _z:2 = reg16_1;
+  local _zv:4 = zext(_z);
+  acc = acc & _zv;
+}
+
+:ExtraWide.BitwiseAnd "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x43; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = acc & _reg32_1;
+}
+
+:ShiftLeft "r"^reg8_1, "["^idx8_2^"]" is op=0x44; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r << acc;
+}
+
+:Wide.ShiftLeft "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x44; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r << acc;
+}
+
+:ExtraWide.ShiftLeft "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x44; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 << acc;
+}
+
+:ShiftRight "r"^reg8_1, "["^idx8_2^"]" is op=0x45; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r s>> acc;
+}
+
+:Wide.ShiftRight "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x45; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r s>> acc;
+}
+
+:ExtraWide.ShiftRight "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x45; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 s>> acc;
+}
+
+:ShiftRightLogical "r"^reg8_1, "["^idx8_2^"]" is op=0x46; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r >> acc;
+}
+
+:Wide.ShiftRightLogical "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x46; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r >> acc;
+}
+
+:ExtraWide.ShiftRightLogical "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x46; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 >> acc;
+}
+
+:AddSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x47; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc + _sv;
+}
+
+:Wide.AddSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x47; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc + _sv;
+}
+
+:ExtraWide.AddSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x47; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc + _imm32_1;
+}
+
+:SubSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x48; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc - _sv;
+}
+
+:Wide.SubSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x48; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc - _sv;
+}
+
+:ExtraWide.SubSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x48; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc - _imm32_1;
+}
+
+:MulSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x49; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc * _sv;
+}
+
+:Wide.MulSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x49; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc * _sv;
+}
+
+:ExtraWide.MulSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x49; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc * _imm32_1;
+}
+
+:DivSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x4a; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc / _sv;
+}
+
+:Wide.DivSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x4a; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc / _sv;
+}
+
+:ExtraWide.DivSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x4a; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc / _imm32_1;
+}
+
+:ModSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x4b; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc % _sv;
+}
+
+:Wide.ModSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x4b; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc % _sv;
+}
+
+:ExtraWide.ModSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x4b; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc % _imm32_1;
+}
+
+:ExpSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x4c; imm8_1; idx8_2 {
+  local _exp:4 = sext(imm8_1:1);
+  acc = V8_ExpSmi(acc, _exp);
+}
+
+:Wide.ExpSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x4c; imm16_1; idx16_2 {
+  local _exp:4 = sext(imm16_1:2);
+  acc = V8_ExpSmi(acc, _exp);
+}
+
+:ExtraWide.ExpSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x4c; imm32_1; idx32_2 {
+  local _exp:4 = imm32_1;
+  acc = V8_ExpSmi(acc, _exp);
+}
+
+:BitwiseOrSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x4d; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc | _sv;
+}
+
+:Wide.BitwiseOrSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x4d; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc | _sv;
+}
+
+:ExtraWide.BitwiseOrSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x4d; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc | _imm32_1;
+}
+
+:BitwiseXorSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x4e; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc ^ _sv;
+}
+
+:Wide.BitwiseXorSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x4e; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc ^ _sv;
+}
+
+:ExtraWide.BitwiseXorSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x4e; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc ^ _imm32_1;
+}
+
+:BitwiseAndSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x4f; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc & _sv;
+}
+
+:Wide.BitwiseAndSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x4f; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc & _sv;
+}
+
+:ExtraWide.BitwiseAndSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x4f; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc & _imm32_1;
+}
+
+:ShiftLeftSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x50; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc << _sv;
+}
+
+:Wide.ShiftLeftSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x50; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc << _sv;
+}
+
+:ExtraWide.ShiftLeftSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x50; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc << _imm32_1;
+}
+
+:ShiftRightSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x51; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc s>> _sv;
+}
+
+:Wide.ShiftRightSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x51; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc s>> _sv;
+}
+
+:ExtraWide.ShiftRightSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x51; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc s>> _imm32_1;
+}
+
+:ShiftRightLogicalSmi "#"^imm8_1, "["^idx8_2^"]" is op=0x52; imm8_1; idx8_2 {
+  local _s:1 = imm8_1;
+  local _sv:4 = sext(_s);
+  acc = acc >> _sv;
+}
+
+:Wide.ShiftRightLogicalSmi "#"^imm16_1, "["^idx16_2^"]" is op=0x01; op=0x52; imm16_1; idx16_2 {
+  local _s:2 = imm16_1;
+  local _sv:4 = sext(_s);
+  acc = acc >> _sv;
+}
+
+:ExtraWide.ShiftRightLogicalSmi "#"^imm32_1, "["^idx32_2^"]" is op=0x02; op=0x52; imm32_1; idx32_2 {
+  local _imm32_1:4 = imm32_1;
+  acc = acc >> _imm32_1;
+}
+
+:Inc "["^idx8_1^"]" is op=0x53; idx8_1 {
+  acc = acc + 1;
+}
+
+:Wide.Inc "["^idx16_1^"]" is op=0x01; op=0x53; idx16_1 {
+  acc = acc + 1;
+}
+
+:ExtraWide.Inc "["^idx32_1^"]" is op=0x02; op=0x53; idx32_1 {
+  acc = acc + 1;
+}
+
+:Dec "["^idx8_1^"]" is op=0x54; idx8_1 {
+  acc = acc - 1;
+}
+
+:Wide.Dec "["^idx16_1^"]" is op=0x01; op=0x54; idx16_1 {
+  acc = acc - 1;
+}
+
+:ExtraWide.Dec "["^idx32_1^"]" is op=0x02; op=0x54; idx32_1 {
+  acc = acc - 1;
+}
+
+:Negate "["^idx8_1^"]" is op=0x55; idx8_1 {
+  acc = -acc;
+}
+
+:Wide.Negate "["^idx16_1^"]" is op=0x01; op=0x55; idx16_1 {
+  acc = -acc;
+}
+
+:ExtraWide.Negate "["^idx32_1^"]" is op=0x02; op=0x55; idx32_1 {
+  acc = -acc;
+}
+
+:BitwiseNot "["^idx8_1^"]" is op=0x56; idx8_1 {
+  acc = ~acc;
+}
+
+:Wide.BitwiseNot "["^idx16_1^"]" is op=0x01; op=0x56; idx16_1 {
+  acc = ~acc;
+}
+
+:ExtraWide.BitwiseNot "["^idx32_1^"]" is op=0x02; op=0x56; idx32_1 {
+  acc = ~acc;
+}
+
+:ToBooleanLogicalNot is op=0x57 {
+  local _cmp:1 = (acc == 0);
+  acc = zext(_cmp);
+}
+
+:LogicalNot is op=0x58 {
+  local _cmp:1 = (acc == 0);
+  acc = zext(_cmp);
+}
+
+:TypeOf is op=0x59 {
+  acc = V8_TestTypeOf(acc);
+}
+
+:DeletePropertyStrict "r"^reg8_1 is op=0x5a; reg8_1 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_DeleteProperty(_reg8_1);
+}
+
+:Wide.DeletePropertyStrict "r"^reg16_1 is op=0x01; op=0x5a; reg16_1 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_DeleteProperty(_reg16_1);
+}
+
+:ExtraWide.DeletePropertyStrict "r"^reg32_1 is op=0x02; op=0x5a; reg32_1 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_DeleteProperty(_reg32_1);
+}
+
+:DeletePropertySloppy "r"^reg8_1 is op=0x5b; reg8_1 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_DeleteProperty(_reg8_1);
+}
+
+:Wide.DeletePropertySloppy "r"^reg16_1 is op=0x01; op=0x5b; reg16_1 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_DeleteProperty(_reg16_1);
+}
+
+:ExtraWide.DeletePropertySloppy "r"^reg32_1 is op=0x02; op=0x5b; reg32_1 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_DeleteProperty(_reg32_1);
+}
+
+:GetSuperConstructor "r"^reg8_1 is op=0x5c; reg8_1 {
+  local _reg8_1:1 = reg8_1;
+  V8_GetSuperConstructor(_reg8_1);
+}
+
+:Wide.GetSuperConstructor "r"^reg16_1 is op=0x01; op=0x5c; reg16_1 {
+  local _reg16_1:2 = reg16_1;
+  V8_GetSuperConstructor(_reg16_1);
+}
+
+:ExtraWide.GetSuperConstructor "r"^reg32_1 is op=0x02; op=0x5c; reg32_1 {
+  local _reg32_1:4 = reg32_1;
+  V8_GetSuperConstructor(_reg32_1);
+}
+
+:CallAnyReceiver "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3, "["^idx8_4^"]" is op=0x5d; reg8_1; reg8_2; uimm8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallProperty(_reg8_1, _reg8_2, _uimm8_3, _idx8_4);
+}
+
+:Wide.CallAnyReceiver "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3, "["^idx16_4^"]" is op=0x01; op=0x5d; reg16_1; reg16_2; uimm16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallProperty(_reg16_1, _reg16_2, _uimm16_3, _idx16_4);
+}
+
+:ExtraWide.CallAnyReceiver "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3, "["^idx32_4^"]" is op=0x02; op=0x5d; reg32_1; reg32_2; uimm32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallProperty(_reg32_1, _reg32_2, _uimm32_3, _idx32_4);
+}
+
+:CallProperty "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3, "["^idx8_4^"]" is op=0x5e; reg8_1; reg8_2; uimm8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallProperty(_reg8_1, _reg8_2, _uimm8_3, _idx8_4);
+}
+
+:Wide.CallProperty "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3, "["^idx16_4^"]" is op=0x01; op=0x5e; reg16_1; reg16_2; uimm16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallProperty(_reg16_1, _reg16_2, _uimm16_3, _idx16_4);
+}
+
+:ExtraWide.CallProperty "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3, "["^idx32_4^"]" is op=0x02; op=0x5e; reg32_1; reg32_2; uimm32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallProperty(_reg32_1, _reg32_2, _uimm32_3, _idx32_4);
+}
+
+:CallProperty0 "r"^reg8_1, "r"^reg8_2, "["^idx8_3^"]" is op=0x5f; reg8_1; reg8_2; idx8_3 {
+  local _idx8_3:1 = idx8_3;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  acc = V8_CallProperty(_reg8_1, _reg8_2, _idx8_3);
+}
+
+:Wide.CallProperty0 "r"^reg16_1, "r"^reg16_2, "["^idx16_3^"]" is op=0x01; op=0x5f; reg16_1; reg16_2; idx16_3 {
+  local _idx16_3:2 = idx16_3;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  acc = V8_CallProperty(_reg16_1, _reg16_2, _idx16_3);
+}
+
+:ExtraWide.CallProperty0 "r"^reg32_1, "r"^reg32_2, "["^idx32_3^"]" is op=0x02; op=0x5f; reg32_1; reg32_2; idx32_3 {
+  local _idx32_3:4 = idx32_3;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  acc = V8_CallProperty(_reg32_1, _reg32_2, _idx32_3);
+}
+
+:CallProperty1 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "["^idx8_4^"]" is op=0x60; reg8_1; reg8_2; reg8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _reg8_3:1 = reg8_3;
+  acc = V8_CallProperty(_reg8_1, _reg8_2, _reg8_3, _idx8_4);
+}
+
+:Wide.CallProperty1 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "["^idx16_4^"]" is op=0x01; op=0x60; reg16_1; reg16_2; reg16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _reg16_3:2 = reg16_3;
+  acc = V8_CallProperty(_reg16_1, _reg16_2, _reg16_3, _idx16_4);
+}
+
+:ExtraWide.CallProperty1 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "["^idx32_4^"]" is op=0x02; op=0x60; reg32_1; reg32_2; reg32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _reg32_3:4 = reg32_3;
+  acc = V8_CallProperty(_reg32_1, _reg32_2, _reg32_3, _idx32_4);
+}
+
+:CallProperty2 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "r"^reg8_4, "["^idx8_5^"]" is op=0x61; reg8_1; reg8_2; reg8_3; reg8_4; idx8_5 {
+  local _idx8_5:1 = idx8_5;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _reg8_3:1 = reg8_3;
+  local _reg8_4:1 = reg8_4;
+  acc = V8_CallProperty(_reg8_1, _reg8_2, _reg8_3, _reg8_4, _idx8_5);
+}
+
+:Wide.CallProperty2 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "r"^reg16_4, "["^idx16_5^"]" is op=0x01; op=0x61; reg16_1; reg16_2; reg16_3; reg16_4; idx16_5 {
+  local _idx16_5:2 = idx16_5;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _reg16_3:2 = reg16_3;
+  local _reg16_4:2 = reg16_4;
+  acc = V8_CallProperty(_reg16_1, _reg16_2, _reg16_3, _reg16_4, _idx16_5);
+}
+
+:ExtraWide.CallProperty2 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "r"^reg32_4, "["^idx32_5^"]" is op=0x02; op=0x61; reg32_1; reg32_2; reg32_3; reg32_4; idx32_5 {
+  local _idx32_5:4 = idx32_5;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _reg32_3:4 = reg32_3;
+  local _reg32_4:4 = reg32_4;
+  acc = V8_CallProperty(_reg32_1, _reg32_2, _reg32_3, _reg32_4, _idx32_5);
+}
+
+:CallUndefinedReceiver "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3, "["^idx8_4^"]" is op=0x62; reg8_1; reg8_2; uimm8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallFunction(_reg8_1, _reg8_2, _uimm8_3, _idx8_4);
+}
+
+:Wide.CallUndefinedReceiver "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3, "["^idx16_4^"]" is op=0x01; op=0x62; reg16_1; reg16_2; uimm16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallFunction(_reg16_1, _reg16_2, _uimm16_3, _idx16_4);
+}
+
+:ExtraWide.CallUndefinedReceiver "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3, "["^idx32_4^"]" is op=0x02; op=0x62; reg32_1; reg32_2; uimm32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallFunction(_reg32_1, _reg32_2, _uimm32_3, _idx32_4);
+}
+
+:CallUndefinedReceiver0 "r"^reg8_1, "["^idx8_2^"]" is op=0x63; reg8_1; idx8_2 {
+  local _idx8_2:1 = idx8_2;
+  local _reg8_1:1 = reg8_1;
+  acc = V8_CallFunction(_reg8_1, _idx8_2);
+}
+
+:Wide.CallUndefinedReceiver0 "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x63; reg16_1; idx16_2 {
+  local _idx16_2:2 = idx16_2;
+  local _reg16_1:2 = reg16_1;
+  acc = V8_CallFunction(_reg16_1, _idx16_2);
+}
+
+:ExtraWide.CallUndefinedReceiver0 "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x63; reg32_1; idx32_2 {
+  local _idx32_2:4 = idx32_2;
+  local _reg32_1:4 = reg32_1;
+  acc = V8_CallFunction(_reg32_1, _idx32_2);
+}
+
+:CallUndefinedReceiver1 "r"^reg8_1, "r"^reg8_2, "["^idx8_3^"]" is op=0x64; reg8_1; reg8_2; idx8_3 {
+  local _idx8_3:1 = idx8_3;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  acc = V8_CallFunction(_reg8_1, _reg8_2, _idx8_3);
+}
+
+:Wide.CallUndefinedReceiver1 "r"^reg16_1, "r"^reg16_2, "["^idx16_3^"]" is op=0x01; op=0x64; reg16_1; reg16_2; idx16_3 {
+  local _idx16_3:2 = idx16_3;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  acc = V8_CallFunction(_reg16_1, _reg16_2, _idx16_3);
+}
+
+:ExtraWide.CallUndefinedReceiver1 "r"^reg32_1, "r"^reg32_2, "["^idx32_3^"]" is op=0x02; op=0x64; reg32_1; reg32_2; idx32_3 {
+  local _idx32_3:4 = idx32_3;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  acc = V8_CallFunction(_reg32_1, _reg32_2, _idx32_3);
+}
+
+:CallUndefinedReceiver2 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "["^idx8_4^"]" is op=0x65; reg8_1; reg8_2; reg8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _reg8_3:1 = reg8_3;
+  acc = V8_CallFunction(_reg8_1, _reg8_2, _reg8_3, _idx8_4);
+}
+
+:Wide.CallUndefinedReceiver2 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "["^idx16_4^"]" is op=0x01; op=0x65; reg16_1; reg16_2; reg16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _reg16_3:2 = reg16_3;
+  acc = V8_CallFunction(_reg16_1, _reg16_2, _reg16_3, _idx16_4);
+}
+
+:ExtraWide.CallUndefinedReceiver2 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "["^idx32_4^"]" is op=0x02; op=0x65; reg32_1; reg32_2; reg32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _reg32_3:4 = reg32_3;
+  acc = V8_CallFunction(_reg32_1, _reg32_2, _reg32_3, _idx32_4);
+}
+
+:CallWithSpread "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3, "["^idx8_4^"]" is op=0x66; reg8_1; reg8_2; uimm8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallFunction(_reg8_1, _reg8_2, _uimm8_3, _idx8_4);
+}
+
+:Wide.CallWithSpread "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3, "["^idx16_4^"]" is op=0x01; op=0x66; reg16_1; reg16_2; uimm16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallFunction(_reg16_1, _reg16_2, _uimm16_3, _idx16_4);
+}
+
+:ExtraWide.CallWithSpread "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3, "["^idx32_4^"]" is op=0x02; op=0x66; reg32_1; reg32_2; uimm32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallFunction(_reg32_1, _reg32_2, _uimm32_3, _idx32_4);
+}
+
+:CallRuntime "Runtime_"^runtime_id, "r"^reg8_2, "#"^uimm8_3 is op=0x67; runtime_id; reg8_2; uimm8_3 {
+  local _runtime_id:2 = runtime_id;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallRuntime(_runtime_id, _reg8_2, _uimm8_3);
+}
+
+:Wide.CallRuntime "Runtime_"^runtime_id, "r"^reg16_2, "#"^uimm16_3 is op=0x01; op=0x67; runtime_id; reg16_2; uimm16_3 {
+  local _runtime_id:2 = runtime_id;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallRuntime(_runtime_id, _reg16_2, _uimm16_3);
+}
+
+:ExtraWide.CallRuntime "Runtime_"^runtime_id, "r"^reg32_2, "#"^uimm32_3 is op=0x02; op=0x67; runtime_id; reg32_2; uimm32_3 {
+  local _runtime_id:2 = runtime_id;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallRuntime(_runtime_id, _reg32_2, _uimm32_3);
+}
+
+:CallRuntimeForPair "Runtime_"^runtime_id, "r"^reg8_2, "#"^uimm8_3, "r"^reg8_4 is op=0x68; runtime_id; reg8_2; uimm8_3; reg8_4 {
+  local _runtime_id:2 = runtime_id;
+  local _reg8_2:1 = reg8_2;
+  local _reg8_4:1 = reg8_4;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallRuntime(_runtime_id, _reg8_2, _uimm8_3, _reg8_4);
+}
+
+:Wide.CallRuntimeForPair "Runtime_"^runtime_id, "r"^reg16_2, "#"^uimm16_3, "r"^reg16_4 is op=0x01; op=0x68; runtime_id; reg16_2; uimm16_3; reg16_4 {
+  local _runtime_id:2 = runtime_id;
+  local _reg16_2:2 = reg16_2;
+  local _reg16_4:2 = reg16_4;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallRuntime(_runtime_id, _reg16_2, _uimm16_3, _reg16_4);
+}
+
+:ExtraWide.CallRuntimeForPair "Runtime_"^runtime_id, "r"^reg32_2, "#"^uimm32_3, "r"^reg32_4 is op=0x02; op=0x68; runtime_id; reg32_2; uimm32_3; reg32_4 {
+  local _runtime_id:2 = runtime_id;
+  local _reg32_2:4 = reg32_2;
+  local _reg32_4:4 = reg32_4;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallRuntime(_runtime_id, _reg32_2, _uimm32_3, _reg32_4);
+}
+
+:CallJSRuntime "#"^uimm8_1, "r"^reg8_2, "#"^uimm8_3 is op=0x69; uimm8_1; reg8_2; uimm8_3 {
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_1:1 = uimm8_1;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_CallJSRuntime(_uimm8_1, _reg8_2, _uimm8_3);
+}
+
+:Wide.CallJSRuntime "#"^uimm16_1, "r"^reg16_2, "#"^uimm16_3 is op=0x01; op=0x69; uimm16_1; reg16_2; uimm16_3 {
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_1:2 = uimm16_1;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_CallJSRuntime(_uimm16_1, _reg16_2, _uimm16_3);
+}
+
+:ExtraWide.CallJSRuntime "#"^uimm32_1, "r"^reg32_2, "#"^uimm32_3 is op=0x02; op=0x69; uimm32_1; reg32_2; uimm32_3 {
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_1:4 = uimm32_1;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_CallJSRuntime(_uimm32_1, _reg32_2, _uimm32_3);
+}
+
+:InvokeIntrinsic "Intrinsic_"^intrinsic_id, "r"^reg8_2, "#"^uimm8_3 is op=0x6a; intrinsic_id; reg8_2; uimm8_3 {
+  local _intrinsic_id:2 = intrinsic_id;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_InvokeIntrinsic(_intrinsic_id, _reg8_2, _uimm8_3);
+}
+
+:Wide.InvokeIntrinsic "Intrinsic_"^intrinsic_id, "r"^reg16_2, "#"^uimm16_3 is op=0x01; op=0x6a; intrinsic_id; reg16_2; uimm16_3 {
+  local _intrinsic_id:2 = intrinsic_id;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_InvokeIntrinsic(_intrinsic_id, _reg16_2, _uimm16_3);
+}
+
+:ExtraWide.InvokeIntrinsic "Intrinsic_"^intrinsic_id, "r"^reg32_2, "#"^uimm32_3 is op=0x02; op=0x6a; intrinsic_id; reg32_2; uimm32_3 {
+  local _intrinsic_id:2 = intrinsic_id;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_InvokeIntrinsic(_intrinsic_id, _reg32_2, _uimm32_3);
+}
+
+:Construct "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3, "["^idx8_4^"]" is op=0x6b; reg8_1; reg8_2; uimm8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_Construct(_reg8_1, _reg8_2, _uimm8_3, _idx8_4);
+}
+
+:Wide.Construct "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3, "["^idx16_4^"]" is op=0x01; op=0x6b; reg16_1; reg16_2; uimm16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_Construct(_reg16_1, _reg16_2, _uimm16_3, _idx16_4);
+}
+
+:ExtraWide.Construct "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3, "["^idx32_4^"]" is op=0x02; op=0x6b; reg32_1; reg32_2; uimm32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_Construct(_reg32_1, _reg32_2, _uimm32_3, _idx32_4);
+}
+
+:ConstructWithSpread "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3, "["^idx8_4^"]" is op=0x6c; reg8_1; reg8_2; uimm8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  acc = V8_Construct(_reg8_1, _reg8_2, _uimm8_3, _idx8_4);
+}
+
+:Wide.ConstructWithSpread "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3, "["^idx16_4^"]" is op=0x01; op=0x6c; reg16_1; reg16_2; uimm16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  acc = V8_Construct(_reg16_1, _reg16_2, _uimm16_3, _idx16_4);
+}
+
+:ExtraWide.ConstructWithSpread "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3, "["^idx32_4^"]" is op=0x02; op=0x6c; reg32_1; reg32_2; uimm32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  acc = V8_Construct(_reg32_1, _reg32_2, _uimm32_3, _idx32_4);
+}
+
+:TestEqual "r"^reg8_1, "["^idx8_2^"]" is op=0x6d; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r == acc);
+  acc = zext(_cmp);
+}
+
+:Wide.TestEqual "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x6d; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r == acc);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.TestEqual "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x6d; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _cmp:1 = (_reg32_1 == acc);
+  acc = zext(_cmp);
+}
+
+:TestEqualStrict "r"^reg8_1, "["^idx8_2^"]" is op=0x6e; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r == acc);
+  acc = zext(_cmp);
+}
+
+:Wide.TestEqualStrict "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x6e; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r == acc);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.TestEqualStrict "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x6e; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _cmp:1 = (_reg32_1 == acc);
+  acc = zext(_cmp);
+}
+
+:TestLessThan "r"^reg8_1, "["^idx8_2^"]" is op=0x6f; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s< acc);
+  acc = zext(_cmp);
+}
+
+:Wide.TestLessThan "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x6f; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s< acc);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.TestLessThan "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x6f; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _cmp:1 = (_reg32_1 s< acc);
+  acc = zext(_cmp);
+}
+
+:TestGreaterThan "r"^reg8_1, "["^idx8_2^"]" is op=0x70; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s> acc);
+  acc = zext(_cmp);
+}
+
+:Wide.TestGreaterThan "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x70; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s> acc);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.TestGreaterThan "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x70; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _cmp:1 = (_reg32_1 s> acc);
+  acc = zext(_cmp);
+}
+
+:TestLessThanOrEqual "r"^reg8_1, "["^idx8_2^"]" is op=0x71; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s<= acc);
+  acc = zext(_cmp);
+}
+
+:Wide.TestLessThanOrEqual "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x71; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s<= acc);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.TestLessThanOrEqual "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x71; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _cmp:1 = (_reg32_1 s<= acc);
+  acc = zext(_cmp);
+}
+
+:TestGreaterThanOrEqual "r"^reg8_1, "["^idx8_2^"]" is op=0x72; reg8_1; idx8_2 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s>= acc);
+  acc = zext(_cmp);
+}
+
+:Wide.TestGreaterThanOrEqual "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x72; reg16_1; idx16_2 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  local _cmp:1 = (_r s>= acc);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.TestGreaterThanOrEqual "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x72; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _cmp:1 = (_reg32_1 s>= acc);
+  acc = zext(_cmp);
+}
+
+:TestInstanceOf "r"^reg8_1, "["^idx8_2^"]" is op=0x73; reg8_1; idx8_2 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_TestInstanceOf(_reg8_1, acc);
+}
+
+:Wide.TestInstanceOf "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x73; reg16_1; idx16_2 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_TestInstanceOf(_reg16_1, acc);
+}
+
+:ExtraWide.TestInstanceOf "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x73; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_TestInstanceOf(_reg32_1, acc);
+}
+
+:TestIn "r"^reg8_1, "["^idx8_2^"]" is op=0x74; reg8_1; idx8_2 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_TestIn(_reg8_1, acc);
+}
+
+:Wide.TestIn "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x74; reg16_1; idx16_2 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_TestIn(_reg16_1, acc);
+}
+
+:ExtraWide.TestIn "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x74; reg32_1; idx32_2 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_TestIn(_reg32_1, acc);
+}
+
+:TestUndetectable is op=0x75 {
+  local _cmp:1 = (acc == 0);
+  acc = zext(_cmp);
+}
+
+:TestNull is op=0x76 {
+  local _cmp:1 = (acc == 0);
+  acc = zext(_cmp);
+}
+
+:TestUndefined is op=0x77 {
+  local _cmp:1 = (acc == 0);
+  acc = zext(_cmp);
+}
+
+:TestTypeOf "#"^flag8_1 is op=0x78; flag8_1 {
+  local _flag8_1:1 = flag8_1;
+  acc = V8_TestTypeOf(_flag8_1);
+}
+
+:Wide.TestTypeOf "#"^flag16_1 is op=0x01; op=0x78; flag16_1 {
+  local _flag16_1:2 = flag16_1;
+  acc = V8_TestTypeOf(_flag16_1);
+}
+
+:ExtraWide.TestTypeOf "#"^flag16_1 is op=0x02; op=0x78; flag16_1 {
+  local _flag16_1:2 = flag16_1;
+  acc = V8_TestTypeOf(_flag16_1);
+}
+
+:ToName "r"^reg8_1 is op=0x79; reg8_1 {
+  acc = acc;
+}
+
+:Wide.ToName "r"^reg16_1 is op=0x01; op=0x79; reg16_1 {
+  acc = acc;
+}
+
+:ExtraWide.ToName "r"^reg32_1 is op=0x02; op=0x79; reg32_1 {
+  acc = acc;
+}
+
+:ToNumber "["^idx8_1^"]" is op=0x7a; idx8_1 {
+  acc = acc;
+}
+
+:Wide.ToNumber "["^idx16_1^"]" is op=0x01; op=0x7a; idx16_1 {
+  acc = acc;
+}
+
+:ExtraWide.ToNumber "["^idx32_1^"]" is op=0x02; op=0x7a; idx32_1 {
+  acc = acc;
+}
+
+:ToNumeric "["^idx8_1^"]" is op=0x7b; idx8_1 {
+  acc = acc;
+}
+
+:Wide.ToNumeric "["^idx16_1^"]" is op=0x01; op=0x7b; idx16_1 {
+  acc = acc;
+}
+
+:ExtraWide.ToNumeric "["^idx32_1^"]" is op=0x02; op=0x7b; idx32_1 {
+  acc = acc;
+}
+
+:ToObject "r"^reg8_1 is op=0x7c; reg8_1 {
+  acc = acc;
+}
+
+:Wide.ToObject "r"^reg16_1 is op=0x01; op=0x7c; reg16_1 {
+  acc = acc;
+}
+
+:ExtraWide.ToObject "r"^reg32_1 is op=0x02; op=0x7c; reg32_1 {
+  acc = acc;
+}
+
+:ToString is op=0x7d {
+  acc = acc;
+}
+
+:CreateRegExpLiteral "["^idx8_1^"]", "["^idx8_2^"]", "#"^flag8_3 is op=0x7e; idx8_1; idx8_2; flag8_3 {
+  local _flag8_3:1 = flag8_3;
+  local _idx8_1:1 = idx8_1;
+  local _idx8_2:1 = idx8_2;
+  acc = V8_CreateRegExpLiteral(_idx8_1, _idx8_2, _flag8_3);
+}
+
+:Wide.CreateRegExpLiteral "["^idx16_1^"]", "["^idx16_2^"]", "#"^flag16_3 is op=0x01; op=0x7e; idx16_1; idx16_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx16_1:2 = idx16_1;
+  local _idx16_2:2 = idx16_2;
+  acc = V8_CreateRegExpLiteral(_idx16_1, _idx16_2, _flag16_3);
+}
+
+:ExtraWide.CreateRegExpLiteral "["^idx32_1^"]", "["^idx32_2^"]", "#"^flag16_3 is op=0x02; op=0x7e; idx32_1; idx32_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx32_1:4 = idx32_1;
+  local _idx32_2:4 = idx32_2;
+  acc = V8_CreateRegExpLiteral(_idx32_1, _idx32_2, _flag16_3);
+}
+
+:CreateArrayLiteral "["^idx8_1^"]", "["^idx8_2^"]", "#"^flag8_3 is op=0x7f; idx8_1; idx8_2; flag8_3 {
+  local _flag8_3:1 = flag8_3;
+  local _idx8_1:1 = idx8_1;
+  local _idx8_2:1 = idx8_2;
+  acc = V8_CreateArrayLiteral(_idx8_1, _idx8_2, _flag8_3);
+}
+
+:Wide.CreateArrayLiteral "["^idx16_1^"]", "["^idx16_2^"]", "#"^flag16_3 is op=0x01; op=0x7f; idx16_1; idx16_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx16_1:2 = idx16_1;
+  local _idx16_2:2 = idx16_2;
+  acc = V8_CreateArrayLiteral(_idx16_1, _idx16_2, _flag16_3);
+}
+
+:ExtraWide.CreateArrayLiteral "["^idx32_1^"]", "["^idx32_2^"]", "#"^flag16_3 is op=0x02; op=0x7f; idx32_1; idx32_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx32_1:4 = idx32_1;
+  local _idx32_2:4 = idx32_2;
+  acc = V8_CreateArrayLiteral(_idx32_1, _idx32_2, _flag16_3);
+}
+
+:CreateEmptyArrayLiteral "["^idx8_1^"]" is op=0x80; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  acc = V8_CreateArrayLiteral(_idx8_1);
+}
+
+:Wide.CreateEmptyArrayLiteral "["^idx16_1^"]" is op=0x01; op=0x80; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  acc = V8_CreateArrayLiteral(_idx16_1);
+}
+
+:ExtraWide.CreateEmptyArrayLiteral "["^idx32_1^"]" is op=0x02; op=0x80; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  acc = V8_CreateArrayLiteral(_idx32_1);
+}
+
+:CreateObjectLiteral "["^idx8_1^"]", "["^idx8_2^"]", "#"^flag8_3 is op=0x81; idx8_1; idx8_2; flag8_3 {
+  local _flag8_3:1 = flag8_3;
+  local _idx8_1:1 = idx8_1;
+  local _idx8_2:1 = idx8_2;
+  acc = V8_CreateObjectLiteral(_idx8_1, _idx8_2, _flag8_3);
+}
+
+:Wide.CreateObjectLiteral "["^idx16_1^"]", "["^idx16_2^"]", "#"^flag16_3 is op=0x01; op=0x81; idx16_1; idx16_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx16_1:2 = idx16_1;
+  local _idx16_2:2 = idx16_2;
+  acc = V8_CreateObjectLiteral(_idx16_1, _idx16_2, _flag16_3);
+}
+
+:ExtraWide.CreateObjectLiteral "["^idx32_1^"]", "["^idx32_2^"]", "#"^flag16_3 is op=0x02; op=0x81; idx32_1; idx32_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx32_1:4 = idx32_1;
+  local _idx32_2:4 = idx32_2;
+  acc = V8_CreateObjectLiteral(_idx32_1, _idx32_2, _flag16_3);
+}
+
+:CreateEmptyObjectLiteral is op=0x82 {
+  acc = V8_CreateObjectLiteral();
+}
+
+:CloneObject "r"^reg8_1, "#"^flag8_2, "["^idx8_3^"]" is op=0x83; reg8_1; flag8_2; idx8_3 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_CloneObject(_reg8_1);
+}
+
+:Wide.CloneObject "r"^reg16_1, "#"^flag16_2, "["^idx16_3^"]" is op=0x01; op=0x83; reg16_1; flag16_2; idx16_3 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_CloneObject(_reg16_1);
+}
+
+:ExtraWide.CloneObject "r"^reg32_1, "#"^flag16_2, "["^idx32_3^"]" is op=0x02; op=0x83; reg32_1; flag16_2; idx32_3 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_CloneObject(_reg32_1);
+}
+
+:GetTemplateObject "["^idx8_1^"]", "["^idx8_2^"]" is op=0x84; idx8_1; idx8_2 {
+  local _idx8_1:1 = idx8_1;
+  local _idx8_2:1 = idx8_2;
+  acc = V8_GetTemplateObject(_idx8_1, _idx8_2);
+}
+
+:Wide.GetTemplateObject "["^idx16_1^"]", "["^idx16_2^"]" is op=0x01; op=0x84; idx16_1; idx16_2 {
+  local _idx16_1:2 = idx16_1;
+  local _idx16_2:2 = idx16_2;
+  acc = V8_GetTemplateObject(_idx16_1, _idx16_2);
+}
+
+:ExtraWide.GetTemplateObject "["^idx32_1^"]", "["^idx32_2^"]" is op=0x02; op=0x84; idx32_1; idx32_2 {
+  local _idx32_1:4 = idx32_1;
+  local _idx32_2:4 = idx32_2;
+  acc = V8_GetTemplateObject(_idx32_1, _idx32_2);
+}
+
+:CreateClosure "["^idx8_1^"]", "["^idx8_2^"]", "#"^flag8_3 is op=0x85; idx8_1; idx8_2; flag8_3 {
+  local _flag8_3:1 = flag8_3;
+  local _idx8_1:1 = idx8_1;
+  local _idx8_2:1 = idx8_2;
+  acc = V8_CreateClosure(_idx8_1, _idx8_2, _flag8_3);
+}
+
+:Wide.CreateClosure "["^idx16_1^"]", "["^idx16_2^"]", "#"^flag16_3 is op=0x01; op=0x85; idx16_1; idx16_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx16_1:2 = idx16_1;
+  local _idx16_2:2 = idx16_2;
+  acc = V8_CreateClosure(_idx16_1, _idx16_2, _flag16_3);
+}
+
+:ExtraWide.CreateClosure "["^idx32_1^"]", "["^idx32_2^"]", "#"^flag16_3 is op=0x02; op=0x85; idx32_1; idx32_2; flag16_3 {
+  local _flag16_3:2 = flag16_3;
+  local _idx32_1:4 = idx32_1;
+  local _idx32_2:4 = idx32_2;
+  acc = V8_CreateClosure(_idx32_1, _idx32_2, _flag16_3);
+}
+
+:CreateBlockContext "["^idx8_1^"]" is op=0x86; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  V8_CreateContext(_idx8_1);
+}
+
+:Wide.CreateBlockContext "["^idx16_1^"]" is op=0x01; op=0x86; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  V8_CreateContext(_idx16_1);
+}
+
+:ExtraWide.CreateBlockContext "["^idx32_1^"]" is op=0x02; op=0x86; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  V8_CreateContext(_idx32_1);
+}
+
+:CreateCatchContext "r"^reg8_1, "["^idx8_2^"]" is op=0x87; reg8_1; idx8_2 {
+  local _idx8_2:1 = idx8_2;
+  local _reg8_1:1 = reg8_1;
+  V8_CreateContext(_reg8_1, _idx8_2);
+}
+
+:Wide.CreateCatchContext "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x87; reg16_1; idx16_2 {
+  local _idx16_2:2 = idx16_2;
+  local _reg16_1:2 = reg16_1;
+  V8_CreateContext(_reg16_1, _idx16_2);
+}
+
+:ExtraWide.CreateCatchContext "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x87; reg32_1; idx32_2 {
+  local _idx32_2:4 = idx32_2;
+  local _reg32_1:4 = reg32_1;
+  V8_CreateContext(_reg32_1, _idx32_2);
+}
+
+:CreateFunctionContext "["^idx8_1^"]", "#"^uimm8_2 is op=0x88; idx8_1; uimm8_2 {
+  local _idx8_1:1 = idx8_1;
+  local _uimm8_2:1 = uimm8_2;
+  V8_CreateContext(_idx8_1, _uimm8_2);
+}
+
+:Wide.CreateFunctionContext "["^idx16_1^"]", "#"^uimm16_2 is op=0x01; op=0x88; idx16_1; uimm16_2 {
+  local _idx16_1:2 = idx16_1;
+  local _uimm16_2:2 = uimm16_2;
+  V8_CreateContext(_idx16_1, _uimm16_2);
+}
+
+:ExtraWide.CreateFunctionContext "["^idx32_1^"]", "#"^uimm32_2 is op=0x02; op=0x88; idx32_1; uimm32_2 {
+  local _idx32_1:4 = idx32_1;
+  local _uimm32_2:4 = uimm32_2;
+  V8_CreateContext(_idx32_1, _uimm32_2);
+}
+
+:CreateEvalContext "["^idx8_1^"]", "#"^uimm8_2 is op=0x89; idx8_1; uimm8_2 {
+  local _idx8_1:1 = idx8_1;
+  local _uimm8_2:1 = uimm8_2;
+  V8_CreateContext(_idx8_1, _uimm8_2);
+}
+
+:Wide.CreateEvalContext "["^idx16_1^"]", "#"^uimm16_2 is op=0x01; op=0x89; idx16_1; uimm16_2 {
+  local _idx16_1:2 = idx16_1;
+  local _uimm16_2:2 = uimm16_2;
+  V8_CreateContext(_idx16_1, _uimm16_2);
+}
+
+:ExtraWide.CreateEvalContext "["^idx32_1^"]", "#"^uimm32_2 is op=0x02; op=0x89; idx32_1; uimm32_2 {
+  local _idx32_1:4 = idx32_1;
+  local _uimm32_2:4 = uimm32_2;
+  V8_CreateContext(_idx32_1, _uimm32_2);
+}
+
+:CreateWithContext "r"^reg8_1, "["^idx8_2^"]" is op=0x8a; reg8_1; idx8_2 {
+  local _idx8_2:1 = idx8_2;
+  local _reg8_1:1 = reg8_1;
+  V8_CreateContext(_reg8_1, _idx8_2);
+}
+
+:Wide.CreateWithContext "r"^reg16_1, "["^idx16_2^"]" is op=0x01; op=0x8a; reg16_1; idx16_2 {
+  local _idx16_2:2 = idx16_2;
+  local _reg16_1:2 = reg16_1;
+  V8_CreateContext(_reg16_1, _idx16_2);
+}
+
+:ExtraWide.CreateWithContext "r"^reg32_1, "["^idx32_2^"]" is op=0x02; op=0x8a; reg32_1; idx32_2 {
+  local _idx32_2:4 = idx32_2;
+  local _reg32_1:4 = reg32_1;
+  V8_CreateContext(_reg32_1, _idx32_2);
+}
+
+:CreateMappedArguments is op=0x8b {
+  acc = 0;
+}
+
+:CreateUnmappedArguments is op=0x8c {
+  acc = 0;
+}
+
+:CreateRestParameter is op=0x8d {
+  acc = 0;
+}
+
+:JumpLoop "#"^uimm8_1, "#"^imm8_2, "["^idx8_3^"]" is op=0x8e; uimm8_1; imm8_2; idx8_3 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_start - zext(_off);
+  goto [target];
+}
+
+:Wide.JumpLoop "#"^uimm16_1, "#"^imm16_2, "["^idx16_3^"]" is op=0x01; op=0x8e; uimm16_1; imm16_2; idx16_3 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_start - zext(_off);
+  goto [target];
+}
+
+:ExtraWide.JumpLoop "#"^uimm32_1, "#"^imm32_2, "["^idx32_3^"]" is op=0x02; op=0x8e; uimm32_1; imm32_2; idx32_3 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_start - _uimm32_1;
+  goto [target];
+}
+
+:Jump "#"^uimm8_1 is op=0x8f; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  goto [target];
+}
+
+:Wide.Jump "#"^uimm16_1 is op=0x01; op=0x8f; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  goto [target];
+}
+
+:ExtraWide.Jump "#"^uimm32_1 is op=0x02; op=0x8f; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  goto [target];
+}
+
+:JumpConstant "["^idx8_1^"]" is op=0x90; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  goto [target];
+}
+
+:Wide.JumpConstant "["^idx16_1^"]" is op=0x01; op=0x90; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  goto [target];
+}
+
+:ExtraWide.JumpConstant "["^idx32_1^"]" is op=0x02; op=0x90; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  goto [target];
+}
+
+:JumpIfNullConstant "["^idx8_1^"]" is op=0x91; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfNullConstant "["^idx16_1^"]" is op=0x01; op=0x91; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfNullConstant "["^idx32_1^"]" is op=0x02; op=0x91; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfNotNullConstant "["^idx8_1^"]" is op=0x92; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfNotNullConstant "["^idx16_1^"]" is op=0x01; op=0x92; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfNotNullConstant "["^idx32_1^"]" is op=0x02; op=0x92; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfUndefinedConstant "["^idx8_1^"]" is op=0x93; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfUndefinedConstant "["^idx16_1^"]" is op=0x01; op=0x93; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfUndefinedConstant "["^idx32_1^"]" is op=0x02; op=0x93; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfNotUndefinedConstant "["^idx8_1^"]" is op=0x94; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfNotUndefinedConstant "["^idx16_1^"]" is op=0x01; op=0x94; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfNotUndefinedConstant "["^idx32_1^"]" is op=0x02; op=0x94; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfUndefinedOrNullConstant "["^idx8_1^"]" is op=0x95; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfUndefinedOrNullConstant "["^idx16_1^"]" is op=0x01; op=0x95; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfUndefinedOrNullConstant "["^idx32_1^"]" is op=0x02; op=0x95; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfTrueConstant "["^idx8_1^"]" is op=0x96; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfTrueConstant "["^idx16_1^"]" is op=0x01; op=0x96; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfTrueConstant "["^idx32_1^"]" is op=0x02; op=0x96; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfFalseConstant "["^idx8_1^"]" is op=0x97; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfFalseConstant "["^idx16_1^"]" is op=0x01; op=0x97; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfFalseConstant "["^idx32_1^"]" is op=0x02; op=0x97; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfJSReceiverConstant "["^idx8_1^"]" is op=0x98; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfJSReceiverConstant "["^idx16_1^"]" is op=0x01; op=0x98; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfJSReceiverConstant "["^idx32_1^"]" is op=0x02; op=0x98; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfToBooleanTrueConstant "["^idx8_1^"]" is op=0x99; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfToBooleanTrueConstant "["^idx16_1^"]" is op=0x01; op=0x99; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfToBooleanTrueConstant "["^idx32_1^"]" is op=0x02; op=0x99; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfToBooleanFalseConstant "["^idx8_1^"]" is op=0x9a; idx8_1 {
+  local _idx:4 = zext(idx8_1:1);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfToBooleanFalseConstant "["^idx16_1^"]" is op=0x01; op=0x9a; idx16_1 {
+  local _idx:4 = zext(idx16_1:2);
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfToBooleanFalseConstant "["^idx32_1^"]" is op=0x02; op=0x9a; idx32_1 {
+  local _idx:4 = idx32_1;
+  local _off:4 = *[constpool]:4 (_idx * 4);
+  local target:4 = inst_next + _off;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfToBooleanTrue "#"^uimm8_1 is op=0x9b; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfToBooleanTrue "#"^uimm16_1 is op=0x01; op=0x9b; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfToBooleanTrue "#"^uimm32_1 is op=0x02; op=0x9b; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfToBooleanFalse "#"^uimm8_1 is op=0x9c; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfToBooleanFalse "#"^uimm16_1 is op=0x01; op=0x9c; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfToBooleanFalse "#"^uimm32_1 is op=0x02; op=0x9c; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfTrue "#"^uimm8_1 is op=0x9d; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfTrue "#"^uimm16_1 is op=0x01; op=0x9d; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfTrue "#"^uimm32_1 is op=0x02; op=0x9d; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfFalse "#"^uimm8_1 is op=0x9e; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfFalse "#"^uimm16_1 is op=0x01; op=0x9e; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfFalse "#"^uimm32_1 is op=0x02; op=0x9e; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfNull "#"^uimm8_1 is op=0x9f; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfNull "#"^uimm16_1 is op=0x01; op=0x9f; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfNull "#"^uimm32_1 is op=0x02; op=0x9f; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfNotNull "#"^uimm8_1 is op=0xa0; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfNotNull "#"^uimm16_1 is op=0x01; op=0xa0; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfNotNull "#"^uimm32_1 is op=0x02; op=0xa0; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfUndefined "#"^uimm8_1 is op=0xa1; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfUndefined "#"^uimm16_1 is op=0x01; op=0xa1; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfUndefined "#"^uimm32_1 is op=0x02; op=0xa1; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfNotUndefined "#"^uimm8_1 is op=0xa2; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfNotUndefined "#"^uimm16_1 is op=0x01; op=0xa2; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfNotUndefined "#"^uimm32_1 is op=0x02; op=0xa2; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfUndefinedOrNull "#"^uimm8_1 is op=0xa3; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfUndefinedOrNull "#"^uimm16_1 is op=0x01; op=0xa3; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfUndefinedOrNull "#"^uimm32_1 is op=0x02; op=0xa3; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc != 0) goto inst_next;
+  goto [target];
+}
+
+:JumpIfJSReceiver "#"^uimm8_1 is op=0xa4; uimm8_1 {
+  local _off:1 = uimm8_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:Wide.JumpIfJSReceiver "#"^uimm16_1 is op=0x01; op=0xa4; uimm16_1 {
+  local _off:2 = uimm16_1;
+  local target:4 = inst_next + zext(_off);
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:ExtraWide.JumpIfJSReceiver "#"^uimm32_1 is op=0x02; op=0xa4; uimm32_1 {
+  local _uimm32_1:4 = uimm32_1;
+  local target:4 = inst_next + _uimm32_1;
+  if (acc == 0) goto inst_next;
+  goto [target];
+}
+
+:SwitchOnSmiNoFeedback "["^idx8_1^"]", "#"^uimm8_2, "#"^imm8_3 is op=0xa5; idx8_1; uimm8_2; imm8_3 {
+  local _idx8_1:1 = idx8_1;
+  local _imm8_3:1 = imm8_3;
+  local _uimm8_2:1 = uimm8_2;
+  V8_SwitchOnSmi(_idx8_1, _uimm8_2, _imm8_3);
+}
+
+:Wide.SwitchOnSmiNoFeedback "["^idx16_1^"]", "#"^uimm16_2, "#"^imm16_3 is op=0x01; op=0xa5; idx16_1; uimm16_2; imm16_3 {
+  local _idx16_1:2 = idx16_1;
+  local _imm16_3:2 = imm16_3;
+  local _uimm16_2:2 = uimm16_2;
+  V8_SwitchOnSmi(_idx16_1, _uimm16_2, _imm16_3);
+}
+
+:ExtraWide.SwitchOnSmiNoFeedback "["^idx32_1^"]", "#"^uimm32_2, "#"^imm32_3 is op=0x02; op=0xa5; idx32_1; uimm32_2; imm32_3 {
+  local _idx32_1:4 = idx32_1;
+  local _imm32_3:4 = imm32_3;
+  local _uimm32_2:4 = uimm32_2;
+  V8_SwitchOnSmi(_idx32_1, _uimm32_2, _imm32_3);
+}
+
+:SwitchOnGeneratorState "r"^reg8_1, "["^idx8_2^"]", "#"^uimm8_3 is op=0xa6; reg8_1; idx8_2; uimm8_3 {
+  local _idx8_2:1 = idx8_2;
+  local _reg8_1:1 = reg8_1;
+  local _uimm8_3:1 = uimm8_3;
+  V8_SwitchOnSmi(_reg8_1, _idx8_2, _uimm8_3);
+}
+
+:Wide.SwitchOnGeneratorState "r"^reg16_1, "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0xa6; reg16_1; idx16_2; uimm16_3 {
+  local _idx16_2:2 = idx16_2;
+  local _reg16_1:2 = reg16_1;
+  local _uimm16_3:2 = uimm16_3;
+  V8_SwitchOnSmi(_reg16_1, _idx16_2, _uimm16_3);
+}
+
+:ExtraWide.SwitchOnGeneratorState "r"^reg32_1, "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0xa6; reg32_1; idx32_2; uimm32_3 {
+  local _idx32_2:4 = idx32_2;
+  local _reg32_1:4 = reg32_1;
+  local _uimm32_3:4 = uimm32_3;
+  V8_SwitchOnSmi(_reg32_1, _idx32_2, _uimm32_3);
+}
+
+:ForInEnumerate "r"^reg8_1 is op=0xa7; reg8_1 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_ForInEnumerate(_reg8_1);
+}
+
+:Wide.ForInEnumerate "r"^reg16_1 is op=0x01; op=0xa7; reg16_1 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_ForInEnumerate(_reg16_1);
+}
+
+:ExtraWide.ForInEnumerate "r"^reg32_1 is op=0x02; op=0xa7; reg32_1 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_ForInEnumerate(_reg32_1);
+}
+
+:ForInPrepare "["^idx8_2^"]" is op=0xa8; idx8_2 {
+  local _idx8_2:1 = idx8_2;
+  V8_ForInPrepare(_idx8_2);
+}
+
+:Wide.ForInPrepare "["^idx16_2^"]" is op=0x01; op=0xa8; idx16_2 {
+  local _idx16_2:2 = idx16_2;
+  V8_ForInPrepare(_idx16_2);
+}
+
+:ExtraWide.ForInPrepare "["^idx32_2^"]" is op=0x02; op=0xa8; idx32_2 {
+  local _idx32_2:4 = idx32_2;
+  V8_ForInPrepare(_idx32_2);
+}
+
+:ForInContinue "r"^reg8_1, "r"^reg8_2 is op=0xa9; reg8_1; reg8_2 {
+  local _tmp1:1 = reg8_1;
+  local _tmp2:1 = reg8_2;
+  local _r1:4 = zext(_tmp1);
+  local _r2:4 = zext(_tmp2);
+  local _cmp:1 = (_r1 s< _r2);
+  acc = zext(_cmp);
+}
+
+:Wide.ForInContinue "r"^reg16_1, "r"^reg16_2 is op=0x01; op=0xa9; reg16_1; reg16_2 {
+  local _tmp1:2 = reg16_1;
+  local _tmp2:2 = reg16_2;
+  local _r1:4 = zext(_tmp1);
+  local _r2:4 = zext(_tmp2);
+  local _cmp:1 = (_r1 s< _r2);
+  acc = zext(_cmp);
+}
+
+:ExtraWide.ForInContinue "r"^reg32_1, "r"^reg32_2 is op=0x02; op=0xa9; reg32_1; reg32_2 {
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _cmp:1 = (_reg32_1 s< _reg32_2);
+  acc = zext(_cmp);
+}
+
+:ForInNext "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "["^idx8_4^"]" is op=0xaa; reg8_1; reg8_2; reg8_3; idx8_4 {
+  local _idx8_4:1 = idx8_4;
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _reg8_3:1 = reg8_3;
+  acc = V8_ForInNext(_reg8_1, _reg8_2, _reg8_3, _idx8_4);
+}
+
+:Wide.ForInNext "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "["^idx16_4^"]" is op=0x01; op=0xaa; reg16_1; reg16_2; reg16_3; idx16_4 {
+  local _idx16_4:2 = idx16_4;
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _reg16_3:2 = reg16_3;
+  acc = V8_ForInNext(_reg16_1, _reg16_2, _reg16_3, _idx16_4);
+}
+
+:ExtraWide.ForInNext "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "["^idx32_4^"]" is op=0x02; op=0xaa; reg32_1; reg32_2; reg32_3; idx32_4 {
+  local _idx32_4:4 = idx32_4;
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _reg32_3:4 = reg32_3;
+  acc = V8_ForInNext(_reg32_1, _reg32_2, _reg32_3, _idx32_4);
+}
+
+:ForInStep "r"^reg8_1 is op=0xab; reg8_1 {
+  local _tmp:1 = reg8_1;
+  local _r:4 = zext(_tmp);
+  acc = _r + 1;
+}
+
+:Wide.ForInStep "r"^reg16_1 is op=0x01; op=0xab; reg16_1 {
+  local _tmp:2 = reg16_1;
+  local _r:4 = zext(_tmp);
+  acc = _r + 1;
+}
+
+:ExtraWide.ForInStep "r"^reg32_1 is op=0x02; op=0xab; reg32_1 {
+  local _reg32_1:4 = reg32_1;
+  acc = _reg32_1 + 1;
+}
+
+:SetPendingMessage is op=0xac {
+  V8_SetPendingMessage();
+}
+
+:Throw is op=0xad {
+  V8_Throw(acc);
+}
+
+:ReThrow is op=0xae {
+  V8_Throw(acc);
+}
+
+:Return is op=0xaf {
+  return [acc];
+}
+
+:ThrowReferenceErrorIfHole "["^idx8_1^"]" is op=0xb0; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  V8_ThrowReferenceError(_idx8_1);
+}
+
+:Wide.ThrowReferenceErrorIfHole "["^idx16_1^"]" is op=0x01; op=0xb0; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  V8_ThrowReferenceError(_idx16_1);
+}
+
+:ExtraWide.ThrowReferenceErrorIfHole "["^idx32_1^"]" is op=0x02; op=0xb0; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  V8_ThrowReferenceError(_idx32_1);
+}
+
+:ThrowSuperNotCalledIfHole is op=0xb1 {
+  V8_ThrowReferenceError(acc);
+}
+
+:ThrowSuperAlreadyCalledIfNotHole is op=0xb2 {
+  V8_ThrowReferenceError(acc);
+}
+
+:ThrowIfNotSuperConstructor "r"^reg8_1 is op=0xb3; reg8_1 {
+  local _reg8_1:1 = reg8_1;
+  V8_ThrowReferenceError(_reg8_1);
+}
+
+:Wide.ThrowIfNotSuperConstructor "r"^reg16_1 is op=0x01; op=0xb3; reg16_1 {
+  local _reg16_1:2 = reg16_1;
+  V8_ThrowReferenceError(_reg16_1);
+}
+
+:ExtraWide.ThrowIfNotSuperConstructor "r"^reg32_1 is op=0x02; op=0xb3; reg32_1 {
+  local _reg32_1:4 = reg32_1;
+  V8_ThrowReferenceError(_reg32_1);
+}
+
+:SwitchOnGeneratorState2 "r"^reg8_1, "["^idx8_2^"]", "#"^uimm8_3 is op=0xb4; reg8_1; idx8_2; uimm8_3 {
+  local _idx8_2:1 = idx8_2;
+  local _reg8_1:1 = reg8_1;
+  local _uimm8_3:1 = uimm8_3;
+  V8_SwitchOnSmi(_reg8_1, _idx8_2, _uimm8_3);
+}
+
+:Wide.SwitchOnGeneratorState2 "r"^reg16_1, "["^idx16_2^"]", "#"^uimm16_3 is op=0x01; op=0xb4; reg16_1; idx16_2; uimm16_3 {
+  local _idx16_2:2 = idx16_2;
+  local _reg16_1:2 = reg16_1;
+  local _uimm16_3:2 = uimm16_3;
+  V8_SwitchOnSmi(_reg16_1, _idx16_2, _uimm16_3);
+}
+
+:ExtraWide.SwitchOnGeneratorState2 "r"^reg32_1, "["^idx32_2^"]", "#"^uimm32_3 is op=0x02; op=0xb4; reg32_1; idx32_2; uimm32_3 {
+  local _idx32_2:4 = idx32_2;
+  local _reg32_1:4 = reg32_1;
+  local _uimm32_3:4 = uimm32_3;
+  V8_SwitchOnSmi(_reg32_1, _idx32_2, _uimm32_3);
+}
+
+:SuspendGenerator "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3 is op=0xb5; reg8_1; reg8_2; uimm8_3 {
+  local _reg8_1:1 = reg8_1;
+  local _reg8_2:1 = reg8_2;
+  local _uimm8_3:1 = uimm8_3;
+  V8_SuspendGenerator(_reg8_1, _reg8_2, _uimm8_3);
+}
+
+:Wide.SuspendGenerator "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3 is op=0x01; op=0xb5; reg16_1; reg16_2; uimm16_3 {
+  local _reg16_1:2 = reg16_1;
+  local _reg16_2:2 = reg16_2;
+  local _uimm16_3:2 = uimm16_3;
+  V8_SuspendGenerator(_reg16_1, _reg16_2, _uimm16_3);
+}
+
+:ExtraWide.SuspendGenerator "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3 is op=0x02; op=0xb5; reg32_1; reg32_2; uimm32_3 {
+  local _reg32_1:4 = reg32_1;
+  local _reg32_2:4 = reg32_2;
+  local _uimm32_3:4 = uimm32_3;
+  V8_SuspendGenerator(_reg32_1, _reg32_2, _uimm32_3);
+}
+
+:ResumeGenerator "r"^reg8_1, "r"^reg8_2, "#"^uimm8_3 is op=0xb6; reg8_1; reg8_2; uimm8_3 {
+  local _reg8_1:1 = reg8_1;
+  acc = V8_ResumeGenerator(_reg8_1);
+}
+
+:Wide.ResumeGenerator "r"^reg16_1, "r"^reg16_2, "#"^uimm16_3 is op=0x01; op=0xb6; reg16_1; reg16_2; uimm16_3 {
+  local _reg16_1:2 = reg16_1;
+  acc = V8_ResumeGenerator(_reg16_1);
+}
+
+:ExtraWide.ResumeGenerator "r"^reg32_1, "r"^reg32_2, "#"^uimm32_3 is op=0x02; op=0xb6; reg32_1; reg32_2; uimm32_3 {
+  local _reg32_1:4 = reg32_1;
+  acc = V8_ResumeGenerator(_reg32_1);
+}
+
+:GetIterator "r"^reg8_1, "["^idx8_2^"]", "["^idx8_3^"]" is op=0xb7; reg8_1; idx8_2; idx8_3 {
+  local _idx8_2:1 = idx8_2;
+  local _idx8_3:1 = idx8_3;
+  local _reg8_1:1 = reg8_1;
+  acc = V8_GetIterator(_reg8_1, _idx8_2, _idx8_3);
+}
+
+:Wide.GetIterator "r"^reg16_1, "["^idx16_2^"]", "["^idx16_3^"]" is op=0x01; op=0xb7; reg16_1; idx16_2; idx16_3 {
+  local _idx16_2:2 = idx16_2;
+  local _idx16_3:2 = idx16_3;
+  local _reg16_1:2 = reg16_1;
+  acc = V8_GetIterator(_reg16_1, _idx16_2, _idx16_3);
+}
+
+:ExtraWide.GetIterator "r"^reg32_1, "["^idx32_2^"]", "["^idx32_3^"]" is op=0x02; op=0xb7; reg32_1; idx32_2; idx32_3 {
+  local _idx32_2:4 = idx32_2;
+  local _idx32_3:4 = idx32_3;
+  local _reg32_1:4 = reg32_1;
+  acc = V8_GetIterator(_reg32_1, _idx32_2, _idx32_3);
+}
+
+:Debugger is op=0xb8 {
+  V8_Debugger();
+}
+
+:DebugBreak0 is op=0xb9 {
+  V8_Debugger();
+}
+
+:DebugBreak1 "r"^reg8_1 is op=0xba; reg8_1 {
+  V8_Debugger();
+}
+
+:Wide.DebugBreak1 "r"^reg16_1 is op=0x01; op=0xba; reg16_1 {
+  V8_Debugger();
+}
+
+:ExtraWide.DebugBreak1 "r"^reg32_1 is op=0x02; op=0xba; reg32_1 {
+  V8_Debugger();
+}
+
+:DebugBreak2 "r"^reg8_1, "r"^reg8_2 is op=0xbb; reg8_1; reg8_2 {
+  V8_Debugger();
+}
+
+:Wide.DebugBreak2 "r"^reg16_1, "r"^reg16_2 is op=0x01; op=0xbb; reg16_1; reg16_2 {
+  V8_Debugger();
+}
+
+:ExtraWide.DebugBreak2 "r"^reg32_1, "r"^reg32_2 is op=0x02; op=0xbb; reg32_1; reg32_2 {
+  V8_Debugger();
+}
+
+:DebugBreak3 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3 is op=0xbc; reg8_1; reg8_2; reg8_3 {
+  V8_Debugger();
+}
+
+:Wide.DebugBreak3 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3 is op=0x01; op=0xbc; reg16_1; reg16_2; reg16_3 {
+  V8_Debugger();
+}
+
+:ExtraWide.DebugBreak3 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3 is op=0x02; op=0xbc; reg32_1; reg32_2; reg32_3 {
+  V8_Debugger();
+}
+
+:DebugBreak4 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "r"^reg8_4 is op=0xbd; reg8_1; reg8_2; reg8_3; reg8_4 {
+  V8_Debugger();
+}
+
+:Wide.DebugBreak4 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "r"^reg16_4 is op=0x01; op=0xbd; reg16_1; reg16_2; reg16_3; reg16_4 {
+  V8_Debugger();
+}
+
+:ExtraWide.DebugBreak4 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "r"^reg32_4 is op=0x02; op=0xbd; reg32_1; reg32_2; reg32_3; reg32_4 {
+  V8_Debugger();
+}
+
+:DebugBreak5 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "r"^reg8_4, "r"^reg8_5 is op=0xbe; reg8_1; reg8_2; reg8_3; reg8_4; reg8_5 {
+  V8_Debugger();
+}
+
+:Wide.DebugBreak5 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "r"^reg16_4, "r"^reg16_5 is op=0x01; op=0xbe; reg16_1; reg16_2; reg16_3; reg16_4; reg16_5 {
+  V8_Debugger();
+}
+
+:ExtraWide.DebugBreak5 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "r"^reg32_4, "r"^reg32_5 is op=0x02; op=0xbe; reg32_1; reg32_2; reg32_3; reg32_4; reg32_5 {
+  V8_Debugger();
+}
+
+:DebugBreak6 "r"^reg8_1, "r"^reg8_2, "r"^reg8_3, "r"^reg8_4, "r"^reg8_5, "r"^reg8_6 is op=0xbf; reg8_1; reg8_2; reg8_3; reg8_4; reg8_5; reg8_6 {
+  V8_Debugger();
+}
+
+:Wide.DebugBreak6 "r"^reg16_1, "r"^reg16_2, "r"^reg16_3, "r"^reg16_4, "r"^reg16_5, "r"^reg16_6 is op=0x01; op=0xbf; reg16_1; reg16_2; reg16_3; reg16_4; reg16_5; reg16_6 {
+  V8_Debugger();
+}
+
+:ExtraWide.DebugBreak6 "r"^reg32_1, "r"^reg32_2, "r"^reg32_3, "r"^reg32_4, "r"^reg32_5, "r"^reg32_6 is op=0x02; op=0xbf; reg32_1; reg32_2; reg32_3; reg32_4; reg32_5; reg32_6 {
+  V8_Debugger();
+}
+
+:IncBlockCounter "["^idx8_1^"]" is op=0xc0; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  V8_IncBlockCounter(_idx8_1);
+}
+
+:Wide.IncBlockCounter "["^idx16_1^"]" is op=0x01; op=0xc0; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  V8_IncBlockCounter(_idx16_1);
+}
+
+:ExtraWide.IncBlockCounter "["^idx32_1^"]" is op=0x02; op=0xc0; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  V8_IncBlockCounter(_idx32_1);
+}
+
+:Abort "["^idx8_1^"]" is op=0xc1; idx8_1 {
+  local _idx8_1:1 = idx8_1;
+  V8_Abort(_idx8_1);
+}
+
+:Wide.Abort "["^idx16_1^"]" is op=0x01; op=0xc1; idx16_1 {
+  local _idx16_1:2 = idx16_1;
+  V8_Abort(_idx16_1);
+}
+
+:ExtraWide.Abort "["^idx32_1^"]" is op=0x02; op=0xc1; idx32_1 {
+  local _idx32_1:4 = idx32_1;
+  V8_Abort(_idx32_1);
+}
+
+:Illegal is op=0x00 {
+  V8_Illegal();
+}
+
