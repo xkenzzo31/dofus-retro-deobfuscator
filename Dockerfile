@@ -19,8 +19,13 @@ ENV DEPOT_TOOLS_UPDATE=0
 
 RUN apt-get update && apt-get install -y \
     git curl unzip python3 python3-pip pkg-config \
-    build-essential clang lld ninja-build \
+    build-essential lld ninja-build software-properties-common \
     && ln -sf /usr/bin/python3 /usr/bin/python \
+    && curl -sL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
+    && add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" \
+    && apt-get update && apt-get install -y clang-12 lld-12 \
+    && ln -sf /usr/bin/clang-12 /usr/bin/clang \
+    && ln -sf /usr/bin/clang++-12 /usr/bin/clang++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Install depot_tools (provides gn)
