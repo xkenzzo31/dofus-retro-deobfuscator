@@ -26,6 +26,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get update && apt-get install -y clang-12 lld-12 \
     && ln -sf /usr/bin/clang-12 /usr/bin/clang \
     && ln -sf /usr/bin/clang++-12 /usr/bin/clang++ \
+    && ln -sf /usr/bin/llvm-ar-12 /usr/bin/llvm-ar \
+    && ln -sf /usr/bin/llvm-nm-12 /usr/bin/llvm-nm \
+    && ln -sf /usr/bin/llvm-readelf-12 /usr/bin/llvm-readelf \
     && rm -rf /var/lib/apt/lists/*
 
 # Install depot_tools (provides gn)
