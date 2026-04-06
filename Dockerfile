@@ -23,15 +23,20 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git /depot_tools
 
 # Fetch V8 8.7.220.31 (matches Electron 11.x / Dofus Retro)
-# --jobs 4 prevents HTTP 429 rate-limiting from chromium.googlesource.com
+# --jobs 1 fully serializes git fetches to avoid HTTP 429 from googlesource.com
+ENV DEPOT_TOOLS_UPDATE=0
 WORKDIR /v8_build
 RUN echo 'solutions = [{"name": "v8", "url": "https://chromium.googlesource.com/v8/v8.git", "deps_file": "DEPS", "managed": False}]' > .gclient \
-    && for attempt in 1 2 3; do \
-         echo "=== gclient sync attempt $attempt/3 ===" \
-         && gclient sync --no-history --shallow --revision v8@8.7.220.31 -D --jobs 4 \
-         && break \
-         || if [ "$attempt" -eq 3 ]; then exit 1; fi; \
-         echo "Retrying in 30s..." && sleep 30; \
+    && git config --global http.postBuffer 524288000 \
+    && for attempt in 1 2 3 4 5; do \
+         echo "=== gclient sync attempt $attempt/5 ===" ; \
+         if gclient sync --no-history --shallow --revision v8@8.7.220.31 -D --jobs 1; then \
+           echo "=== sync succeeded ===" ; break ; \
+         fi ; \
+         if [ "$attempt" -eq 5 ]; then echo "=== all attempts failed ===" ; exit 1; fi ; \
+         echo "=== cleaning state and waiting $(( attempt * 30 ))s ===" ; \
+         rm -rf /v8_build/v8 /v8_build/_bad_scm ; \
+         sleep $(( attempt * 30 )) ; \
        done
 
 # Apply patches to bypass version/checksum checks and enable bytecode printing

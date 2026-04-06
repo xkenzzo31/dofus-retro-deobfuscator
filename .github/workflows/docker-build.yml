@@ -1,22 +1,16 @@
-name: Build & Publish Docker Image
+name: Deobfuscate & Release
 
 on:
   push:
-    branches: [main]
     tags: ['v*']
-  pull_request:
-    branches: [main]
-
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  workflow_dispatch:
 
 jobs:
-  build:
+  deobfuscate:
     runs-on: self-hosted
+
     permissions:
-      contents: read
-      packages: write
+      contents: write
 
     steps:
       - name: Checkout
@@ -26,44 +20,42 @@ jobs:
         run: |
           docker info || (echo "Docker not running, attempting restart..." && sudo service docker start && sleep 5 && docker info)
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          driver-opts: |
-            image=moby/buildkit:latest
+      - name: Build Docker image
+        run: docker build --platform linux/amd64 -t dofus-deob .
 
-      - name: Log in to GitHub Container Registry
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=sha,prefix=
-            type=raw,value=latest,enable={{is_default_branch}}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-
-      - name: Move cache
+      - name: Run deobfuscation pipeline
         run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache || true
+          mkdir -p output
+          docker run --rm --platform linux/amd64 \
+            -v "$(pwd)/output:/output" \
+            dofus-deob
+
+      - name: Find output zip
+        id: zip
+        run: |
+          ZIP_FILE=$(ls output/dofus-retro_*.zip 2>/dev/null | head -1)
+          if [ -z "$ZIP_FILE" ]; then
+            echo "No zip found, creating one..."
+            cd output && zip -r ../dofus-retro-deobfuscated.zip . -x "*.DS_Store" "raw/main.jsc"
+            cd ..
+            ZIP_FILE="dofus-retro-deobfuscated.zip"
+          fi
+          echo "zip_path=$ZIP_FILE" >> "$GITHUB_OUTPUT"
+          echo "zip_name=$(basename "$ZIP_FILE")" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.zip.outputs.zip_path }}
+          generate_release_notes: true
+          name: "Dofus Retro Deobfuscated — ${{ github.ref_name }}"
+          body: |
+            Automated deobfuscation of the Dofus Retro client.
+
+            **Contents:**
+            - `jsc_decompiled/v2/` — Decompiled JavaScript (raw, valid, webcrack, readable)
+            - `resolved/` — Fully resolved JS split by module (shield_crypto, network, auth, electron, zaap, game...)
+            - `webcrack_d1el/` — Deobfuscated D1ElectronLauncher.js
+            - `report.json` — Resolution statistics (12,816+ wrapper calls resolved)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
