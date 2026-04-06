@@ -86,9 +86,19 @@ RUN gradle buildExtension \
 # ── Stage 3: Runtime ───────────────────────────────────────────────────────
 FROM eclipse-temurin:21-jre-jammy
 
-RUN apt-get update && apt-get install -y \
-    python3 curl zip nodejs npm \
-    && npm install -g webcrack@2 2>/dev/null \
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install Node.js 18 LTS via NodeSource + Python3 + tools
+RUN apt-get update \
+    && apt-get install -y curl python3 zip ca-certificates gnupg \
+    && mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+       | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" \
+       > /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update \
+    && apt-get install -y nodejs \
+    && npm install -g webcrack@2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy v8dasm binary from builder
