@@ -8,7 +8,7 @@ on:
 jobs:
   # ── Job 1: Build v8dasm on GitHub-hosted runner (clean IPs, no 429) ──
   build-v8dasm:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 120
 
     steps:
