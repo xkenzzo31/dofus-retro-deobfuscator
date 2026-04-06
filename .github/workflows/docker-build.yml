@@ -14,22 +14,56 @@ env:
 jobs:
   build:
     runs-on: self-hosted
-    timeout-minutes: 60
     permissions:
       contents: read
       packages: write
-
-    defaults:
-      run:
-        shell: cmd
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build image
-        shell: cmd
-        run: docker build --platform linux/amd64 --cpu-quota=600000 --memory=8g -t ghcr.io/%IMAGE_NAME%:latest .
+      - name: Ensure Docker is running
+        run: |
+          docker info || (echo "Docker not running, attempting restart..." && sudo service docker start && sleep 5 && docker info)
 
-      # Push is done manually via SSH due to runner network limitations
-      # ssh turbo@192.168.68.102 "docker push ghcr.io/xkenzzo31/dofus-retro-deobfuscator:latest"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            image=moby/buildkit:latest
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache || true
