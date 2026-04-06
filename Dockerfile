@@ -40,8 +40,7 @@ RUN python3 /tmp/gclient_spec.py > .gclient \
 WORKDIR /v8_build/v8
 COPY v8dasm/patch_v8.py /tmp/patch_v8.py
 RUN python3 /tmp/patch_v8.py \
-    && sed -i 's/exec_script_whitelist/exec_script_allowlist/g' .gn \
-    && sed -i 's/exec_script_whitelist/exec_script_allowlist/g' build/dotfile_settings.gni 2>/dev/null || true
+    && sed -i '/exec_script_whitelist/,/\]/d' .gn
 
 # Configure and build V8 as a static monolith (no ICU, no custom libc++)
 RUN mkdir -p out/Default \
