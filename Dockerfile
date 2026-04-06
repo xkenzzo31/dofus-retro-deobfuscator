@@ -41,6 +41,13 @@ RUN python3 /tmp/clone_deps.py
 
 # Apply patches to bypass version/checksum checks and enable bytecode printing
 COPY v8dasm/patch_v8.py /tmp/patch_v8.py
+# Download gn binary (normally fetched by gclient hooks via CIPD)
+RUN mkdir -p buildtools/linux64 \
+    && curl -sL "https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-amd64/+/latest" -o /tmp/gn.zip \
+    && unzip -o /tmp/gn.zip -d buildtools/linux64/ \
+    && chmod +x buildtools/linux64/gn \
+    && rm /tmp/gn.zip
+
 RUN python3 /tmp/patch_v8.py \
     && sed -i '/exec_script_whitelist/,/\]/d' .gn
 
