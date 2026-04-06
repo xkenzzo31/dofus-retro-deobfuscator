@@ -4,10 +4,8 @@
 # Stage 1 (v8-builder): Compiles V8 8.7.220.31 with bytecode disassembly patches
 # Stage 2 (runtime):    Node.js + Python3 runtime with the full deobfuscation pipeline
 #
-# ZERO requests to chromium.googlesource.com:
-#   - V8 source from github.com/v8/v8
-#   - Essential deps from GitHub mirrors (gsource-mirror, QPDFium)
-#   - All unnecessary deps skipped via custom_deps
+# Manually clones V8 + deps from GitHub mirrors at exact pinned commits.
+# ZERO requests to chromium.googlesource.com (except depot_tools).
 #
 # Author: Luska
 # ============================================================================
@@ -25,19 +23,23 @@ RUN apt-get update && apt-get install -y \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Chromium depot_tools (provides gclient, gn)
-RUN git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git /depot_tools
-
-# Generate .gclient with GitHub mirrors and skipped deps
-WORKDIR /v8_build
-COPY gclient_spec.py /tmp/gclient_spec.py
-RUN python3 /tmp/gclient_spec.py > .gclient \
-    && cat .gclient \
-    && gclient sync --revision v8@8.7.220.31 -D --nohooks --jobs 4 \
+# Install depot_tools (provides gn)
+RUN git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git /depot_tools \
     && bash /depot_tools/ensure_bootstrap
 
-# Apply patches to bypass version/checksum checks and enable bytecode printing
+# Clone V8 8.7.220.31 from GitHub mirror
+WORKDIR /v8_build
+RUN git init v8 && cd v8 \
+    && git remote add origin https://github.com/v8/v8.git \
+    && git fetch --depth=1 origin 8.7.220.31 \
+    && git checkout FETCH_HEAD
+
+# Clone essential deps at exact pinned commits from GitHub mirrors
 WORKDIR /v8_build/v8
+COPY clone_deps.py /tmp/clone_deps.py
+RUN python3 /tmp/clone_deps.py
+
+# Apply patches to bypass version/checksum checks and enable bytecode printing
 COPY v8dasm/patch_v8.py /tmp/patch_v8.py
 RUN python3 /tmp/patch_v8.py \
     && sed -i '/exec_script_whitelist/,/\]/d' .gn
