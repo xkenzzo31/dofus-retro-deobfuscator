@@ -39,7 +39,9 @@ RUN python3 /tmp/gclient_spec.py > .gclient \
 # Apply patches to bypass version/checksum checks and enable bytecode printing
 WORKDIR /v8_build/v8
 COPY v8dasm/patch_v8.py /tmp/patch_v8.py
-RUN python3 /tmp/patch_v8.py
+RUN python3 /tmp/patch_v8.py \
+    && sed -i 's/exec_script_whitelist/exec_script_allowlist/g' .gn \
+    && sed -i 's/exec_script_whitelist/exec_script_allowlist/g' build/dotfile_settings.gni 2>/dev/null || true
 
 # Configure and build V8 as a static monolith (no ICU, no custom libc++)
 RUN mkdir -p out/Default \
