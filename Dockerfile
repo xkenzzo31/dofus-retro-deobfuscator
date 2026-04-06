@@ -34,7 +34,7 @@ COPY gclient_spec.py /tmp/gclient_spec.py
 RUN python3 /tmp/gclient_spec.py > .gclient \
     && cat .gclient \
     && gclient sync --no-history --shallow --revision v8@8.7.220.31 -D --nohooks --jobs 4 \
-    && python3 /depot_tools/ensure_bootstrap
+    && bash /depot_tools/ensure_bootstrap
 
 # Apply patches to bypass version/checksum checks and enable bytecode printing
 WORKDIR /v8_build/v8
