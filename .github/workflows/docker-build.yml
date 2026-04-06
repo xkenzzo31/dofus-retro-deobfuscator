@@ -5,6 +5,10 @@ on:
     tags: ['v*']
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: cmd
+
 jobs:
   deobfuscate:
     runs-on: self-hosted
@@ -17,31 +21,29 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Ensure Docker is running
-        run: |
-          docker info || (echo "Docker not running, attempting restart..." && sudo service docker start && sleep 5 && docker info)
+        run: docker info
 
       - name: Build Docker image
         run: docker build --platform linux/amd64 -t dofus-deob .
 
       - name: Run deobfuscation pipeline
         run: |
-          mkdir -p output
-          docker run --rm --platform linux/amd64 \
-            -v "$(pwd)/output:/output" \
-            dofus-deob
+          if not exist output mkdir output
+          docker run --rm --platform linux/amd64 -v "%cd%\output:/output" dofus-deob
 
       - name: Find output zip
         id: zip
+        shell: powershell
         run: |
-          ZIP_FILE=$(ls output/dofus-retro_*.zip 2>/dev/null | head -1)
-          if [ -z "$ZIP_FILE" ]; then
-            echo "No zip found, creating one..."
-            cd output && zip -r ../dofus-retro-deobfuscated.zip . -x "*.DS_Store" "raw/main.jsc"
-            cd ..
-            ZIP_FILE="dofus-retro-deobfuscated.zip"
-          fi
-          echo "zip_path=$ZIP_FILE" >> "$GITHUB_OUTPUT"
-          echo "zip_name=$(basename "$ZIP_FILE")" >> "$GITHUB_OUTPUT"
+          $zip = Get-ChildItem -Path output -Filter "dofus-retro_*.zip" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($zip) {
+            echo "zip_path=$($zip.FullName)" >> $env:GITHUB_OUTPUT
+            echo "zip_name=$($zip.Name)" >> $env:GITHUB_OUTPUT
+          } else {
+            Compress-Archive -Path output\* -DestinationPath dofus-retro-deobfuscated.zip
+            echo "zip_path=${{ github.workspace }}\dofus-retro-deobfuscated.zip" >> $env:GITHUB_OUTPUT
+            echo "zip_name=dofus-retro-deobfuscated.zip" >> $env:GITHUB_OUTPUT
+          }
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
