@@ -1,0 +1,3317 @@
+{
+  "description": "Handler tables (try/catch) parsed from ignition_disasm.txt",
+  "totalFunctions": 8611,
+  "functionsWithHandlers": 218,
+  "totalHandlerEntries": 317,
+  "handlers": {
+    "2": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 74,
+          "tryEnd": 657,
+          "handlerOffset": 659,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "49": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 65,
+          "tryEnd": 410,
+          "handlerOffset": 412,
+          "prediction": 1,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "86": {
+      "name": "_0x5d6aaa",
+      "entries": [
+        {
+          "tryStart": 59,
+          "tryEnd": 10051,
+          "handlerOffset": 10051,
+          "prediction": 4,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "103": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 59,
+          "tryEnd": 820,
+          "handlerOffset": 820,
+          "prediction": 4,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "115": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 53,
+          "tryEnd": 990,
+          "handlerOffset": 990,
+          "prediction": 4,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "120": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 65,
+          "tryEnd": 2704,
+          "handlerOffset": 2704,
+          "prediction": 4,
+          "contextRegister": 16
+        }
+      ]
+    },
+    "126": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 47,
+          "tryEnd": 546,
+          "handlerOffset": 546,
+          "prediction": 4,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "187": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1721,
+          "tryEnd": 1907,
+          "handlerOffset": 1915,
+          "prediction": 0,
+          "contextRegister": 16
+        },
+        {
+          "tryStart": 1931,
+          "tryEnd": 1952,
+          "handlerOffset": 1954,
+          "prediction": 0,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "194": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 193,
+          "tryEnd": 1910,
+          "handlerOffset": 1912,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "200": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 487,
+          "tryEnd": 601,
+          "handlerOffset": 603,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "258": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 17367,
+          "tryEnd": 21528,
+          "handlerOffset": 21532,
+          "prediction": 1,
+          "contextRegister": 48
+        }
+      ]
+    },
+    "269": {
+      "name": "5316",
+      "entries": [
+        {
+          "tryStart": 8150,
+          "tryEnd": 8847,
+          "handlerOffset": 8851,
+          "prediction": 1,
+          "contextRegister": 20
+        }
+      ]
+    },
+    "325": {
+      "name": "click",
+      "entries": [
+        {
+          "tryStart": 317,
+          "tryEnd": 975,
+          "handlerOffset": 977,
+          "prediction": 1,
+          "contextRegister": 3
+        }
+      ]
+    },
+    "354": {
+      "name": "_0x4427ee",
+      "entries": [
+        {
+          "tryStart": 66,
+          "tryEnd": 11141,
+          "handlerOffset": 11141,
+          "prediction": 4,
+          "contextRegister": 21
+        },
+        {
+          "tryStart": 756,
+          "tryEnd": 1712,
+          "handlerOffset": 1714,
+          "prediction": 1,
+          "contextRegister": 22
+        },
+        {
+          "tryStart": 2964,
+          "tryEnd": 8412,
+          "handlerOffset": 8422,
+          "prediction": 0,
+          "contextRegister": 27
+        },
+        {
+          "tryStart": 4609,
+          "tryEnd": 5642,
+          "handlerOffset": 5644,
+          "prediction": 1,
+          "contextRegister": 31
+        },
+        {
+          "tryStart": 5772,
+          "tryEnd": 6604,
+          "handlerOffset": 6606,
+          "prediction": 1,
+          "contextRegister": 31
+        },
+        {
+          "tryStart": 6624,
+          "tryEnd": 8046,
+          "handlerOffset": 8050,
+          "prediction": 1,
+          "contextRegister": 31
+        },
+        {
+          "tryStart": 8440,
+          "tryEnd": 8511,
+          "handlerOffset": 8515,
+          "prediction": 0,
+          "contextRegister": 31
+        }
+      ]
+    },
+    "381": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 66,
+          "tryEnd": 6548,
+          "handlerOffset": 6548,
+          "prediction": 4,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 2237,
+          "tryEnd": 5453,
+          "handlerOffset": 5455,
+          "prediction": 1,
+          "contextRegister": 19
+        }
+      ]
+    },
+    "397": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 63,
+          "tryEnd": 10843,
+          "handlerOffset": 10843,
+          "prediction": 4,
+          "contextRegister": 16
+        },
+        {
+          "tryStart": 1494,
+          "tryEnd": 2360,
+          "handlerOffset": 2362,
+          "prediction": 1,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 4970,
+          "tryEnd": 6042,
+          "handlerOffset": 6050,
+          "prediction": 0,
+          "contextRegister": 22
+        },
+        {
+          "tryStart": 6066,
+          "tryEnd": 6131,
+          "handlerOffset": 6133,
+          "prediction": 0,
+          "contextRegister": 26
+        }
+      ]
+    },
+    "409": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 72,
+          "tryEnd": 4215,
+          "handlerOffset": 4215,
+          "prediction": 4,
+          "contextRegister": 8
+        },
+        {
+          "tryStart": 2601,
+          "tryEnd": 3177,
+          "handlerOffset": 3179,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "428": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 75,
+          "tryEnd": 6261,
+          "handlerOffset": 6261,
+          "prediction": 4,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 783,
+          "tryEnd": 4650,
+          "handlerOffset": 4652,
+          "prediction": 1,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "434": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 69,
+          "tryEnd": 10056,
+          "handlerOffset": 10056,
+          "prediction": 4,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "458": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 84,
+          "tryEnd": 4440,
+          "handlerOffset": 4440,
+          "prediction": 4,
+          "contextRegister": 11
+        },
+        {
+          "tryStart": 483,
+          "tryEnd": 3290,
+          "handlerOffset": 3292,
+          "prediction": 1,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "597": {
+      "name": "_doFinalize",
+      "entries": [
+        {
+          "tryStart": 222,
+          "tryEnd": 716,
+          "handlerOffset": 718,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "715": {
+      "name": "encrypt",
+      "entries": [
+        {
+          "tryStart": 1481,
+          "tryEnd": 3788,
+          "handlerOffset": 3790,
+          "prediction": 1,
+          "contextRegister": 11
+        }
+      ]
+    },
+    "768": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2122,
+          "tryEnd": 5898,
+          "handlerOffset": 5900,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "774": {
+      "name": "_0xe6ccdf",
+      "entries": [
+        {
+          "tryStart": 1072,
+          "tryEnd": 1499,
+          "handlerOffset": 1501,
+          "prediction": 1,
+          "contextRegister": 10
+        },
+        {
+          "tryStart": 1688,
+          "tryEnd": 2259,
+          "handlerOffset": 2261,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "904": {
+      "name": "stringify",
+      "entries": [
+        {
+          "tryStart": 192,
+          "tryEnd": 1188,
+          "handlerOffset": 1190,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "1019": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 62,
+          "tryEnd": 1681,
+          "handlerOffset": 1681,
+          "prediction": 4,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "1026": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 38,
+          "tryEnd": 349,
+          "handlerOffset": 349,
+          "prediction": 4,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "1174": {
+      "name": "init",
+      "entries": [
+        {
+          "tryStart": 1792,
+          "tryEnd": 1900,
+          "handlerOffset": 1902,
+          "prediction": 1,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "1346": {
+      "name": "_0x4ba124",
+      "entries": [
+        {
+          "tryStart": 956,
+          "tryEnd": 1734,
+          "handlerOffset": 1736,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "1527": {
+      "name": "compute",
+      "entries": [
+        {
+          "tryStart": 687,
+          "tryEnd": 1958,
+          "handlerOffset": 1958,
+          "prediction": 1,
+          "contextRegister": 46
+        }
+      ]
+    },
+    "1679": {
+      "name": "_0x2be2d0",
+      "entries": [
+        {
+          "tryStart": 150,
+          "tryEnd": 995,
+          "handlerOffset": 997,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "1955": {
+      "name": "_doReset",
+      "entries": [
+        {
+          "tryStart": 411,
+          "tryEnd": 815,
+          "handlerOffset": 815,
+          "prediction": 1,
+          "contextRegister": 20
+        }
+      ]
+    },
+    "2085": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1612,
+          "tryEnd": 2015,
+          "handlerOffset": 2017,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "2102": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 421,
+          "tryEnd": 591,
+          "handlerOffset": 599,
+          "prediction": 0,
+          "contextRegister": 11
+        },
+        {
+          "tryStart": 615,
+          "tryEnd": 636,
+          "handlerOffset": 638,
+          "prediction": 0,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "2114": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 452,
+          "tryEnd": 2123,
+          "handlerOffset": 2123,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "2145": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 169,
+          "tryEnd": 4624,
+          "handlerOffset": 4626,
+          "prediction": 1,
+          "contextRegister": 20
+        }
+      ]
+    },
+    "2176": {
+      "name": "2282",
+      "entries": [
+        {
+          "tryStart": 1035,
+          "tryEnd": 2515,
+          "handlerOffset": 2517,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "2202": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 10987,
+          "tryEnd": 16012,
+          "handlerOffset": 16016,
+          "prediction": 1,
+          "contextRegister": 16
+        },
+        {
+          "tryStart": 15187,
+          "tryEnd": 15903,
+          "handlerOffset": 15903,
+          "prediction": 1,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "2215": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 11475,
+          "tryEnd": 12699,
+          "handlerOffset": 12703,
+          "prediction": 1,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "2221": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2350,
+          "tryEnd": 2717,
+          "handlerOffset": 2725,
+          "prediction": 0,
+          "contextRegister": 19
+        },
+        {
+          "tryStart": 2741,
+          "tryEnd": 2770,
+          "handlerOffset": 2772,
+          "prediction": 0,
+          "contextRegister": 21
+        }
+      ]
+    },
+    "2291": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1667,
+          "tryEnd": 3132,
+          "handlerOffset": 3134,
+          "prediction": 1,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "2316": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 377,
+          "tryEnd": 11748,
+          "handlerOffset": 11752,
+          "prediction": 1,
+          "contextRegister": 3
+        }
+      ]
+    },
+    "2429": {
+      "name": "_0x8ecd83",
+      "entries": [
+        {
+          "tryStart": 2971,
+          "tryEnd": 3583,
+          "handlerOffset": 3583,
+          "prediction": 1,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "2447": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 4379,
+          "tryEnd": 5907,
+          "handlerOffset": 5911,
+          "prediction": 1,
+          "contextRegister": 9
+        },
+        {
+          "tryStart": 6195,
+          "tryEnd": 7657,
+          "handlerOffset": 7661,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "2514": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 795,
+          "tryEnd": 2271,
+          "handlerOffset": 2273,
+          "prediction": 1,
+          "contextRegister": 21
+        },
+        {
+          "tryStart": 4574,
+          "tryEnd": 7240,
+          "handlerOffset": 7244,
+          "prediction": 1,
+          "contextRegister": 21
+        }
+      ]
+    },
+    "2606": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 692,
+          "tryEnd": 1476,
+          "handlerOffset": 1476,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "2612": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 6267,
+          "tryEnd": 12393,
+          "handlerOffset": 12397,
+          "prediction": 1,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "2733": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 850,
+          "tryEnd": 6139,
+          "handlerOffset": 6141,
+          "prediction": 1,
+          "contextRegister": 32
+        },
+        {
+          "tryStart": 8442,
+          "tryEnd": 11604,
+          "handlerOffset": 11608,
+          "prediction": 1,
+          "contextRegister": 32
+        },
+        {
+          "tryStart": 8626,
+          "tryEnd": 11568,
+          "handlerOffset": 11572,
+          "prediction": 1,
+          "contextRegister": 33
+        },
+        {
+          "tryStart": 14109,
+          "tryEnd": 14527,
+          "handlerOffset": 14531,
+          "prediction": 1,
+          "contextRegister": 32
+        },
+        {
+          "tryStart": 22409,
+          "tryEnd": 23716,
+          "handlerOffset": 23720,
+          "prediction": 1,
+          "contextRegister": 32
+        }
+      ]
+    },
+    "2961": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 256,
+          "tryEnd": 7974,
+          "handlerOffset": 7978,
+          "prediction": 1,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "2985": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 667,
+          "tryEnd": 5392,
+          "handlerOffset": 5394,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "3043": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 5572,
+          "tryEnd": 5838,
+          "handlerOffset": 5846,
+          "prediction": 0,
+          "contextRegister": 22
+        },
+        {
+          "tryStart": 5862,
+          "tryEnd": 5891,
+          "handlerOffset": 5893,
+          "prediction": 0,
+          "contextRegister": 24
+        }
+      ]
+    },
+    "3049": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 282,
+          "tryEnd": 404,
+          "handlerOffset": 412,
+          "prediction": 0,
+          "contextRegister": 11
+        },
+        {
+          "tryStart": 428,
+          "tryEnd": 449,
+          "handlerOffset": 451,
+          "prediction": 0,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "3067": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 360,
+          "tryEnd": 444,
+          "handlerOffset": 452,
+          "prediction": 0,
+          "contextRegister": 12
+        },
+        {
+          "tryStart": 468,
+          "tryEnd": 489,
+          "handlerOffset": 491,
+          "prediction": 0,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "3083": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 178,
+          "tryEnd": 619,
+          "handlerOffset": 621,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "3089": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 265,
+          "tryEnd": 925,
+          "handlerOffset": 927,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "3095": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 227,
+          "tryEnd": 4932,
+          "handlerOffset": 4934,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "3158": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 450,
+          "tryEnd": 4818,
+          "handlerOffset": 4820,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "3241": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 214,
+          "tryEnd": 1135,
+          "handlerOffset": 1137,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "3270": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 189,
+          "tryEnd": 2539,
+          "handlerOffset": 2541,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "3298": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 173,
+          "tryEnd": 1088,
+          "handlerOffset": 1090,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "3366": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 259,
+          "tryEnd": 1596,
+          "handlerOffset": 1598,
+          "prediction": 1,
+          "contextRegister": 7
+        },
+        {
+          "tryStart": 2128,
+          "tryEnd": 2236,
+          "handlerOffset": 2244,
+          "prediction": 0,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 2260,
+          "tryEnd": 2289,
+          "handlerOffset": 2291,
+          "prediction": 0,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "3383": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 399,
+          "tryEnd": 789,
+          "handlerOffset": 791,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "3409": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1290,
+          "tryEnd": 2536,
+          "handlerOffset": 2538,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "3434": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 430,
+          "tryEnd": 2109,
+          "handlerOffset": 2111,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "3456": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 281,
+          "tryEnd": 1361,
+          "handlerOffset": 1363,
+          "prediction": 1,
+          "contextRegister": 11
+        }
+      ]
+    },
+    "3477": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 175,
+          "tryEnd": 348,
+          "handlerOffset": 356,
+          "prediction": 0,
+          "contextRegister": 13
+        },
+        {
+          "tryStart": 372,
+          "tryEnd": 393,
+          "handlerOffset": 395,
+          "prediction": 0,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 844,
+          "tryEnd": 1816,
+          "handlerOffset": 1818,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "3484": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 33,
+          "tryEnd": 3214,
+          "handlerOffset": 3216,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "3492": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 8392,
+          "tryEnd": 9669,
+          "handlerOffset": 9673,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "3520": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 622,
+          "tryEnd": 1002,
+          "handlerOffset": 1004,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "3525": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1194,
+          "tryEnd": 2474,
+          "handlerOffset": 2476,
+          "prediction": 1,
+          "contextRegister": 3
+        }
+      ]
+    },
+    "3554": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 215,
+          "tryEnd": 1775,
+          "handlerOffset": 1777,
+          "prediction": 1,
+          "contextRegister": 13
+        },
+        {
+          "tryStart": 2231,
+          "tryEnd": 4982,
+          "handlerOffset": 4984,
+          "prediction": 1,
+          "contextRegister": 13
+        },
+        {
+          "tryStart": 5234,
+          "tryEnd": 6870,
+          "handlerOffset": 6870,
+          "prediction": 1,
+          "contextRegister": 16
+        }
+      ]
+    },
+    "3572": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 988,
+          "tryEnd": 1789,
+          "handlerOffset": 1791,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "3595": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 464,
+          "tryEnd": 2269,
+          "handlerOffset": 2271,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "3619": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 599,
+          "tryEnd": 1838,
+          "handlerOffset": 1840,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "3644": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 436,
+          "tryEnd": 1324,
+          "handlerOffset": 1326,
+          "prediction": 1,
+          "contextRegister": 21
+        }
+      ]
+    },
+    "3655": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 294,
+          "tryEnd": 1134,
+          "handlerOffset": 1136,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "3680": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 4969,
+          "tryEnd": 5387,
+          "handlerOffset": 5389,
+          "prediction": 1,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "3700": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 638,
+          "tryEnd": 6168,
+          "handlerOffset": 6172,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "3712": {
+      "name": "_0x9115b3",
+      "entries": [
+        {
+          "tryStart": 219,
+          "tryEnd": 1019,
+          "handlerOffset": 1021,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "3754": {
+      "name": "_0x3ebb29",
+      "entries": [
+        {
+          "tryStart": 2399,
+          "tryEnd": 2954,
+          "handlerOffset": 2956,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "3833": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 796,
+          "tryEnd": 1690,
+          "handlerOffset": 1692,
+          "prediction": 1,
+          "contextRegister": 8
+        },
+        {
+          "tryStart": 4908,
+          "tryEnd": 9508,
+          "handlerOffset": 9512,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "3951": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2107,
+          "tryEnd": 6401,
+          "handlerOffset": 6403,
+          "prediction": 1,
+          "contextRegister": 11
+        }
+      ]
+    },
+    "3969": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 245,
+          "tryEnd": 501,
+          "handlerOffset": 503,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "3985": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 951,
+          "tryEnd": 1077,
+          "handlerOffset": 1085,
+          "prediction": 0,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 1101,
+          "tryEnd": 1122,
+          "handlerOffset": 1124,
+          "prediction": 0,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 1268,
+          "tryEnd": 1394,
+          "handlerOffset": 1402,
+          "prediction": 0,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 1418,
+          "tryEnd": 1439,
+          "handlerOffset": 1441,
+          "prediction": 0,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "4008": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 231,
+          "tryEnd": 753,
+          "handlerOffset": 755,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "4038": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 905,
+          "tryEnd": 1391,
+          "handlerOffset": 1391,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "4166": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 9150,
+          "tryEnd": 9263,
+          "handlerOffset": 9263,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "4192": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 476,
+          "tryEnd": 568,
+          "handlerOffset": 570,
+          "prediction": 1,
+          "contextRegister": 3
+        }
+      ]
+    },
+    "4211": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 3580,
+          "tryEnd": 9963,
+          "handlerOffset": 9967,
+          "prediction": 1,
+          "contextRegister": 16
+        },
+        {
+          "tryStart": 7107,
+          "tryEnd": 8930,
+          "handlerOffset": 8934,
+          "prediction": 1,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "4221": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 301,
+          "tryEnd": 3313,
+          "handlerOffset": 3315,
+          "prediction": 1,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 567,
+          "tryEnd": 1383,
+          "handlerOffset": 1385,
+          "prediction": 1,
+          "contextRegister": 16
+        }
+      ]
+    },
+    "4229": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 344,
+          "tryEnd": 3791,
+          "handlerOffset": 3793,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "4240": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 477,
+          "tryEnd": 3198,
+          "handlerOffset": 3200,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "4269": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 783,
+          "tryEnd": 1580,
+          "handlerOffset": 1582,
+          "prediction": 1,
+          "contextRegister": 22
+        },
+        {
+          "tryStart": 2091,
+          "tryEnd": 3342,
+          "handlerOffset": 3344,
+          "prediction": 1,
+          "contextRegister": 22
+        },
+        {
+          "tryStart": 9964,
+          "tryEnd": 11156,
+          "handlerOffset": 11160,
+          "prediction": 1,
+          "contextRegister": 22
+        }
+      ]
+    },
+    "4287": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 24109,
+          "tryEnd": 24745,
+          "handlerOffset": 24749,
+          "prediction": 1,
+          "contextRegister": 21
+        }
+      ]
+    },
+    "4315": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 65,
+          "tryEnd": 2136,
+          "handlerOffset": 2138,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "4364": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 364,
+          "tryEnd": 2976,
+          "handlerOffset": 2978,
+          "prediction": 1,
+          "contextRegister": 13
+        },
+        {
+          "tryStart": 3567,
+          "tryEnd": 4109,
+          "handlerOffset": 4111,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "4413": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2720,
+          "tryEnd": 3547,
+          "handlerOffset": 3549,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "4419": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 199,
+          "tryEnd": 1967,
+          "handlerOffset": 1969,
+          "prediction": 1,
+          "contextRegister": 10
+        },
+        {
+          "tryStart": 1152,
+          "tryEnd": 1609,
+          "handlerOffset": 1609,
+          "prediction": 1,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "4462": {
+      "name": "_0xb69495",
+      "entries": [
+        {
+          "tryStart": 9582,
+          "tryEnd": 11374,
+          "handlerOffset": 11378,
+          "prediction": 1,
+          "contextRegister": 37
+        },
+        {
+          "tryStart": 10240,
+          "tryEnd": 11292,
+          "handlerOffset": 11296,
+          "prediction": 1,
+          "contextRegister": 39
+        }
+      ]
+    },
+    "4468": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 290,
+          "tryEnd": 482,
+          "handlerOffset": 490,
+          "prediction": 0,
+          "contextRegister": 14
+        },
+        {
+          "tryStart": 506,
+          "tryEnd": 527,
+          "handlerOffset": 529,
+          "prediction": 0,
+          "contextRegister": 16
+        }
+      ]
+    },
+    "4485": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1991,
+          "tryEnd": 11817,
+          "handlerOffset": 11821,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "4491": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 208,
+          "tryEnd": 793,
+          "handlerOffset": 795,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "4497": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 356,
+          "tryEnd": 1110,
+          "handlerOffset": 1112,
+          "prediction": 1,
+          "contextRegister": 14
+        }
+      ]
+    },
+    "4527": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1100,
+          "tryEnd": 3560,
+          "handlerOffset": 3562,
+          "prediction": 1,
+          "contextRegister": 37
+        },
+        {
+          "tryStart": 22352,
+          "tryEnd": 22405,
+          "handlerOffset": 22409,
+          "prediction": 1,
+          "contextRegister": 39
+        }
+      ]
+    },
+    "4634": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 680,
+          "tryEnd": 1057,
+          "handlerOffset": 1059,
+          "prediction": 1,
+          "contextRegister": 50
+        }
+      ]
+    },
+    "4711": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 65,
+          "tryEnd": 1698,
+          "handlerOffset": 1700,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "4864": {
+      "name": "_0xd7cf62",
+      "entries": [
+        {
+          "tryStart": 218,
+          "tryEnd": 1132,
+          "handlerOffset": 1134,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "4975": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2313,
+          "tryEnd": 9486,
+          "handlerOffset": 9490,
+          "prediction": 1,
+          "contextRegister": 22
+        },
+        {
+          "tryStart": 6342,
+          "tryEnd": 7647,
+          "handlerOffset": 7651,
+          "prediction": 1,
+          "contextRegister": 24
+        }
+      ]
+    },
+    "5035": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 7481,
+          "tryEnd": 8864,
+          "handlerOffset": 8868,
+          "prediction": 1,
+          "contextRegister": 20
+        },
+        {
+          "tryStart": 9313,
+          "tryEnd": 10065,
+          "handlerOffset": 10069,
+          "prediction": 1,
+          "contextRegister": 22
+        }
+      ]
+    },
+    "5041": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2875,
+          "tryEnd": 3007,
+          "handlerOffset": 3009,
+          "prediction": 1,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "5099": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 3075,
+          "tryEnd": 3976,
+          "handlerOffset": 3978,
+          "prediction": 1,
+          "contextRegister": 9
+        },
+        {
+          "tryStart": 5172,
+          "tryEnd": 6394,
+          "handlerOffset": 6396,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "5178": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 322,
+          "tryEnd": 787,
+          "handlerOffset": 789,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "5195": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 5058,
+          "tryEnd": 7463,
+          "handlerOffset": 7467,
+          "prediction": 1,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "5201": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1779,
+          "tryEnd": 7927,
+          "handlerOffset": 7931,
+          "prediction": 1,
+          "contextRegister": 57
+        }
+      ]
+    },
+    "5213": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 3259,
+          "tryEnd": 4621,
+          "handlerOffset": 4621,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "5246": {
+      "name": "_0x4ec035",
+      "entries": [
+        {
+          "tryStart": 296,
+          "tryEnd": 11908,
+          "handlerOffset": 11912,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "5280": {
+      "name": "_0x5699d8",
+      "entries": [
+        {
+          "tryStart": 16594,
+          "tryEnd": 17583,
+          "handlerOffset": 17587,
+          "prediction": 1,
+          "contextRegister": 52
+        },
+        {
+          "tryStart": 21127,
+          "tryEnd": 25213,
+          "handlerOffset": 25217,
+          "prediction": 1,
+          "contextRegister": 52
+        },
+        {
+          "tryStart": 23227,
+          "tryEnd": 23437,
+          "handlerOffset": 23447,
+          "prediction": 0,
+          "contextRegister": 58
+        },
+        {
+          "tryStart": 23465,
+          "tryEnd": 23498,
+          "handlerOffset": 23502,
+          "prediction": 0,
+          "contextRegister": 60
+        },
+        {
+          "tryStart": 26542,
+          "tryEnd": 28038,
+          "handlerOffset": 28042,
+          "prediction": 1,
+          "contextRegister": 52
+        }
+      ]
+    },
+    "5292": {
+      "name": "_0x13f10d",
+      "entries": [
+        {
+          "tryStart": 285,
+          "tryEnd": 800,
+          "handlerOffset": 802,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "5300": {
+      "name": "_0x12bfbc",
+      "entries": [
+        {
+          "tryStart": 919,
+          "tryEnd": 2514,
+          "handlerOffset": 2516,
+          "prediction": 1,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 5623,
+          "tryEnd": 9157,
+          "handlerOffset": 9161,
+          "prediction": 1,
+          "contextRegister": 19
+        }
+      ]
+    },
+    "5311": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 508,
+          "tryEnd": 5880,
+          "handlerOffset": 5882,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "5344": {
+      "name": "_0x340c79",
+      "entries": [
+        {
+          "tryStart": 553,
+          "tryEnd": 1306,
+          "handlerOffset": 1308,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "5356": {
+      "name": "_0x3bd0d1",
+      "entries": [
+        {
+          "tryStart": 405,
+          "tryEnd": 1622,
+          "handlerOffset": 1624,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "5375": {
+      "name": "_0xd95197",
+      "entries": [
+        {
+          "tryStart": 314,
+          "tryEnd": 1194,
+          "handlerOffset": 1196,
+          "prediction": 1,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 2354,
+          "tryEnd": 4785,
+          "handlerOffset": 4787,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "5387": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 422,
+          "tryEnd": 2080,
+          "handlerOffset": 2088,
+          "prediction": 0,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 2104,
+          "tryEnd": 2133,
+          "handlerOffset": 2135,
+          "prediction": 0,
+          "contextRegister": 19
+        }
+      ]
+    },
+    "5393": {
+      "name": "_0x3606e9",
+      "entries": [
+        {
+          "tryStart": 2042,
+          "tryEnd": 3006,
+          "handlerOffset": 3008,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "5411": {
+      "name": "_0x1f9263",
+      "entries": [
+        {
+          "tryStart": 478,
+          "tryEnd": 1033,
+          "handlerOffset": 1035,
+          "prediction": 1,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "5417": {
+      "name": "_0x4dcb2a",
+      "entries": [
+        {
+          "tryStart": 1928,
+          "tryEnd": 3597,
+          "handlerOffset": 3599,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "5431": {
+      "name": "_0xb5f751",
+      "entries": [
+        {
+          "tryStart": 1057,
+          "tryEnd": 2258,
+          "handlerOffset": 2260,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "5456": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 24736,
+          "tryEnd": 25741,
+          "handlerOffset": 25745,
+          "prediction": 1,
+          "contextRegister": 43
+        }
+      ]
+    },
+    "5468": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 205,
+          "tryEnd": 744,
+          "handlerOffset": 744,
+          "prediction": 1,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "5536": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1019,
+          "tryEnd": 3682,
+          "handlerOffset": 3684,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "5548": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 5397,
+          "tryEnd": 9727,
+          "handlerOffset": 9731,
+          "prediction": 1,
+          "contextRegister": 20
+        }
+      ]
+    },
+    "5554": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 7317,
+          "tryEnd": 7946,
+          "handlerOffset": 7950,
+          "prediction": 1,
+          "contextRegister": 25
+        }
+      ]
+    },
+    "5592": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 174,
+          "tryEnd": 4089,
+          "handlerOffset": 4091,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "5605": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 621,
+          "tryEnd": 1346,
+          "handlerOffset": 1348,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "5693": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1752,
+          "tryEnd": 6780,
+          "handlerOffset": 6780,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "5776": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2400,
+          "tryEnd": 2655,
+          "handlerOffset": 2663,
+          "prediction": 0,
+          "contextRegister": 13
+        },
+        {
+          "tryStart": 2679,
+          "tryEnd": 2708,
+          "handlerOffset": 2710,
+          "prediction": 0,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "5782": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 209,
+          "tryEnd": 397,
+          "handlerOffset": 405,
+          "prediction": 0,
+          "contextRegister": 10
+        },
+        {
+          "tryStart": 421,
+          "tryEnd": 442,
+          "handlerOffset": 444,
+          "prediction": 0,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "5808": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 6088,
+          "tryEnd": 8193,
+          "handlerOffset": 8197,
+          "prediction": 1,
+          "contextRegister": 15
+        }
+      ]
+    },
+    "5912": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 802,
+          "tryEnd": 1553,
+          "handlerOffset": 1555,
+          "prediction": 1,
+          "contextRegister": 23
+        },
+        {
+          "tryStart": 2897,
+          "tryEnd": 3227,
+          "handlerOffset": 3229,
+          "prediction": 1,
+          "contextRegister": 24
+        },
+        {
+          "tryStart": 4401,
+          "tryEnd": 9253,
+          "handlerOffset": 9257,
+          "prediction": 1,
+          "contextRegister": 23
+        }
+      ]
+    },
+    "5918": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 953,
+          "tryEnd": 2087,
+          "handlerOffset": 2087,
+          "prediction": 1,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "5956": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 59,
+          "tryEnd": 760,
+          "handlerOffset": 760,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "5982": {
+      "name": "_0x1c89d4",
+      "entries": [
+        {
+          "tryStart": 245,
+          "tryEnd": 6010,
+          "handlerOffset": 6012,
+          "prediction": 1,
+          "contextRegister": 12
+        },
+        {
+          "tryStart": 6343,
+          "tryEnd": 6970,
+          "handlerOffset": 6974,
+          "prediction": 1,
+          "contextRegister": 12
+        },
+        {
+          "tryStart": 7493,
+          "tryEnd": 9489,
+          "handlerOffset": 9493,
+          "prediction": 1,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "6012": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 471,
+          "tryEnd": 555,
+          "handlerOffset": 563,
+          "prediction": 0,
+          "contextRegister": 10
+        },
+        {
+          "tryStart": 579,
+          "tryEnd": 600,
+          "handlerOffset": 602,
+          "prediction": 0,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "6023": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 185,
+          "tryEnd": 1938,
+          "handlerOffset": 1940,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "6035": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 381,
+          "tryEnd": 479,
+          "handlerOffset": 481,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "6070": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 245,
+          "tryEnd": 730,
+          "handlerOffset": 732,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "6076": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 8482,
+          "tryEnd": 11956,
+          "handlerOffset": 11960,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "6082": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 4170,
+          "tryEnd": 4850,
+          "handlerOffset": 4850,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "6168": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 563,
+          "tryEnd": 3277,
+          "handlerOffset": 3279,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "6193": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 522,
+          "tryEnd": 2219,
+          "handlerOffset": 2219,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "6211": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 8080,
+          "tryEnd": 40342,
+          "handlerOffset": 40346,
+          "prediction": 1,
+          "contextRegister": 26
+        }
+      ]
+    },
+    "6223": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1173,
+          "tryEnd": 1267,
+          "handlerOffset": 1267,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "6300": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 327,
+          "tryEnd": 458,
+          "handlerOffset": 466,
+          "prediction": 0,
+          "contextRegister": 15
+        },
+        {
+          "tryStart": 482,
+          "tryEnd": 503,
+          "handlerOffset": 505,
+          "prediction": 0,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "6314": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 41,
+          "tryEnd": 382,
+          "handlerOffset": 382,
+          "prediction": 4,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "6325": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 47,
+          "tryEnd": 354,
+          "handlerOffset": 354,
+          "prediction": 4,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "6501": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 308,
+          "tryEnd": 474,
+          "handlerOffset": 476,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "6507": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 858,
+          "tryEnd": 977,
+          "handlerOffset": 979,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "6560": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1820,
+          "tryEnd": 2496,
+          "handlerOffset": 2496,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "6619": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1002,
+          "tryEnd": 1104,
+          "handlerOffset": 1106,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "6625": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 193,
+          "tryEnd": 393,
+          "handlerOffset": 393,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "6671": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 666,
+          "tryEnd": 997,
+          "handlerOffset": 1005,
+          "prediction": 0,
+          "contextRegister": 14
+        },
+        {
+          "tryStart": 1021,
+          "tryEnd": 1042,
+          "handlerOffset": 1044,
+          "prediction": 0,
+          "contextRegister": 16
+        }
+      ]
+    },
+    "6708": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 217,
+          "tryEnd": 1605,
+          "handlerOffset": 1607,
+          "prediction": 1,
+          "contextRegister": 11
+        }
+      ]
+    },
+    "6762": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 3124,
+          "tryEnd": 6513,
+          "handlerOffset": 6515,
+          "prediction": 1,
+          "contextRegister": 44
+        },
+        {
+          "tryStart": 4011,
+          "tryEnd": 6311,
+          "handlerOffset": 6319,
+          "prediction": 0,
+          "contextRegister": 50
+        },
+        {
+          "tryStart": 6335,
+          "tryEnd": 6364,
+          "handlerOffset": 6366,
+          "prediction": 0,
+          "contextRegister": 52
+        },
+        {
+          "tryStart": 6673,
+          "tryEnd": 11871,
+          "handlerOffset": 11875,
+          "prediction": 1,
+          "contextRegister": 46
+        },
+        {
+          "tryStart": 9112,
+          "tryEnd": 11657,
+          "handlerOffset": 11667,
+          "prediction": 0,
+          "contextRegister": 52
+        },
+        {
+          "tryStart": 11685,
+          "tryEnd": 11718,
+          "handlerOffset": 11722,
+          "prediction": 0,
+          "contextRegister": 54
+        },
+        {
+          "tryStart": 12486,
+          "tryEnd": 13208,
+          "handlerOffset": 13208,
+          "prediction": 1,
+          "contextRegister": 48
+        },
+        {
+          "tryStart": 13334,
+          "tryEnd": 17505,
+          "handlerOffset": 17509,
+          "prediction": 1,
+          "contextRegister": 48
+        },
+        {
+          "tryStart": 15272,
+          "tryEnd": 17291,
+          "handlerOffset": 17301,
+          "prediction": 0,
+          "contextRegister": 54
+        },
+        {
+          "tryStart": 17319,
+          "tryEnd": 17352,
+          "handlerOffset": 17356,
+          "prediction": 0,
+          "contextRegister": 56
+        },
+        {
+          "tryStart": 19516,
+          "tryEnd": 21475,
+          "handlerOffset": 21479,
+          "prediction": 1,
+          "contextRegister": 43
+        },
+        {
+          "tryStart": 22003,
+          "tryEnd": 22125,
+          "handlerOffset": 22129,
+          "prediction": 1,
+          "contextRegister": 45
+        }
+      ]
+    },
+    "6784": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 919,
+          "tryEnd": 12828,
+          "handlerOffset": 12838,
+          "prediction": 0,
+          "contextRegister": 44
+        },
+        {
+          "tryStart": 12856,
+          "tryEnd": 12889,
+          "handlerOffset": 12893,
+          "prediction": 0,
+          "contextRegister": 46
+        }
+      ]
+    },
+    "6913": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 673,
+          "tryEnd": 1048,
+          "handlerOffset": 1050,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "6930": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 4336,
+          "tryEnd": 7574,
+          "handlerOffset": 7578,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "7056": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 3729,
+          "tryEnd": 3842,
+          "handlerOffset": 3842,
+          "prediction": 1,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "7141": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 3406,
+          "tryEnd": 4793,
+          "handlerOffset": 4795,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "7153": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 15329,
+          "tryEnd": 20212,
+          "handlerOffset": 20216,
+          "prediction": 1,
+          "contextRegister": 21
+        }
+      ]
+    },
+    "7281": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 351,
+          "tryEnd": 447,
+          "handlerOffset": 449,
+          "prediction": 1,
+          "contextRegister": 10
+        }
+      ]
+    },
+    "7302": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1413,
+          "tryEnd": 2239,
+          "handlerOffset": 2241,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "7308": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1648,
+          "tryEnd": 10325,
+          "handlerOffset": 10329,
+          "prediction": 1,
+          "contextRegister": 18
+        },
+        {
+          "tryStart": 19546,
+          "tryEnd": 24650,
+          "handlerOffset": 24654,
+          "prediction": 1,
+          "contextRegister": 18
+        },
+        {
+          "tryStart": 27631,
+          "tryEnd": 29786,
+          "handlerOffset": 29790,
+          "prediction": 1,
+          "contextRegister": 18
+        },
+        {
+          "tryStart": 31370,
+          "tryEnd": 39773,
+          "handlerOffset": 39777,
+          "prediction": 1,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "7347": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1782,
+          "tryEnd": 3065,
+          "handlerOffset": 3067,
+          "prediction": 1,
+          "contextRegister": 3
+        }
+      ]
+    },
+    "7353": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2765,
+          "tryEnd": 7047,
+          "handlerOffset": 7049,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "7364": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 74,
+          "tryEnd": 999,
+          "handlerOffset": 1001,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "7379": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 2895,
+          "tryEnd": 5391,
+          "handlerOffset": 5393,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "7384": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1381,
+          "tryEnd": 7678,
+          "handlerOffset": 7682,
+          "prediction": 1,
+          "contextRegister": 9
+        },
+        {
+          "tryStart": 10024,
+          "tryEnd": 10486,
+          "handlerOffset": 10490,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "7411": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 5010,
+          "tryEnd": 6244,
+          "handlerOffset": 6246,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "7451": {
+      "name": "_0x3ab47f",
+      "entries": [
+        {
+          "tryStart": 386,
+          "tryEnd": 4629,
+          "handlerOffset": 4629,
+          "prediction": 1,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "7538": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1018,
+          "tryEnd": 4999,
+          "handlerOffset": 5001,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "7613": {
+      "name": "_0x2b5d9a",
+      "entries": [
+        {
+          "tryStart": 402,
+          "tryEnd": 714,
+          "handlerOffset": 716,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "7630": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 174,
+          "tryEnd": 848,
+          "handlerOffset": 850,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "7639": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 92,
+          "tryEnd": 2985,
+          "handlerOffset": 2987,
+          "prediction": 1,
+          "contextRegister": 2
+        },
+        {
+          "tryStart": 1977,
+          "tryEnd": 2816,
+          "handlerOffset": 2818,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "7657": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 72,
+          "tryEnd": 620,
+          "handlerOffset": 622,
+          "prediction": 1,
+          "contextRegister": 8
+        },
+        {
+          "tryStart": 776,
+          "tryEnd": 1304,
+          "handlerOffset": 1306,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "7713": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 9,
+          "tryEnd": 123,
+          "handlerOffset": 125,
+          "prediction": 1,
+          "contextRegister": 1
+        }
+      ]
+    },
+    "7739": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 62,
+          "tryEnd": 508,
+          "handlerOffset": 510,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "7746": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 77,
+          "tryEnd": 714,
+          "handlerOffset": 716,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "7772": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 69,
+          "tryEnd": 559,
+          "handlerOffset": 561,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "7778": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 69,
+          "tryEnd": 539,
+          "handlerOffset": 541,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "7828": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 103,
+          "tryEnd": 566,
+          "handlerOffset": 568,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "7834": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 25,
+          "tryEnd": 152,
+          "handlerOffset": 154,
+          "prediction": 1,
+          "contextRegister": 3
+        }
+      ]
+    },
+    "7851": {
+      "name": "_0x167de4",
+      "entries": [
+        {
+          "tryStart": 51,
+          "tryEnd": 302,
+          "handlerOffset": 302,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "7872": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 86,
+          "tryEnd": 349,
+          "handlerOffset": 351,
+          "prediction": 1,
+          "contextRegister": 1
+        }
+      ]
+    },
+    "7882": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 940,
+          "tryEnd": 1292,
+          "handlerOffset": 1294,
+          "prediction": 1,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 1738,
+          "tryEnd": 2268,
+          "handlerOffset": 2270,
+          "prediction": 1,
+          "contextRegister": 17
+        }
+      ]
+    },
+    "7902": {
+      "name": "_0x46f3ad",
+      "entries": [
+        {
+          "tryStart": 153,
+          "tryEnd": 900,
+          "handlerOffset": 900,
+          "prediction": 1,
+          "contextRegister": 3
+        },
+        {
+          "tryStart": 916,
+          "tryEnd": 2049,
+          "handlerOffset": 2049,
+          "prediction": 1,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "7920": {
+      "name": "_0x5decbc",
+      "entries": [
+        {
+          "tryStart": 524,
+          "tryEnd": 1683,
+          "handlerOffset": 1683,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "7926": {
+      "name": "_0x596dad",
+      "entries": [
+        {
+          "tryStart": 90,
+          "tryEnd": 1354,
+          "handlerOffset": 1354,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "7938": {
+      "name": "_0x2703dd",
+      "entries": [
+        {
+          "tryStart": 108,
+          "tryEnd": 1199,
+          "handlerOffset": 1199,
+          "prediction": 1,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "7959": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 286,
+          "tryEnd": 988,
+          "handlerOffset": 990,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "8023": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 210,
+          "tryEnd": 1241,
+          "handlerOffset": 1241,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "8030": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 393,
+          "tryEnd": 1921,
+          "handlerOffset": 1921,
+          "prediction": 1,
+          "contextRegister": 9
+        }
+      ]
+    },
+    "8130": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 50,
+          "tryEnd": 288,
+          "handlerOffset": 288,
+          "prediction": 4,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "8133": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 62,
+          "tryEnd": 1761,
+          "handlerOffset": 1761,
+          "prediction": 4,
+          "contextRegister": 5
+        }
+      ]
+    },
+    "8140": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 38,
+          "tryEnd": 340,
+          "handlerOffset": 340,
+          "prediction": 4,
+          "contextRegister": 4
+        }
+      ]
+    },
+    "8165": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 93,
+          "tryEnd": 3986,
+          "handlerOffset": 3986,
+          "prediction": 4,
+          "contextRegister": 17
+        },
+        {
+          "tryStart": 179,
+          "tryEnd": 1166,
+          "handlerOffset": 1168,
+          "prediction": 1,
+          "contextRegister": 18
+        },
+        {
+          "tryStart": 2007,
+          "tryEnd": 3161,
+          "handlerOffset": 3163,
+          "prediction": 1,
+          "contextRegister": 18
+        }
+      ]
+    },
+    "8177": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 87,
+          "tryEnd": 2333,
+          "handlerOffset": 2333,
+          "prediction": 4,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "8202": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 63,
+          "tryEnd": 2289,
+          "handlerOffset": 2289,
+          "prediction": 4,
+          "contextRegister": 19
+        },
+        {
+          "tryStart": 1411,
+          "tryEnd": 1814,
+          "handlerOffset": 1816,
+          "prediction": 1,
+          "contextRegister": 20
+        }
+      ]
+    },
+    "8215": {
+      "name": "_0x277276",
+      "entries": [
+        {
+          "tryStart": 60,
+          "tryEnd": 4230,
+          "handlerOffset": 4230,
+          "prediction": 4,
+          "contextRegister": 29
+        },
+        {
+          "tryStart": 838,
+          "tryEnd": 2104,
+          "handlerOffset": 2112,
+          "prediction": 0,
+          "contextRegister": 35
+        },
+        {
+          "tryStart": 2128,
+          "tryEnd": 2193,
+          "handlerOffset": 2195,
+          "prediction": 0,
+          "contextRegister": 39
+        },
+        {
+          "tryStart": 2834,
+          "tryEnd": 3517,
+          "handlerOffset": 3519,
+          "prediction": 1,
+          "contextRegister": 30
+        }
+      ]
+    },
+    "8233": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 66,
+          "tryEnd": 1349,
+          "handlerOffset": 1349,
+          "prediction": 4,
+          "contextRegister": 12
+        }
+      ]
+    },
+    "8301": {
+      "name": "_0x346410",
+      "entries": [
+        {
+          "tryStart": 787,
+          "tryEnd": 913,
+          "handlerOffset": 921,
+          "prediction": 0,
+          "contextRegister": 14
+        },
+        {
+          "tryStart": 937,
+          "tryEnd": 958,
+          "handlerOffset": 960,
+          "prediction": 0,
+          "contextRegister": 16
+        },
+        {
+          "tryStart": 1101,
+          "tryEnd": 1227,
+          "handlerOffset": 1235,
+          "prediction": 0,
+          "contextRegister": 14
+        },
+        {
+          "tryStart": 1251,
+          "tryEnd": 1272,
+          "handlerOffset": 1274,
+          "prediction": 0,
+          "contextRegister": 16
+        }
+      ]
+    },
+    "8322": {
+      "name": "_0x105fe9",
+      "entries": [
+        {
+          "tryStart": 42,
+          "tryEnd": 934,
+          "handlerOffset": 934,
+          "prediction": 0,
+          "contextRegister": 13
+        },
+        {
+          "tryStart": 45,
+          "tryEnd": 900,
+          "handlerOffset": 900,
+          "prediction": 4,
+          "contextRegister": 14
+        },
+        {
+          "tryStart": 276,
+          "tryEnd": 811,
+          "handlerOffset": 819,
+          "prediction": 0,
+          "contextRegister": 20
+        },
+        {
+          "tryStart": 835,
+          "tryEnd": 856,
+          "handlerOffset": 858,
+          "prediction": 0,
+          "contextRegister": 22
+        }
+      ]
+    },
+    "8338": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 319,
+          "tryEnd": 403,
+          "handlerOffset": 411,
+          "prediction": 0,
+          "contextRegister": 11
+        },
+        {
+          "tryStart": 427,
+          "tryEnd": 448,
+          "handlerOffset": 450,
+          "prediction": 0,
+          "contextRegister": 13
+        }
+      ]
+    },
+    "8346": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 45,
+          "tryEnd": 599,
+          "handlerOffset": 599,
+          "prediction": 4,
+          "contextRegister": 6
+        }
+      ]
+    },
+    "8350": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 60,
+          "tryEnd": 502,
+          "handlerOffset": 502,
+          "prediction": 4,
+          "contextRegister": 7
+        }
+      ]
+    },
+    "8427": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 77,
+          "tryEnd": 167,
+          "handlerOffset": 167,
+          "prediction": 1,
+          "contextRegister": 2
+        }
+      ]
+    },
+    "8433": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 1479,
+          "tryEnd": 1951,
+          "handlerOffset": 1953,
+          "prediction": 1,
+          "contextRegister": 8
+        },
+        {
+          "tryStart": 1971,
+          "tryEnd": 2427,
+          "handlerOffset": 2429,
+          "prediction": 1,
+          "contextRegister": 8
+        }
+      ]
+    },
+    "8458": {
+      "name": "",
+      "entries": [
+        {
+          "tryStart": 426,
+          "tryEnd": 2154,
+          "handlerOffset": 2156,
+          "prediction": 1,
+          "contextRegister": 6
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1273 @@
+{
+ "v8_version": "8.7.220.31",
+ "source": "read-only snapshot of Electron 11 (v8_context_snapshot.x86_64.bin), roots part",
+ "object_start": 8468,
+ "covered_to": 32320,
+ "strings": [
+  {
+   "page": 0,
+   "offset": 9044,
+   "value": "uninitialized"
+  },
+  {
+   "page": 0,
+   "offset": 9284,
+   "value": "hole"
+  },
+  {
+   "page": 0,
+   "offset": 10112,
+   "value": "arguments_marker"
+  },
+  {
+   "page": 0,
+   "offset": 10208,
+   "value": "exception"
+  },
+  {
+   "page": 0,
+   "offset": 10300,
+   "value": "termination_exception"
+  },
+  {
+   "page": 0,
+   "offset": 10404,
+   "value": "optimized_out"
+  },
+  {
+   "page": 0,
+   "offset": 10500,
+   "value": "stale_register"
+  },
+  {
+   "page": 0,
+   "offset": 13120,
+   "value": "self_reference_marker"
+  },
+  {
+   "page": 0,
+   "offset": 13184,
+   "value": "basic_block_counters_marker"
+  },
+  {
+   "page": 0,
+   "offset": 20780,
+   "value": "Symbol.asyncIterator"
+  },
+  {
+   "page": 0,
+   "offset": 20828,
+   "value": "Symbol.iterator"
+  },
+  {
+   "page": 0,
+   "offset": 20872,
+   "value": "IntlFallback"
+  },
+  {
+   "page": 0,
+   "offset": 20912,
+   "value": "Symbol.matchAll"
+  },
+  {
+   "page": 0,
+   "offset": 20956,
+   "value": "Symbol.match"
+  },
+  {
+   "page": 0,
+   "offset": 20996,
+   "value": "Symbol.replace"
+  },
+  {
+   "page": 0,
+   "offset": 21040,
+   "value": "Symbol.search"
+  },
+  {
+   "page": 0,
+   "offset": 21084,
+   "value": "Symbol.species"
+  },
+  {
+   "page": 0,
+   "offset": 21128,
+   "value": "Symbol.split"
+  },
+  {
+   "page": 0,
+   "offset": 21168,
+   "value": "Symbol.toPrimitive"
+  },
+  {
+   "page": 0,
+   "offset": 21216,
+   "value": "Symbol.unscopables"
+  },
+  {
+   "page": 0,
+   "offset": 21264,
+   "value": "Symbol.hasInstance"
+  },
+  {
+   "page": 0,
+   "offset": 21312,
+   "value": "Symbol.isConcatSpreadable"
+  },
+  {
+   "page": 0,
+   "offset": 21368,
+   "value": "Symbol.toStringTag"
+  },
+  {
+   "page": 0,
+   "offset": 23760,
+   "value": "$"
+  },
+  {
+   "page": 0,
+   "offset": 23776,
+   "value": "Array Iterator.prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 23868,
+   "value": "Date.prototype [ @@toPrimitive ]"
+  },
+  {
+   "page": 0,
+   "offset": 23912,
+   "value": "[Generator].prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 23952,
+   "value": "[Generator].prototype.return"
+  },
+  {
+   "page": 0,
+   "offset": 23992,
+   "value": "[Generator].prototype.throw"
+  },
+  {
+   "page": 0,
+   "offset": 24032,
+   "value": "Map.prototype.set"
+  },
+  {
+   "page": 0,
+   "offset": 24064,
+   "value": "Map.prototype.delete"
+  },
+  {
+   "page": 0,
+   "offset": 24096,
+   "value": "Map.prototype.get"
+  },
+  {
+   "page": 0,
+   "offset": 24128,
+   "value": "Map.prototype.has"
+  },
+  {
+   "page": 0,
+   "offset": 24160,
+   "value": "Map.prototype.entries"
+  },
+  {
+   "page": 0,
+   "offset": 24196,
+   "value": "get Map.prototype.size"
+  },
+  {
+   "page": 0,
+   "offset": 24232,
+   "value": "Map.prototype.forEach"
+  },
+  {
+   "page": 0,
+   "offset": 24268,
+   "value": "Map.prototype.keys"
+  },
+  {
+   "page": 0,
+   "offset": 24300,
+   "value": "Map.prototype.values"
+  },
+  {
+   "page": 0,
+   "offset": 24332,
+   "value": "Map Iterator.prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 24372,
+   "value": "[object "
+  },
+  {
+   "page": 0,
+   "offset": 24392,
+   "value": "]"
+  },
+  {
+   "page": 0,
+   "offset": 24408,
+   "value": "RegExp.prototype.compile"
+  },
+  {
+   "page": 0,
+   "offset": 24444,
+   "value": "Set.prototype.has"
+  },
+  {
+   "page": 0,
+   "offset": 24476,
+   "value": "Set.prototype.add"
+  },
+  {
+   "page": 0,
+   "offset": 24508,
+   "value": "Set.prototype.delete"
+  },
+  {
+   "page": 0,
+   "offset": 24540,
+   "value": "Set.prototype.entries"
+  },
+  {
+   "page": 0,
+   "offset": 24576,
+   "value": "get Set.prototype.size"
+  },
+  {
+   "page": 0,
+   "offset": 24612,
+   "value": "Set.prototype.forEach"
+  },
+  {
+   "page": 0,
+   "offset": 24648,
+   "value": "Set.prototype.values"
+  },
+  {
+   "page": 0,
+   "offset": 24680,
+   "value": "Set Iterator.prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 24720,
+   "value": "Atomics.load"
+  },
+  {
+   "page": 0,
+   "offset": 24744,
+   "value": "Atomics.store"
+  },
+  {
+   "page": 0,
+   "offset": 24772,
+   "value": "Atomics.exchange"
+  },
+  {
+   "page": 0,
+   "offset": 24800,
+   "value": "Atomics.add"
+  },
+  {
+   "page": 0,
+   "offset": 24824,
+   "value": "Atomics.sub"
+  },
+  {
+   "page": 0,
+   "offset": 24848,
+   "value": "Atomics.and"
+  },
+  {
+   "page": 0,
+   "offset": 24872,
+   "value": "Atomics.or"
+  },
+  {
+   "page": 0,
+   "offset": 24896,
+   "value": "Atomics.xor"
+  },
+  {
+   "page": 0,
+   "offset": 24920,
+   "value": "String.prototype.match"
+  },
+  {
+   "page": 0,
+   "offset": 24956,
+   "value": "g"
+  },
+  {
+   "page": 0,
+   "offset": 24972,
+   "value": "u"
+  },
+  {
+   "page": 0,
+   "offset": 24988,
+   "value": "String.prototype.matchAll"
+  },
+  {
+   "page": 0,
+   "offset": 25028,
+   "value": "RegExp.prototype.@@matchAll"
+  },
+  {
+   "page": 0,
+   "offset": 25068,
+   "value": "String.prototype.replace"
+  },
+  {
+   "page": 0,
+   "offset": 25104,
+   "value": "String.prototype.search"
+  },
+  {
+   "page": 0,
+   "offset": 25152,
+   "value": "String.prototype.split"
+  },
+  {
+   "page": 0,
+   "offset": 25188,
+   "value": "String.prototype.trim"
+  },
+  {
+   "page": 0,
+   "offset": 25224,
+   "value": "String.prototype.trimRight"
+  },
+  {
+   "page": 0,
+   "offset": 25264,
+   "value": "String.prototype.trimLeft"
+  },
+  {
+   "page": 0,
+   "offset": 25304,
+   "value": "TypedArray"
+  },
+  {
+   "page": 0,
+   "offset": 25328,
+   "value": "get TypedArray.prototype.byteLength"
+  },
+  {
+   "page": 0,
+   "offset": 25376,
+   "value": "get TypedArray.prototype.byteOffset"
+  },
+  {
+   "page": 0,
+   "offset": 25424,
+   "value": "get TypedArray.prototype.length"
+  },
+  {
+   "page": 0,
+   "offset": 25468,
+   "value": "%TypedArray%.prototype.map"
+  },
+  {
+   "page": 0,
+   "offset": 25508,
+   "value": "WeakMap.prototype.get"
+  },
+  {
+   "page": 0,
+   "offset": 25544,
+   "value": "WeakMap.prototype.has"
+  },
+  {
+   "page": 0,
+   "offset": 25580,
+   "value": "WeakMap.prototype.set"
+  },
+  {
+   "page": 0,
+   "offset": 25616,
+   "value": "WeakMap.prototype.delete"
+  },
+  {
+   "page": 0,
+   "offset": 25652,
+   "value": "WeakSet.prototype.has"
+  },
+  {
+   "page": 0,
+   "offset": 25688,
+   "value": "WeakSet.prototype.add"
+  },
+  {
+   "page": 0,
+   "offset": 25724,
+   "value": "WeakSet.prototype.delete"
+  },
+  {
+   "page": 0,
+   "offset": 25760,
+   "value": "[AsyncGenerator].prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 25804,
+   "value": "[AsyncGenerator].prototype.return"
+  },
+  {
+   "page": 0,
+   "offset": 25852,
+   "value": "[AsyncGenerator].prototype.throw"
+  },
+  {
+   "page": 0,
+   "offset": 25896,
+   "value": "[Async-from-Sync Iterator].prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 25952,
+   "value": "[Async-from-Sync Iterator].prototype.throw"
+  },
+  {
+   "page": 0,
+   "offset": 26008,
+   "value": "[Async-from-Sync Iterator].prototype.return"
+  },
+  {
+   "page": 0,
+   "offset": 26064,
+   "value": "[AsyncModule].evaluate"
+  },
+  {
+   "page": 0,
+   "offset": 26100,
+   "value": "Array.prototype.every"
+  },
+  {
+   "page": 0,
+   "offset": 26136,
+   "value": "Torque assert 'Convert<uintptr>(endIndex) <= Convert<uintptr>(this.length) && Convert<uintptr>(startIndex) <= Convert<uintptr>(endIndex)' failed [src/builtins/torque-internal.tq:73]"
+  },
+  {
+   "page": 0,
+   "offset": 26332,
+   "value": "Array.prototype.filter"
+  },
+  {
+   "page": 0,
+   "offset": 26368,
+   "value": "Array.prototype.find"
+  },
+  {
+   "page": 0,
+   "offset": 26400,
+   "value": "Array.prototype.findIndex"
+  },
+  {
+   "page": 0,
+   "offset": 26440,
+   "value": "Array.prototype.forEach"
+  },
+  {
+   "page": 0,
+   "offset": 26476,
+   "value": "toLocaleString"
+  },
+  {
+   "page": 0,
+   "offset": 26516,
+   "value": ","
+  },
+  {
+   "page": 0,
+   "offset": 26544,
+   "value": "join"
+  },
+  {
+   "page": 0,
+   "offset": 26560,
+   "value": "%TypedArray%.prototype.join"
+  },
+  {
+   "page": 0,
+   "offset": 26600,
+   "value": "%TypedArray%.prototype.toLocaleString"
+  },
+  {
+   "page": 0,
+   "offset": 26652,
+   "value": "Array.prototype.map"
+  },
+  {
+   "page": 0,
+   "offset": 26684,
+   "value": "Array.prototype.reduceRight"
+  },
+  {
+   "page": 0,
+   "offset": 26724,
+   "value": "Array.prototype.reduce"
+  },
+  {
+   "page": 0,
+   "offset": 26760,
+   "value": "Array.prototype.some"
+  },
+  {
+   "page": 0,
+   "offset": 26816,
+   "value": "get ArrayBuffer.prototype.byteLength"
+  },
+  {
+   "page": 0,
+   "offset": 26864,
+   "value": "get SharedArrayBuffer.prototype.byteLength"
+  },
+  {
+   "page": 0,
+   "offset": 26920,
+   "value": "Range type assertion failed! (value/min/max/nodeId)\n"
+  },
+  {
+   "page": 0,
+   "offset": 26984,
+   "value": "Distinct or unexpected values in CheckSameObject\n"
+  },
+  {
+   "page": 0,
+   "offset": 27048,
+   "value": "Boolean.prototype.toString"
+  },
+  {
+   "page": 0,
+   "offset": 27088,
+   "value": "Boolean.prototype.valueOf"
+  },
+  {
+   "page": 0,
+   "offset": 27128,
+   "value": "String.prototype.toString"
+  },
+  {
+   "page": 0,
+   "offset": 27168,
+   "value": "String.prototype.valueOf"
+  },
+  {
+   "page": 0,
+   "offset": 27204,
+   "value": "String.prototype.charAt"
+  },
+  {
+   "page": 0,
+   "offset": 27240,
+   "value": "String.prototype.charCodeAt"
+  },
+  {
+   "page": 0,
+   "offset": 27280,
+   "value": "String.prototype.codePointAt"
+  },
+  {
+   "page": 0,
+   "offset": 27320,
+   "value": "String.prototype.concat"
+  },
+  {
+   "page": 0,
+   "offset": 27368,
+   "value": "ToObject"
+  },
+  {
+   "page": 0,
+   "offset": 27388,
+   "value": "get DataView.prototype.buffer"
+  },
+  {
+   "page": 0,
+   "offset": 27432,
+   "value": "get DataView.prototype.byte_length"
+  },
+  {
+   "page": 0,
+   "offset": 27480,
+   "value": "get DataView.prototype.byte_offset"
+  },
+  {
+   "page": 0,
+   "offset": 27528,
+   "value": "DataView.prototype.getUint8"
+  },
+  {
+   "page": 0,
+   "offset": 27568,
+   "value": "DataView.prototype.getInt8"
+  },
+  {
+   "page": 0,
+   "offset": 27608,
+   "value": "DataView.prototype.getUint16"
+  },
+  {
+   "page": 0,
+   "offset": 27648,
+   "value": "DataView.prototype.getInt16"
+  },
+  {
+   "page": 0,
+   "offset": 27688,
+   "value": "DataView.prototype.getUint32"
+  },
+  {
+   "page": 0,
+   "offset": 27728,
+   "value": "DataView.prototype.getInt32"
+  },
+  {
+   "page": 0,
+   "offset": 27768,
+   "value": "DataView.prototype.getFloat32"
+  },
+  {
+   "page": 0,
+   "offset": 27812,
+   "value": "DataView.prototype.getFloat64"
+  },
+  {
+   "page": 0,
+   "offset": 27856,
+   "value": "DataView.prototype.getBigUint64"
+  },
+  {
+   "page": 0,
+   "offset": 27900,
+   "value": "DataView.prototype.getBigInt64"
+  },
+  {
+   "page": 0,
+   "offset": 27944,
+   "value": "DataView.prototype.setUint8"
+  },
+  {
+   "page": 0,
+   "offset": 27984,
+   "value": "DataView.prototype.setInt8"
+  },
+  {
+   "page": 0,
+   "offset": 28024,
+   "value": "DataView.prototype.setUint16"
+  },
+  {
+   "page": 0,
+   "offset": 28064,
+   "value": "DataView.prototype.setInt16"
+  },
+  {
+   "page": 0,
+   "offset": 28104,
+   "value": "DataView.prototype.setUint32"
+  },
+  {
+   "page": 0,
+   "offset": 28144,
+   "value": "DataView.prototype.setInt32"
+  },
+  {
+   "page": 0,
+   "offset": 28184,
+   "value": "DataView.prototype.setFloat32"
+  },
+  {
+   "page": 0,
+   "offset": 28228,
+   "value": "DataView.prototype.setFloat64"
+  },
+  {
+   "page": 0,
+   "offset": 28272,
+   "value": "DataView.prototype.setBigUint64"
+  },
+  {
+   "page": 0,
+   "offset": 28316,
+   "value": "DataView.prototype.setBigInt64"
+  },
+  {
+   "page": 0,
+   "offset": 28360,
+   "value": "FinalizationRegistry.prototype.register"
+  },
+  {
+   "page": 0,
+   "offset": 28412,
+   "value": "FinalizationRegistry.prototype.cleanupSome"
+  },
+  {
+   "page": 0,
+   "offset": 28516,
+   "value": "Number.prototype.toString"
+  },
+  {
+   "page": 0,
+   "offset": 28556,
+   "value": "Number.prototype.valueOf"
+  },
+  {
+   "page": 0,
+   "offset": 28592,
+   "value": "Object.setPrototypeOf"
+  },
+  {
+   "page": 0,
+   "offset": 28628,
+   "value": "Object.prototype.toLocaleString"
+  },
+  {
+   "page": 0,
+   "offset": 28672,
+   "value": "PromiseReject"
+  },
+  {
+   "page": 0,
+   "offset": 28700,
+   "value": "all"
+  },
+  {
+   "page": 0,
+   "offset": 28716,
+   "value": "Promise.all"
+  },
+  {
+   "page": 0,
+   "offset": 28740,
+   "value": "Torque assert 'remainingElementsCount >= 0' failed [src/builtins/promise-all.tq:279]"
+  },
+  {
+   "page": 0,
+   "offset": 28836,
+   "value": "Torque assert 'remainingElementsCount >= 0' failed [src/builtins/promise-all-element-closure.tq:162]"
+  },
+  {
+   "page": 0,
+   "offset": 28948,
+   "value": "status"
+  },
+  {
+   "page": 0,
+   "offset": 28968,
+   "value": "fulfilled"
+  },
+  {
+   "page": 0,
+   "offset": 28992,
+   "value": "rejected"
+  },
+  {
+   "page": 0,
+   "offset": 29012,
+   "value": "reason"
+  },
+  {
+   "page": 0,
+   "offset": 29032,
+   "value": "any"
+  },
+  {
+   "page": 0,
+   "offset": 29048,
+   "value": "Promise.any"
+  },
+  {
+   "page": 0,
+   "offset": 29072,
+   "value": "Promise.prototype.finally"
+  },
+  {
+   "page": 0,
+   "offset": 29112,
+   "value": "Promise.race"
+  },
+  {
+   "page": 0,
+   "offset": 29136,
+   "value": "PromiseResolve"
+  },
+  {
+   "page": 0,
+   "offset": 29164,
+   "value": "Promise.prototype.then"
+  },
+  {
+   "page": 0,
+   "offset": 29200,
+   "value": "Proxy.revocable"
+  },
+  {
+   "page": 0,
+   "offset": 29228,
+   "value": "Reflect.isExtensible"
+  },
+  {
+   "page": 0,
+   "offset": 29260,
+   "value": "Reflect.preventExtensions"
+  },
+  {
+   "page": 0,
+   "offset": 29300,
+   "value": "Reflect.getPrototypeOf"
+  },
+  {
+   "page": 0,
+   "offset": 29336,
+   "value": "Reflect.setPrototypeOf"
+  },
+  {
+   "page": 0,
+   "offset": 29372,
+   "value": "Reflect.deleteProperty"
+  },
+  {
+   "page": 0,
+   "offset": 29408,
+   "value": "RegExp.prototype.exec"
+  },
+  {
+   "page": 0,
+   "offset": 29444,
+   "value": "%RegExpStringIterator%.prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 29496,
+   "value": "RegExp.prototype.@@match"
+  },
+  {
+   "page": 0,
+   "offset": 29532,
+   "value": "RegExp.prototype.@@replace"
+  },
+  {
+   "page": 0,
+   "offset": 29572,
+   "value": "RegExp.prototype.@@search"
+  },
+  {
+   "page": 0,
+   "offset": 29612,
+   "value": "RegExp.prototype.source"
+  },
+  {
+   "page": 0,
+   "offset": 29648,
+   "value": "RegExp.prototype.@@split"
+  },
+  {
+   "page": 0,
+   "offset": 29684,
+   "value": "RegExp.prototype.test"
+  },
+  {
+   "page": 0,
+   "offset": 29720,
+   "value": "RegExp.prototype.global"
+  },
+  {
+   "page": 0,
+   "offset": 29756,
+   "value": "RegExp.prototype.ignoreCase"
+  },
+  {
+   "page": 0,
+   "offset": 29796,
+   "value": "RegExp.prototype.multiline"
+  },
+  {
+   "page": 0,
+   "offset": 29836,
+   "value": "RegExp.prototype.dotAll"
+  },
+  {
+   "page": 0,
+   "offset": 29872,
+   "value": "RegExp.prototype.sticky"
+  },
+  {
+   "page": 0,
+   "offset": 29908,
+   "value": "RegExp.prototype.unicode"
+  },
+  {
+   "page": 0,
+   "offset": 29944,
+   "value": "RegExp.prototype.flags"
+  },
+  {
+   "page": 0,
+   "offset": 29980,
+   "value": "String.prototype.endsWith"
+  },
+  {
+   "page": 0,
+   "offset": 30020,
+   "value": "<"
+  },
+  {
+   "page": 0,
+   "offset": 30036,
+   "value": " "
+  },
+  {
+   "page": 0,
+   "offset": 30052,
+   "value": "=\""
+  },
+  {
+   "page": 0,
+   "offset": 30068,
+   "value": "\""
+  },
+  {
+   "page": 0,
+   "offset": 30084,
+   "value": ">"
+  },
+  {
+   "page": 0,
+   "offset": 30100,
+   "value": "</"
+  },
+  {
+   "page": 0,
+   "offset": 30116,
+   "value": "String.prototype.anchor"
+  },
+  {
+   "page": 0,
+   "offset": 30152,
+   "value": "a"
+  },
+  {
+   "page": 0,
+   "offset": 30168,
+   "value": "String.prototype.big"
+  },
+  {
+   "page": 0,
+   "offset": 30200,
+   "value": "big"
+  },
+  {
+   "page": 0,
+   "offset": 30216,
+   "value": "String.prototype.blink"
+  },
+  {
+   "page": 0,
+   "offset": 30252,
+   "value": "blink"
+  },
+  {
+   "page": 0,
+   "offset": 30272,
+   "value": "String.prototype.bold"
+  },
+  {
+   "page": 0,
+   "offset": 30308,
+   "value": "b"
+  },
+  {
+   "page": 0,
+   "offset": 30324,
+   "value": "String.prototype.fontcolor"
+  },
+  {
+   "page": 0,
+   "offset": 30364,
+   "value": "font"
+  },
+  {
+   "page": 0,
+   "offset": 30380,
+   "value": "color"
+  },
+  {
+   "page": 0,
+   "offset": 30400,
+   "value": "String.prototype.fontsize"
+  },
+  {
+   "page": 0,
+   "offset": 30440,
+   "value": "size"
+  },
+  {
+   "page": 0,
+   "offset": 30456,
+   "value": "String.prototype.fixed"
+  },
+  {
+   "page": 0,
+   "offset": 30492,
+   "value": "tt"
+  },
+  {
+   "page": 0,
+   "offset": 30508,
+   "value": "String.prototype.italics"
+  },
+  {
+   "page": 0,
+   "offset": 30544,
+   "value": "i"
+  },
+  {
+   "page": 0,
+   "offset": 30560,
+   "value": "String.prototype.link"
+  },
+  {
+   "page": 0,
+   "offset": 30596,
+   "value": "href"
+  },
+  {
+   "page": 0,
+   "offset": 30612,
+   "value": "String.prototype.small"
+  },
+  {
+   "page": 0,
+   "offset": 30648,
+   "value": "small"
+  },
+  {
+   "page": 0,
+   "offset": 30668,
+   "value": "String.prototype.strike"
+  },
+  {
+   "page": 0,
+   "offset": 30704,
+   "value": "strike"
+  },
+  {
+   "page": 0,
+   "offset": 30724,
+   "value": "String.prototype.sub"
+  },
+  {
+   "page": 0,
+   "offset": 30756,
+   "value": "sub"
+  },
+  {
+   "page": 0,
+   "offset": 30772,
+   "value": "String.prototype.sup"
+  },
+  {
+   "page": 0,
+   "offset": 30804,
+   "value": "sup"
+  },
+  {
+   "page": 0,
+   "offset": 30820,
+   "value": "String.prototype[Symbol.iterator]"
+  },
+  {
+   "page": 0,
+   "offset": 30868,
+   "value": "String Iterator.prototype.next"
+  },
+  {
+   "page": 0,
+   "offset": 30912,
+   "value": "String.prototype.padStart"
+  },
+  {
+   "page": 0,
+   "offset": 30952,
+   "value": "String.prototype.padEnd"
+  },
+  {
+   "page": 0,
+   "offset": 30988,
+   "value": "String.prototype.repeat"
+  },
+  {
+   "page": 0,
+   "offset": 31024,
+   "value": "String.prototype.replaceAll"
+  },
+  {
+   "page": 0,
+   "offset": 31064,
+   "value": "String.prototype.slice"
+  },
+  {
+   "page": 0,
+   "offset": 31100,
+   "value": "String.prototype.startsWith"
+  },
+  {
+   "page": 0,
+   "offset": 31140,
+   "value": "String.prototype.substring"
+  },
+  {
+   "page": 0,
+   "offset": 31180,
+   "value": "String.prototype.substr"
+  },
+  {
+   "page": 0,
+   "offset": 31216,
+   "value": "Symbol.prototype.description"
+  },
+  {
+   "page": 0,
+   "offset": 31256,
+   "value": "Symbol.prototype [ @@toPrimitive ]"
+  },
+  {
+   "page": 0,
+   "offset": 31304,
+   "value": "Symbol.prototype.toString"
+  },
+  {
+   "page": 0,
+   "offset": 31344,
+   "value": "Symbol.prototype.valueOf"
+  },
+  {
+   "page": 0,
+   "offset": 31380,
+   "value": "Construct"
+  },
+  {
+   "page": 0,
+   "offset": 31404,
+   "value": "byte length"
+  },
+  {
+   "page": 0,
+   "offset": 31428,
+   "value": "start offset"
+  },
+  {
+   "page": 0,
+   "offset": 31452,
+   "value": "%TypedArray%.prototype.every"
+  },
+  {
+   "page": 0,
+   "offset": 31492,
+   "value": "%TypedArray%.prototype.entries"
+  },
+  {
+   "page": 0,
+   "offset": 31536,
+   "value": "%TypedArray%.prototype.filter"
+  },
+  {
+   "page": 0,
+   "offset": 31580,
+   "value": "%TypedArray%.prototype.find"
+  },
+  {
+   "page": 0,
+   "offset": 31620,
+   "value": "%TypedArray%.prototype.findIndex"
+  },
+  {
+   "page": 0,
+   "offset": 31664,
+   "value": "%TypedArray%.prototype.forEach"
+  },
+  {
+   "page": 0,
+   "offset": 31708,
+   "value": "%TypedArray%.from"
+  },
+  {
+   "page": 0,
+   "offset": 31740,
+   "value": "%TypedArray%.prototype.keys"
+  },
+  {
+   "page": 0,
+   "offset": 31780,
+   "value": "%TypedArray%.of"
+  },
+  {
+   "page": 0,
+   "offset": 31808,
+   "value": "%TypedArray%.prototype.reduce"
+  },
+  {
+   "page": 0,
+   "offset": 31852,
+   "value": "%TypedArray%.prototype.reduceRight"
+  },
+  {
+   "page": 0,
+   "offset": 31900,
+   "value": "%TypedArray%.prototype.set"
+  },
+  {
+   "page": 0,
+   "offset": 31940,
+   "value": "%TypedArray%.prototype.slice"
+  },
+  {
+   "page": 0,
+   "offset": 31980,
+   "value": "%TypedArray%.prototype.some"
+  },
+  {
+   "page": 0,
+   "offset": 32020,
+   "value": "%TypedArray%.prototype.sort"
+  },
+  {
+   "page": 0,
+   "offset": 32060,
+   "value": "%TypedArray%.prototype.subarray"
+  },
+  {
+   "page": 0,
+   "offset": 32104,
+   "value": "%TypedArray%.prototype.values"
+  },
+  {
+   "page": 0,
+   "offset": 32148,
+   "value": "WeakRef.prototype.deref"
+  },
+  {
+   "page": 0,
+   "offset": 32184,
+   "value": "Intl.ListFormat.prototype.format"
+  },
+  {
+   "page": 0,
+   "offset": 32228,
+   "value": "Intl.ListFormat.prototype.formatToParts"
+  },
+  {
+   "page": 0,
+   "offset": 32280,
+   "value": "String.prototype.toLowerCase"
+  }
+ ]
+}

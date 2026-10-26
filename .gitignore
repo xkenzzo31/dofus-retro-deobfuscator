@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Ghidra build artifacts
+ghidra-plugin/build/
+ghidra-plugin/dist/
+ghidra-plugin/lib/*.jar
+*.rep/

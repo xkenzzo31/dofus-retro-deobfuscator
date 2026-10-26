@@ -1,0 +1,49 @@
+def ghidraInstallDir
+if (System.env.GHIDRA_INSTALL_DIR) {
+    ghidraInstallDir = System.env.GHIDRA_INSTALL_DIR
+} else if (project.hasProperty("GHIDRA_INSTALL_DIR")) {
+    ghidraInstallDir = project.getProperty("GHIDRA_INSTALL_DIR")
+}
+if (ghidraInstallDir) {
+    apply from: new File(ghidraInstallDir).getCanonicalPath() + "/support/buildExtension.gradle"
+} else {
+    throw new GradleException("GHIDRA_INSTALL_DIR is not defined!")
+}
+
+// Compile the SLEIGH specification with the targeted Ghidra, so the archive
+// ships a .sla that matches that Ghidra's format.
+task compileSleigh(type: Exec) {
+    inputs.files fileTree('data/languages') { exclude '*.sla' }
+    inputs.property 'ghidra', new File(ghidraInstallDir).getCanonicalPath()
+    outputs.file 'data/languages/v8_87.sla'
+    commandLine new File(ghidraInstallDir).getCanonicalPath() + '/support/sleigh', '-a', 'data/languages'
+}
+buildExtension.dependsOn compileSleigh
+
+// Ship only what Ghidra loads: no local tooling, editor settings or the April
+// (Dofus Retro 1.48) analysis outputs and the scripts that consume them.
+buildExtension {
+    exclude '.claude/**'
+    exclude 'integration/**'
+    exclude 'integrate.sh'
+    exclude 'integration_test.txt'
+    exclude 'output/**'
+    exclude 'tools/**'
+    exclude 'data/all_security_wrappers.json'
+    exclude 'data/decoder_log_full.json'
+    exclude 'data/ghidra_context_resolutions.json'
+    exclude 'data/ghidra_context_values.json'
+    exclude 'data/security_api_calls.json'
+    exclude 'data/v8_all_functions.json'
+    exclude 'data/v8_ghidra_strings.json'
+    exclude 'data/v8_handler_tables.json'
+    exclude 'data/v8_string_resolution.json'
+    exclude 'data/v8_wrapper_formulas.json'
+    exclude 'data/wrapper_bruteforce.json'
+    exclude 'data/v8_funcs.json'
+    exclude 'data/v8_jsruns.json'
+    exclude 'data/v8_builtins.json'
+    exclude 'ghidra_scripts/AnnotateHandlers.java'
+    exclude 'ghidra_scripts/CreateV8Functions.java'
+    exclude 'ghidra_scripts/ResolveWrappers.java'
+}

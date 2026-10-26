@@ -1,0 +1,1493 @@
+[
+    {
+        "Name": "kDebugBreakOnBytecode"
+    },
+    {
+        "Name": "kLoadLookupSlotForCall"
+    },
+    {
+        "Name": "kArrayIncludes_Slow"
+    },
+    {
+        "Name": "kArrayIndexOf"
+    },
+    {
+        "Name": "kArrayIsArray"
+    },
+    {
+        "Name": "kArraySpeciesConstructor"
+    },
+    {
+        "Name": "kGrowArrayElements"
+    },
+    {
+        "Name": "kNewArray"
+    },
+    {
+        "Name": "kNormalizeElements"
+    },
+    {
+        "Name": "kTransitionElementsKind"
+    },
+    {
+        "Name": "kTransitionElementsKindWithKind"
+    },
+    {
+        "Name": "kAtomicsLoad64"
+    },
+    {
+        "Name": "kAtomicsStore64"
+    },
+    {
+        "Name": "kAtomicsAdd"
+    },
+    {
+        "Name": "kAtomicsAnd"
+    },
+    {
+        "Name": "kAtomicsCompareExchange"
+    },
+    {
+        "Name": "kAtomicsExchange"
+    },
+    {
+        "Name": "kAtomicsNumWaitersForTesting"
+    },
+    {
+        "Name": "kAtomicsNumAsyncWaitersForTesting"
+    },
+    {
+        "Name": "kAtomicsNumUnresolvedAsyncPromisesForTesting"
+    },
+    {
+        "Name": "kAtomicsOr"
+    },
+    {
+        "Name": "kAtomicsSub"
+    },
+    {
+        "Name": "kAtomicsXor"
+    },
+    {
+        "Name": "kSetAllowAtomicsWait"
+    },
+    {
+        "Name": "kBigIntBinaryOp"
+    },
+    {
+        "Name": "kBigIntCompareToBigInt"
+    },
+    {
+        "Name": "kBigIntCompareToNumber"
+    },
+    {
+        "Name": "kBigIntCompareToString"
+    },
+    {
+        "Name": "kBigIntEqualToBigInt"
+    },
+    {
+        "Name": "kBigIntEqualToNumber"
+    },
+    {
+        "Name": "kBigIntEqualToString"
+    },
+    {
+        "Name": "kBigIntToBoolean"
+    },
+    {
+        "Name": "kBigIntToNumber"
+    },
+    {
+        "Name": "kBigIntUnaryOp"
+    },
+    {
+        "Name": "kToBigInt"
+    },
+    {
+        "Name": "kDefineClass"
+    },
+    {
+        "Name": "kHomeObjectSymbol"
+    },
+    {
+        "Name": "kLoadFromSuper"
+    },
+    {
+        "Name": "kLoadKeyedFromSuper"
+    },
+    {
+        "Name": "kStoreKeyedToSuper"
+    },
+    {
+        "Name": "kStoreToSuper"
+    },
+    {
+        "Name": "kThrowConstructorNonCallableError"
+    },
+    {
+        "Name": "kThrowNotSuperConstructor"
+    },
+    {
+        "Name": "kThrowStaticPrototypeError"
+    },
+    {
+        "Name": "kThrowSuperAlreadyCalledError"
+    },
+    {
+        "Name": "kThrowSuperNotCalled"
+    },
+    {
+        "Name": "kThrowUnsupportedSuperError"
+    },
+    {
+        "Name": "kMapGrow"
+    },
+    {
+        "Name": "kMapShrink"
+    },
+    {
+        "Name": "kSetGrow"
+    },
+    {
+        "Name": "kSetShrink"
+    },
+    {
+        "Name": "kTheHole"
+    },
+    {
+        "Name": "kWeakCollectionDelete"
+    },
+    {
+        "Name": "kWeakCollectionSet"
+    },
+    {
+        "Name": "kCompileForOnStackReplacement"
+    },
+    {
+        "Name": "kCompileLazy"
+    },
+    {
+        "Name": "kCompileOptimized_Concurrent"
+    },
+    {
+        "Name": "kCompileOptimized_NotConcurrent"
+    },
+    {
+        "Name": "kEvictOptimizedCodeSlot"
+    },
+    {
+        "Name": "kFunctionFirstExecution"
+    },
+    {
+        "Name": "kInstantiateAsmJs"
+    },
+    {
+        "Name": "kNotifyDeoptimized"
+    },
+    {
+        "Name": "kResolvePossiblyDirectEval"
+    },
+    {
+        "Name": "kDateCurrentTime"
+    },
+    {
+        "Name": "kClearStepping"
+    },
+    {
+        "Name": "kCollectGarbage"
+    },
+    {
+        "Name": "kDebugAsyncFunctionEntered"
+    },
+    {
+        "Name": "kDebugAsyncFunctionSuspended"
+    },
+    {
+        "Name": "kDebugAsyncFunctionResumed"
+    },
+    {
+        "Name": "kDebugAsyncFunctionFinished"
+    },
+    {
+        "Name": "kDebugBreakAtEntry"
+    },
+    {
+        "Name": "kDebugCollectCoverage"
+    },
+    {
+        "Name": "kDebugGetLoadedScriptIds"
+    },
+    {
+        "Name": "kDebugOnFunctionCall"
+    },
+    {
+        "Name": "kDebugPopPromise"
+    },
+    {
+        "Name": "kDebugPrepareStepInSuspendedGenerator"
+    },
+    {
+        "Name": "kDebugPushPromise"
+    },
+    {
+        "Name": "kDebugToggleBlockCoverage"
+    },
+    {
+        "Name": "kDebugTogglePreciseCoverage"
+    },
+    {
+        "Name": "kFunctionGetInferredName"
+    },
+    {
+        "Name": "kGetBreakLocations"
+    },
+    {
+        "Name": "kGetGeneratorScopeCount"
+    },
+    {
+        "Name": "kGetGeneratorScopeDetails"
+    },
+    {
+        "Name": "kGetHeapUsage"
+    },
+    {
+        "Name": "kHandleDebuggerStatement"
+    },
+    {
+        "Name": "kIsBreakOnException"
+    },
+    {
+        "Name": "kLiveEditPatchScript"
+    },
+    {
+        "Name": "kProfileCreateSnapshotDataBlob"
+    },
+    {
+        "Name": "kScheduleBreak"
+    },
+    {
+        "Name": "kScriptLocationFromLine2"
+    },
+    {
+        "Name": "kSetGeneratorScopeVariableValue"
+    },
+    {
+        "Name": "kForInEnumerate"
+    },
+    {
+        "Name": "kForInHasProperty"
+    },
+    {
+        "Name": "kFunctionGetScriptSource"
+    },
+    {
+        "Name": "kFunctionGetScriptId"
+    },
+    {
+        "Name": "kFunctionGetScriptSourcePosition"
+    },
+    {
+        "Name": "kFunctionGetSourceCode"
+    },
+    {
+        "Name": "kFunctionIsAPIFunction"
+    },
+    {
+        "Name": "kIsFunction"
+    },
+    {
+        "Name": "kAsyncGeneratorHasCatchHandlerForPC"
+    },
+    {
+        "Name": "kGeneratorGetFunction"
+    },
+    {
+        "Name": "kElementsTransitionAndStoreIC_Miss"
+    },
+    {
+        "Name": "kKeyedLoadIC_Miss"
+    },
+    {
+        "Name": "kKeyedStoreIC_Miss"
+    },
+    {
+        "Name": "kStoreInArrayLiteralIC_Miss"
+    },
+    {
+        "Name": "kKeyedStoreIC_Slow"
+    },
+    {
+        "Name": "kLoadElementWithInterceptor"
+    },
+    {
+        "Name": "kLoadGlobalIC_Miss"
+    },
+    {
+        "Name": "kLoadGlobalIC_Slow"
+    },
+    {
+        "Name": "kLoadIC_Miss"
+    },
+    {
+        "Name": "kLoadNoFeedbackIC_Miss"
+    },
+    {
+        "Name": "kLoadWithReceiverIC_Miss"
+    },
+    {
+        "Name": "kLoadWithReceiverNoFeedbackIC_Miss"
+    },
+    {
+        "Name": "kLoadPropertyWithInterceptor"
+    },
+    {
+        "Name": "kStoreCallbackProperty"
+    },
+    {
+        "Name": "kStoreGlobalIC_Miss"
+    },
+    {
+        "Name": "kStoreGlobalICNoFeedback_Miss"
+    },
+    {
+        "Name": "kStoreGlobalIC_Slow"
+    },
+    {
+        "Name": "kStoreIC_Miss"
+    },
+    {
+        "Name": "kStoreInArrayLiteralIC_Slow"
+    },
+    {
+        "Name": "kStorePropertyWithInterceptor"
+    },
+    {
+        "Name": "kCloneObjectIC_Miss"
+    },
+    {
+        "Name": "kKeyedHasIC_Miss"
+    },
+    {
+        "Name": "kHasElementWithInterceptor"
+    },
+    {
+        "Name": "kAccessCheck"
+    },
+    {
+        "Name": "kAllocateByteArray"
+    },
+    {
+        "Name": "kAllocateInYoungGeneration"
+    },
+    {
+        "Name": "kAllocateInOldGeneration"
+    },
+    {
+        "Name": "kAllocateSeqOneByteString"
+    },
+    {
+        "Name": "kAllocateSeqTwoByteString"
+    },
+    {
+        "Name": "kAllowDynamicFunction"
+    },
+    {
+        "Name": "kCreateListFromArrayLike"
+    },
+    {
+        "Name": "kDoubleToStringWithRadix"
+    },
+    {
+        "Name": "kFatalProcessOutOfMemoryInAllocateRaw"
+    },
+    {
+        "Name": "kFatalProcessOutOfMemoryInvalidArrayLength"
+    },
+    {
+        "Name": "kGetAndResetRuntimeCallStats"
+    },
+    {
+        "Name": "kGetTemplateObject"
+    },
+    {
+        "Name": "kIncrementUseCounter"
+    },
+    {
+        "Name": "kBytecodeBudgetInterruptFromBytecode"
+    },
+    {
+        "Name": "kBytecodeBudgetInterruptFromCode"
+    },
+    {
+        "Name": "kNewError"
+    },
+    {
+        "Name": "kNewReferenceError"
+    },
+    {
+        "Name": "kNewSyntaxError"
+    },
+    {
+        "Name": "kNewTypeError"
+    },
+    {
+        "Name": "kOrdinaryHasInstance"
+    },
+    {
+        "Name": "kPromoteScheduledException"
+    },
+    {
+        "Name": "kReportMessageFromMicrotask"
+    },
+    {
+        "Name": "kReThrow"
+    },
+    {
+        "Name": "kRunMicrotaskCallback"
+    },
+    {
+        "Name": "kPerformMicrotaskCheckpoint"
+    },
+    {
+        "Name": "kStackGuard"
+    },
+    {
+        "Name": "kStackGuardWithGap"
+    },
+    {
+        "Name": "kThrow"
+    },
+    {
+        "Name": "kThrowApplyNonFunction"
+    },
+    {
+        "Name": "kThrowCalledNonCallable"
+    },
+    {
+        "Name": "kThrowConstructedNonConstructable"
+    },
+    {
+        "Name": "kThrowConstructorReturnedNonObject"
+    },
+    {
+        "Name": "kThrowInvalidStringLength"
+    },
+    {
+        "Name": "kThrowInvalidTypedArrayAlignment"
+    },
+    {
+        "Name": "kThrowIteratorError"
+    },
+    {
+        "Name": "kThrowSpreadArgError"
+    },
+    {
+        "Name": "kThrowIteratorResultNotAnObject"
+    },
+    {
+        "Name": "kThrowNotConstructor"
+    },
+    {
+        "Name": "kThrowPatternAssignmentNonCoercible"
+    },
+    {
+        "Name": "kThrowRangeError"
+    },
+    {
+        "Name": "kThrowReferenceError"
+    },
+    {
+        "Name": "kThrowAccessedUninitializedVariable"
+    },
+    {
+        "Name": "kThrowStackOverflow"
+    },
+    {
+        "Name": "kThrowSymbolAsyncIteratorInvalid"
+    },
+    {
+        "Name": "kThrowSymbolIteratorInvalid"
+    },
+    {
+        "Name": "kThrowThrowMethodMissing"
+    },
+    {
+        "Name": "kThrowTypeError"
+    },
+    {
+        "Name": "kThrowTypeErrorIfStrict"
+    },
+    {
+        "Name": "kTypeof"
+    },
+    {
+        "Name": "kUnwindAndFindExceptionHandler"
+    },
+    {
+        "Name": "kInterpreterTraceBytecodeEntry"
+    },
+    {
+        "Name": "kInterpreterTraceBytecodeExit"
+    },
+    {
+        "Name": "kInterpreterTraceUpdateFeedback"
+    },
+    {
+        "Name": "kFormatList"
+    },
+    {
+        "Name": "kFormatListToParts"
+    },
+    {
+        "Name": "kStringToLowerCaseIntl"
+    },
+    {
+        "Name": "kStringToUpperCaseIntl"
+    },
+    {
+        "Name": "kCreateArrayLiteral"
+    },
+    {
+        "Name": "kCreateArrayLiteralWithoutAllocationSite"
+    },
+    {
+        "Name": "kCreateObjectLiteral"
+    },
+    {
+        "Name": "kCreateObjectLiteralWithoutAllocationSite"
+    },
+    {
+        "Name": "kCreateRegExpLiteral"
+    },
+    {
+        "Name": "kDynamicImportCall"
+    },
+    {
+        "Name": "kGetModuleNamespace"
+    },
+    {
+        "Name": "kArrayBufferMaxByteLength"
+    },
+    {
+        "Name": "kGetHoleNaNLower"
+    },
+    {
+        "Name": "kGetHoleNaNUpper"
+    },
+    {
+        "Name": "kIsValidSmi"
+    },
+    {
+        "Name": "kMaxSmi"
+    },
+    {
+        "Name": "kNumberToStringSlow"
+    },
+    {
+        "Name": "kStringParseFloat"
+    },
+    {
+        "Name": "kStringParseInt"
+    },
+    {
+        "Name": "kStringToNumber"
+    },
+    {
+        "Name": "kTypedArrayMaxLength"
+    },
+    {
+        "Name": "kAddDictionaryProperty"
+    },
+    {
+        "Name": "kAddPrivateField"
+    },
+    {
+        "Name": "kAddPrivateBrand"
+    },
+    {
+        "Name": "kAllocateHeapNumber"
+    },
+    {
+        "Name": "kCollectTypeProfile"
+    },
+    {
+        "Name": "kCompleteInobjectSlackTrackingForMap"
+    },
+    {
+        "Name": "kCopyDataPropertiesWithExcludedProperties"
+    },
+    {
+        "Name": "kCreatePrivateAccessors"
+    },
+    {
+        "Name": "kDefineAccessorPropertyUnchecked"
+    },
+    {
+        "Name": "kDefineDataPropertyInLiteral"
+    },
+    {
+        "Name": "kDefineGetterPropertyUnchecked"
+    },
+    {
+        "Name": "kDefineSetterPropertyUnchecked"
+    },
+    {
+        "Name": "kDeleteProperty"
+    },
+    {
+        "Name": "kGetDerivedMap"
+    },
+    {
+        "Name": "kGetFunctionName"
+    },
+    {
+        "Name": "kGetOwnPropertyDescriptor"
+    },
+    {
+        "Name": "kGetOwnPropertyKeys"
+    },
+    {
+        "Name": "kGetProperty"
+    },
+    {
+        "Name": "kHasFastPackedElements"
+    },
+    {
+        "Name": "kHasInPrototypeChain"
+    },
+    {
+        "Name": "kInternalSetPrototype"
+    },
+    {
+        "Name": "kJSReceiverPreventExtensionsDontThrow"
+    },
+    {
+        "Name": "kJSReceiverPreventExtensionsThrow"
+    },
+    {
+        "Name": "kJSReceiverGetPrototypeOf"
+    },
+    {
+        "Name": "kJSReceiverSetPrototypeOfDontThrow"
+    },
+    {
+        "Name": "kJSReceiverSetPrototypeOfThrow"
+    },
+    {
+        "Name": "kLoadPrivateGetter"
+    },
+    {
+        "Name": "kLoadPrivateSetter"
+    },
+    {
+        "Name": "kNewObject"
+    },
+    {
+        "Name": "kObjectCreate"
+    },
+    {
+        "Name": "kObjectEntries"
+    },
+    {
+        "Name": "kObjectEntriesSkipFastPath"
+    },
+    {
+        "Name": "kObjectGetOwnPropertyNames"
+    },
+    {
+        "Name": "kObjectGetOwnPropertyNamesTryFast"
+    },
+    {
+        "Name": "kObjectHasOwnProperty"
+    },
+    {
+        "Name": "kObjectIsExtensible"
+    },
+    {
+        "Name": "kObjectKeys"
+    },
+    {
+        "Name": "kObjectValues"
+    },
+    {
+        "Name": "kObjectValuesSkipFastPath"
+    },
+    {
+        "Name": "kOptimizeObjectForAddingMultipleProperties"
+    },
+    {
+        "Name": "kSetDataProperties"
+    },
+    {
+        "Name": "kSetKeyedProperty"
+    },
+    {
+        "Name": "kSetNamedProperty"
+    },
+    {
+        "Name": "kSetOwnPropertyIgnoreAttributes"
+    },
+    {
+        "Name": "kStoreDataPropertyInLiteral"
+    },
+    {
+        "Name": "kShrinkPropertyDictionary"
+    },
+    {
+        "Name": "kToFastProperties"
+    },
+    {
+        "Name": "kToName"
+    },
+    {
+        "Name": "kToNumeric"
+    },
+    {
+        "Name": "kTryMigrateInstance"
+    },
+    {
+        "Name": "kAdd"
+    },
+    {
+        "Name": "kEqual"
+    },
+    {
+        "Name": "kGreaterThan"
+    },
+    {
+        "Name": "kGreaterThanOrEqual"
+    },
+    {
+        "Name": "kLessThan"
+    },
+    {
+        "Name": "kLessThanOrEqual"
+    },
+    {
+        "Name": "kNotEqual"
+    },
+    {
+        "Name": "kStrictEqual"
+    },
+    {
+        "Name": "kStrictNotEqual"
+    },
+    {
+        "Name": "kReferenceEqual"
+    },
+    {
+        "Name": "kEnqueueMicrotask"
+    },
+    {
+        "Name": "kPromiseHookAfter"
+    },
+    {
+        "Name": "kPromiseHookBefore"
+    },
+    {
+        "Name": "kPromiseHookInit"
+    },
+    {
+        "Name": "kAwaitPromisesInit"
+    },
+    {
+        "Name": "kAwaitPromisesInitOld"
+    },
+    {
+        "Name": "kPromiseMarkAsHandled"
+    },
+    {
+        "Name": "kPromiseRejectEventFromStack"
+    },
+    {
+        "Name": "kPromiseRevokeReject"
+    },
+    {
+        "Name": "kPromiseStatus"
+    },
+    {
+        "Name": "kRejectPromise"
+    },
+    {
+        "Name": "kResolvePromise"
+    },
+    {
+        "Name": "kPromiseRejectAfterResolved"
+    },
+    {
+        "Name": "kPromiseResolveAfterResolved"
+    },
+    {
+        "Name": "kConstructAggregateErrorHelper"
+    },
+    {
+        "Name": "kConstructInternalAggregateErrorHelper"
+    },
+    {
+        "Name": "kCheckProxyGetSetTrapResult"
+    },
+    {
+        "Name": "kCheckProxyHasTrapResult"
+    },
+    {
+        "Name": "kCheckProxyDeleteTrapResult"
+    },
+    {
+        "Name": "kGetPropertyWithReceiver"
+    },
+    {
+        "Name": "kIsJSProxy"
+    },
+    {
+        "Name": "kJSProxyGetHandler"
+    },
+    {
+        "Name": "kJSProxyGetTarget"
+    },
+    {
+        "Name": "kSetPropertyWithReceiver"
+    },
+    {
+        "Name": "kRegExpExec"
+    },
+    {
+        "Name": "kRegExpExecMultiple"
+    },
+    {
+        "Name": "kRegExpInitializeAndCompile"
+    },
+    {
+        "Name": "kRegExpReplaceRT"
+    },
+    {
+        "Name": "kRegExpSplit"
+    },
+    {
+        "Name": "kStringReplaceNonGlobalRegExpWithFunction"
+    },
+    {
+        "Name": "kStringSplit"
+    },
+    {
+        "Name": "kDeclareEvalFunction"
+    },
+    {
+        "Name": "kDeclareEvalVar"
+    },
+    {
+        "Name": "kDeclareGlobals"
+    },
+    {
+        "Name": "kDeclareModuleExports"
+    },
+    {
+        "Name": "kDeleteLookupSlot"
+    },
+    {
+        "Name": "kLoadLookupSlot"
+    },
+    {
+        "Name": "kLoadLookupSlotInsideTypeof"
+    },
+    {
+        "Name": "kNewClosure"
+    },
+    {
+        "Name": "kNewClosure_Tenured"
+    },
+    {
+        "Name": "kNewFunctionContext"
+    },
+    {
+        "Name": "kNewRestParameter"
+    },
+    {
+        "Name": "kNewSloppyArguments"
+    },
+    {
+        "Name": "kNewStrictArguments"
+    },
+    {
+        "Name": "kPushBlockContext"
+    },
+    {
+        "Name": "kPushCatchContext"
+    },
+    {
+        "Name": "kPushWithContext"
+    },
+    {
+        "Name": "kStoreGlobalNoHoleCheckForReplLet"
+    },
+    {
+        "Name": "kStoreLookupSlot_Sloppy"
+    },
+    {
+        "Name": "kStoreLookupSlot_SloppyHoisting"
+    },
+    {
+        "Name": "kStoreLookupSlot_Strict"
+    },
+    {
+        "Name": "kThrowConstAssignError"
+    },
+    {
+        "Name": "kFlattenString"
+    },
+    {
+        "Name": "kGetSubstitution"
+    },
+    {
+        "Name": "kInternalizeString"
+    },
+    {
+        "Name": "kStringAdd"
+    },
+    {
+        "Name": "kStringBuilderConcat"
+    },
+    {
+        "Name": "kStringCharCodeAt"
+    },
+    {
+        "Name": "kStringEqual"
+    },
+    {
+        "Name": "kStringEscapeQuotes"
+    },
+    {
+        "Name": "kStringGreaterThan"
+    },
+    {
+        "Name": "kStringGreaterThanOrEqual"
+    },
+    {
+        "Name": "kStringIncludes"
+    },
+    {
+        "Name": "kStringIndexOf"
+    },
+    {
+        "Name": "kStringIndexOfUnchecked"
+    },
+    {
+        "Name": "kStringLastIndexOf"
+    },
+    {
+        "Name": "kStringLessThan"
+    },
+    {
+        "Name": "kStringLessThanOrEqual"
+    },
+    {
+        "Name": "kStringMaxLength"
+    },
+    {
+        "Name": "kStringReplaceOneCharWithString"
+    },
+    {
+        "Name": "kStringCompareSequence"
+    },
+    {
+        "Name": "kStringSubstring"
+    },
+    {
+        "Name": "kStringToArray"
+    },
+    {
+        "Name": "kStringTrim"
+    },
+    {
+        "Name": "kCreatePrivateNameSymbol"
+    },
+    {
+        "Name": "kCreatePrivateBrandSymbol"
+    },
+    {
+        "Name": "kCreatePrivateSymbol"
+    },
+    {
+        "Name": "kSymbolDescriptiveString"
+    },
+    {
+        "Name": "kSymbolIsPrivate"
+    },
+    {
+        "Name": "kAbort"
+    },
+    {
+        "Name": "kAbortJS"
+    },
+    {
+        "Name": "kAbortCSAAssert"
+    },
+    {
+        "Name": "kArraySpeciesProtector"
+    },
+    {
+        "Name": "kClearFunctionFeedback"
+    },
+    {
+        "Name": "kClearMegamorphicStubCache"
+    },
+    {
+        "Name": "kCompleteInobjectSlackTracking"
+    },
+    {
+        "Name": "kConstructConsString"
+    },
+    {
+        "Name": "kConstructDouble"
+    },
+    {
+        "Name": "kConstructSlicedString"
+    },
+    {
+        "Name": "kDebugPrint"
+    },
+    {
+        "Name": "kDebugPrintPtr"
+    },
+    {
+        "Name": "kDebugTrace"
+    },
+    {
+        "Name": "kDebugTrackRetainingPath"
+    },
+    {
+        "Name": "kDeoptimizeFunction"
+    },
+    {
+        "Name": "kDeserializeWasmModule"
+    },
+    {
+        "Name": "kDisallowCodegenFromStrings"
+    },
+    {
+        "Name": "kDisallowWasmCodegen"
+    },
+    {
+        "Name": "kDisassembleFunction"
+    },
+    {
+        "Name": "kDynamicMapChecksEnabled"
+    },
+    {
+        "Name": "kEnableCodeLoggingForTesting"
+    },
+    {
+        "Name": "kEnsureFeedbackVectorForFunction"
+    },
+    {
+        "Name": "kFreezeWasmLazyCompilation"
+    },
+    {
+        "Name": "kGetCallable"
+    },
+    {
+        "Name": "kGetInitializerFunction"
+    },
+    {
+        "Name": "kGetOptimizationStatus"
+    },
+    {
+        "Name": "kGetUndetectable"
+    },
+    {
+        "Name": "kGetWasmExceptionId"
+    },
+    {
+        "Name": "kGetWasmExceptionValues"
+    },
+    {
+        "Name": "kGetWasmRecoveredTrapCount"
+    },
+    {
+        "Name": "kGlobalPrint"
+    },
+    {
+        "Name": "kHasDictionaryElements"
+    },
+    {
+        "Name": "kHasDoubleElements"
+    },
+    {
+        "Name": "kHasElementsInALargeObjectSpace"
+    },
+    {
+        "Name": "kHasFastElements"
+    },
+    {
+        "Name": "kHasFastProperties"
+    },
+    {
+        "Name": "kHasFixedBigInt64Elements"
+    },
+    {
+        "Name": "kHasFixedBigUint64Elements"
+    },
+    {
+        "Name": "kHasFixedFloat32Elements"
+    },
+    {
+        "Name": "kHasFixedFloat64Elements"
+    },
+    {
+        "Name": "kHasFixedInt16Elements"
+    },
+    {
+        "Name": "kHasFixedInt32Elements"
+    },
+    {
+        "Name": "kHasFixedInt8Elements"
+    },
+    {
+        "Name": "kHasFixedUint16Elements"
+    },
+    {
+        "Name": "kHasFixedUint32Elements"
+    },
+    {
+        "Name": "kHasFixedUint8ClampedElements"
+    },
+    {
+        "Name": "kHasFixedUint8Elements"
+    },
+    {
+        "Name": "kHasHoleyElements"
+    },
+    {
+        "Name": "kHasObjectElements"
+    },
+    {
+        "Name": "kHasPackedElements"
+    },
+    {
+        "Name": "kHasSloppyArgumentsElements"
+    },
+    {
+        "Name": "kHasSmiElements"
+    },
+    {
+        "Name": "kHasSmiOrObjectElements"
+    },
+    {
+        "Name": "kHaveSameMap"
+    },
+    {
+        "Name": "kHeapObjectVerify"
+    },
+    {
+        "Name": "kICsAreEnabled"
+    },
+    {
+        "Name": "kInYoungGeneration"
+    },
+    {
+        "Name": "kIsAsmWasmCode"
+    },
+    {
+        "Name": "kIsBeingInterpreted"
+    },
+    {
+        "Name": "kIsConcurrentRecompilationSupported"
+    },
+    {
+        "Name": "kIsLiftoffFunction"
+    },
+    {
+        "Name": "kIsThreadInWasm"
+    },
+    {
+        "Name": "kIsWasmCode"
+    },
+    {
+        "Name": "kIsWasmTrapHandlerEnabled"
+    },
+    {
+        "Name": "kRegexpHasBytecode"
+    },
+    {
+        "Name": "kRegexpHasNativeCode"
+    },
+    {
+        "Name": "kRegexpTypeTag"
+    },
+    {
+        "Name": "kMapIteratorProtector"
+    },
+    {
+        "Name": "kNeverOptimizeFunction"
+    },
+    {
+        "Name": "kNotifyContextDisposed"
+    },
+    {
+        "Name": "kOptimizeFunctionOnNextCall"
+    },
+    {
+        "Name": "kOptimizeOsr"
+    },
+    {
+        "Name": "kNewRegExpWithBacktrackLimit"
+    },
+    {
+        "Name": "kPrepareFunctionForOptimization"
+    },
+    {
+        "Name": "kPrintWithNameForAssert"
+    },
+    {
+        "Name": "kRunningInSimulator"
+    },
+    {
+        "Name": "kRuntimeEvaluateREPL"
+    },
+    {
+        "Name": "kSerializeDeserializeNow"
+    },
+    {
+        "Name": "kSerializeWasmModule"
+    },
+    {
+        "Name": "kSetAllocationTimeout"
+    },
+    {
+        "Name": "kSetForceSlowPath"
+    },
+    {
+        "Name": "kSetIteratorProtector"
+    },
+    {
+        "Name": "kSetWasmCompileControls"
+    },
+    {
+        "Name": "kSetWasmInstantiateControls"
+    },
+    {
+        "Name": "kSetWasmThreadsEnabled"
+    },
+    {
+        "Name": "kSimulateNewspaceFull"
+    },
+    {
+        "Name": "kStringIteratorProtector"
+    },
+    {
+        "Name": "kSystemBreak"
+    },
+    {
+        "Name": "kTraceEnter"
+    },
+    {
+        "Name": "kTraceExit"
+    },
+    {
+        "Name": "kTurbofanStaticAssert"
+    },
+    {
+        "Name": "kUnblockConcurrentRecompilation"
+    },
+    {
+        "Name": "kWasmGetNumberOfInstances"
+    },
+    {
+        "Name": "kWasmNumCodeSpaces"
+    },
+    {
+        "Name": "kWasmTierDownModule"
+    },
+    {
+        "Name": "kWasmTierUpFunction"
+    },
+    {
+        "Name": "kWasmTierUpModule"
+    },
+    {
+        "Name": "kWasmTraceEnter"
+    },
+    {
+        "Name": "kWasmTraceExit"
+    },
+    {
+        "Name": "kWasmTraceMemory"
+    },
+    {
+        "Name": "kArrayBufferDetach"
+    },
+    {
+        "Name": "kTypedArrayCopyElements"
+    },
+    {
+        "Name": "kTypedArrayGetBuffer"
+    },
+    {
+        "Name": "kTypedArraySet"
+    },
+    {
+        "Name": "kTypedArraySortFast"
+    },
+    {
+        "Name": "kThrowWasmError"
+    },
+    {
+        "Name": "kThrowWasmStackOverflow"
+    },
+    {
+        "Name": "kWasmI32AtomicWait"
+    },
+    {
+        "Name": "kWasmI64AtomicWait"
+    },
+    {
+        "Name": "kWasmAtomicNotify"
+    },
+    {
+        "Name": "kWasmMemoryGrow"
+    },
+    {
+        "Name": "kWasmStackGuard"
+    },
+    {
+        "Name": "kWasmThrowCreate"
+    },
+    {
+        "Name": "kWasmThrowTypeError"
+    },
+    {
+        "Name": "kWasmRefFunc"
+    },
+    {
+        "Name": "kWasmFunctionTableGet"
+    },
+    {
+        "Name": "kWasmFunctionTableSet"
+    },
+    {
+        "Name": "kWasmTableInit"
+    },
+    {
+        "Name": "kWasmTableCopy"
+    },
+    {
+        "Name": "kWasmTableGrow"
+    },
+    {
+        "Name": "kWasmTableFill"
+    },
+    {
+        "Name": "kWasmIsValidRefValue"
+    },
+    {
+        "Name": "kWasmCompileLazy"
+    },
+    {
+        "Name": "kWasmTriggerTierUp"
+    },
+    {
+        "Name": "kWasmDebugBreak"
+    },
+    {
+        "Name": "kWasmAllocateRtt"
+    },
+    {
+        "Name": "kJSFinalizationRegistryRegisterWeakCellWithUnregisterToken"
+    },
+    {
+        "Name": "kJSWeakRefAddToKeptObjects"
+    },
+    {
+        "Name": "kShrinkFinalizationRegistryUnregisterTokenMap"
+    },
+    {
+        "Name": "kInlineIsArray"
+    },
+    {
+        "Name": "kInlineIncBlockCounter"
+    },
+    {
+        "Name": "kInlineCall"
+    },
+    {
+        "Name": "kInlineAsyncFunctionAwaitCaught"
+    },
+    {
+        "Name": "kInlineAsyncFunctionAwaitUncaught"
+    },
+    {
+        "Name": "kInlineAsyncFunctionEnter"
+    },
+    {
+        "Name": "kInlineAsyncFunctionReject"
+    },
+    {
+        "Name": "kInlineAsyncFunctionResolve"
+    },
+    {
+        "Name": "kInlineAsyncGeneratorAwaitCaught"
+    },
+    {
+        "Name": "kInlineAsyncGeneratorAwaitUncaught"
+    },
+    {
+        "Name": "kInlineAsyncGeneratorReject"
+    },
+    {
+        "Name": "kInlineAsyncGeneratorResolve"
+    },
+    {
+        "Name": "kInlineAsyncGeneratorYield"
+    },
+    {
+        "Name": "kInlineCreateJSGeneratorObject"
+    },
+    {
+        "Name": "kInlineGeneratorClose"
+    },
+    {
+        "Name": "kInlineGeneratorGetResumeMode"
+    },
+    {
+        "Name": "kInlineCreateAsyncFromSyncIterator"
+    },
+    {
+        "Name": "kInlineGetImportMetaObject"
+    },
+    {
+        "Name": "kInlineIsSmi"
+    },
+    {
+        "Name": "kInlineCopyDataProperties"
+    },
+    {
+        "Name": "kInlineCreateDataProperty"
+    },
+    {
+        "Name": "kInlineCreateIterResultObject"
+    },
+    {
+        "Name": "kInlineHasProperty"
+    },
+    {
+        "Name": "kInlineIsJSReceiver"
+    },
+    {
+        "Name": "kInlineToLength"
+    },
+    {
+        "Name": "kInlineToNumber"
+    },
+    {
+        "Name": "kInlineToObject"
+    },
+    {
+        "Name": "kInlineToString"
+    },
+    {
+        "Name": "kInlineIsRegExp"
+    },
+    {
+        "Name": "kInlineDeoptimizeNow"
+    }
+]

@@ -1,0 +1,3583 @@
+{
+ "v8_version": "8.7.220.31",
+ "bytecodes": [
+  {
+   "name": "Wide",
+   "accumulator": "None",
+   "operands": []
+  },
+  {
+   "name": "ExtraWide",
+   "accumulator": "None",
+   "operands": []
+  },
+  {
+   "name": "DebugBreakWide",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "DebugBreakExtraWide",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "DebugBreak0",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "DebugBreak1",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "DebugBreak2",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Reg"
+   ]
+  },
+  {
+   "name": "DebugBreak3",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Reg"
+   ]
+  },
+  {
+   "name": "DebugBreak4",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Reg",
+    "Reg"
+   ]
+  },
+  {
+   "name": "DebugBreak5",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "RuntimeId",
+    "Reg",
+    "Reg"
+   ]
+  },
+  {
+   "name": "DebugBreak6",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "RuntimeId",
+    "Reg",
+    "Reg",
+    "Reg"
+   ]
+  },
+  {
+   "name": "LdaZero",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "LdaSmi",
+   "accumulator": "Write",
+   "operands": [
+    "Imm"
+   ]
+  },
+  {
+   "name": "LdaUndefined",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "LdaNull",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "LdaTheHole",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "LdaTrue",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "LdaFalse",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "LdaConstant",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaGlobal",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaGlobalInsideTypeof",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "StaGlobal",
+   "accumulator": "Read",
+   "operands": [
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "PushContext",
+   "accumulator": "Read",
+   "operands": [
+    "RegOut"
+   ]
+  },
+  {
+   "name": "PopContext",
+   "accumulator": "None",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "LdaContextSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "LdaImmutableContextSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "LdaCurrentContextSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaImmutableCurrentContextSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "StaContextSlot",
+   "accumulator": "Read",
+   "operands": [
+    "Reg",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "StaCurrentContextSlot",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaLookupSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaLookupContextSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "LdaLookupGlobalSlot",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "LdaLookupSlotInsideTypeof",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaLookupContextSlotInsideTypeof",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "LdaLookupGlobalSlotInsideTypeof",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "StaLookupSlot",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx",
+    "Flag8"
+   ]
+  },
+  {
+   "name": "Ldar",
+   "accumulator": "Write",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "Star",
+   "accumulator": "Read",
+   "operands": [
+    "RegOut"
+   ]
+  },
+  {
+   "name": "Mov",
+   "accumulator": "None",
+   "operands": [
+    "Reg",
+    "RegOut"
+   ]
+  },
+  {
+   "name": "LdaNamedProperty",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaNamedPropertyNoFeedback",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaNamedPropertyFromSuper",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaKeyedProperty",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "LdaModuleVariable",
+   "accumulator": "Write",
+   "operands": [
+    "Imm",
+    "UImm"
+   ]
+  },
+  {
+   "name": "StaModuleVariable",
+   "accumulator": "Read",
+   "operands": [
+    "Imm",
+    "UImm"
+   ]
+  },
+  {
+   "name": "StaNamedProperty",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "StaNamedPropertyNoFeedback",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx",
+    "Flag8"
+   ]
+  },
+  {
+   "name": "StaNamedOwnProperty",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "StaKeyedProperty",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "StaInArrayLiteral",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "StaDataPropertyInLiteral",
+   "accumulator": "Read",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Flag8",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CollectTypeProfile",
+   "accumulator": "Read",
+   "operands": [
+    "Imm"
+   ]
+  },
+  {
+   "name": "Add",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Sub",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Mul",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Div",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Mod",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Exp",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseOr",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseXor",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseAnd",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ShiftLeft",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ShiftRight",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ShiftRightLogical",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "AddSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "SubSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "MulSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "DivSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ModSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ExpSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseOrSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseXorSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseAndSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ShiftLeftSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ShiftRightSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ShiftRightLogicalSmi",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Imm",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Inc",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "Dec",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "Negate",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "BitwiseNot",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "ToBooleanLogicalNot",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "LogicalNot",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "TypeOf",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "DeletePropertyStrict",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "DeletePropertySloppy",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "GetSuperConstructor",
+   "accumulator": "Read",
+   "operands": [
+    "RegOut"
+   ]
+  },
+  {
+   "name": "CallAnyReceiver",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallProperty",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallProperty0",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallProperty1",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallProperty2",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallUndefinedReceiver",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallUndefinedReceiver0",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallUndefinedReceiver1",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallUndefinedReceiver2",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg",
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallNoFeedback",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount"
+   ]
+  },
+  {
+   "name": "CallWithSpread",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CallRuntime",
+   "accumulator": "Write",
+   "operands": [
+    "RuntimeId",
+    "RegList",
+    "RegCount"
+   ]
+  },
+  {
+   "name": "CallRuntimeForPair",
+   "accumulator": "None",
+   "operands": [
+    "RuntimeId",
+    "RegList",
+    "RegCount",
+    "RegOutPair"
+   ]
+  },
+  {
+   "name": "CallJSRuntime",
+   "accumulator": "Write",
+   "operands": [
+    "NativeContextIndex",
+    "RegList",
+    "RegCount"
+   ]
+  },
+  {
+   "name": "InvokeIntrinsic",
+   "accumulator": "Write",
+   "operands": [
+    "IntrinsicId",
+    "RegList",
+    "RegCount"
+   ]
+  },
+  {
+   "name": "Construct",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ConstructWithSpread",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestEqual",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestEqualStrict",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestLessThan",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestGreaterThan",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestLessThanOrEqual",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestGreaterThanOrEqual",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestReferenceEqual",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "TestInstanceOf",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestIn",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "TestUndetectable",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "TestNull",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "TestUndefined",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "TestTypeOf",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Flag8"
+   ]
+  },
+  {
+   "name": "ToName",
+   "accumulator": "Read",
+   "operands": [
+    "RegOut"
+   ]
+  },
+  {
+   "name": "ToNumber",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "ToNumeric",
+   "accumulator": "ReadWrite",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "ToObject",
+   "accumulator": "Read",
+   "operands": [
+    "RegOut"
+   ]
+  },
+  {
+   "name": "ToString",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "CreateRegExpLiteral",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "Flag8"
+   ]
+  },
+  {
+   "name": "CreateArrayLiteral",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "Flag8"
+   ]
+  },
+  {
+   "name": "CreateArrayFromIterable",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "CreateEmptyArrayLiteral",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "CreateObjectLiteral",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "Flag8"
+   ]
+  },
+  {
+   "name": "CreateEmptyObjectLiteral",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "CloneObject",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Flag8",
+    "Idx"
+   ]
+  },
+  {
+   "name": "GetTemplateObject",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CreateClosure",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "Idx",
+    "Flag8"
+   ]
+  },
+  {
+   "name": "CreateBlockContext",
+   "accumulator": "Write",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "CreateCatchContext",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CreateFunctionContext",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "CreateEvalContext",
+   "accumulator": "Write",
+   "operands": [
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "CreateWithContext",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx"
+   ]
+  },
+  {
+   "name": "CreateMappedArguments",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "CreateUnmappedArguments",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "CreateRestParameter",
+   "accumulator": "Write",
+   "operands": []
+  },
+  {
+   "name": "JumpLoop",
+   "accumulator": "None",
+   "operands": [
+    "UImm",
+    "Imm"
+   ]
+  },
+  {
+   "name": "Jump",
+   "accumulator": "None",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpConstant",
+   "accumulator": "None",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfNullConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfNotNullConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfUndefinedConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfNotUndefinedConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfUndefinedOrNullConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfTrueConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfFalseConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfJSReceiverConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfToBooleanTrueConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfToBooleanFalseConstant",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "JumpIfToBooleanTrue",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfToBooleanFalse",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfTrue",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfFalse",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfNull",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfNotNull",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfUndefined",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfNotUndefined",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfUndefinedOrNull",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "JumpIfJSReceiver",
+   "accumulator": "Read",
+   "operands": [
+    "UImm"
+   ]
+  },
+  {
+   "name": "SwitchOnSmiNoFeedback",
+   "accumulator": "Read",
+   "operands": [
+    "Idx",
+    "UImm",
+    "Imm"
+   ]
+  },
+  {
+   "name": "ForInEnumerate",
+   "accumulator": "Write",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "ForInPrepare",
+   "accumulator": "Read",
+   "operands": [
+    "RegOutTriple",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ForInContinue",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg"
+   ]
+  },
+  {
+   "name": "ForInNext",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Reg",
+    "RegPair",
+    "Idx"
+   ]
+  },
+  {
+   "name": "ForInStep",
+   "accumulator": "Write",
+   "operands": [
+    "Reg"
+   ]
+  },
+  {
+   "name": "SetPendingMessage",
+   "accumulator": "ReadWrite",
+   "operands": []
+  },
+  {
+   "name": "Throw",
+   "accumulator": "Read",
+   "operands": []
+  },
+  {
+   "name": "ReThrow",
+   "accumulator": "Read",
+   "operands": []
+  },
+  {
+   "name": "Return",
+   "accumulator": "Read",
+   "operands": []
+  },
+  {
+   "name": "ThrowReferenceErrorIfHole",
+   "accumulator": "Read",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "ThrowSuperNotCalledIfHole",
+   "accumulator": "Read",
+   "operands": []
+  },
+  {
+   "name": "ThrowSuperAlreadyCalledIfNotHole",
+   "accumulator": "Read",
+   "operands": []
+  },
+  {
+   "name": "SwitchOnGeneratorState",
+   "accumulator": "None",
+   "operands": [
+    "Reg",
+    "Idx",
+    "UImm"
+   ]
+  },
+  {
+   "name": "SuspendGenerator",
+   "accumulator": "Read",
+   "operands": [
+    "Reg",
+    "RegList",
+    "RegCount",
+    "UImm"
+   ]
+  },
+  {
+   "name": "ResumeGenerator",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "RegOutList",
+    "RegCount"
+   ]
+  },
+  {
+   "name": "GetIterator",
+   "accumulator": "Write",
+   "operands": [
+    "Reg",
+    "Idx",
+    "Idx"
+   ]
+  },
+  {
+   "name": "Debugger",
+   "accumulator": "None",
+   "operands": []
+  },
+  {
+   "name": "IncBlockCounter",
+   "accumulator": "None",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "Abort",
+   "accumulator": "None",
+   "operands": [
+    "Idx"
+   ]
+  },
+  {
+   "name": "Illegal",
+   "accumulator": "None",
+   "operands": []
+  }
+ ],
+ "runtime_functions": [
+  {
+   "name": "DebugBreakOnBytecode",
+   "nargs": 1
+  },
+  {
+   "name": "LoadLookupSlotForCall",
+   "nargs": 1
+  },
+  {
+   "name": "ArrayIncludes_Slow",
+   "nargs": 3
+  },
+  {
+   "name": "ArrayIndexOf",
+   "nargs": 3
+  },
+  {
+   "name": "ArrayIsArray",
+   "nargs": 1
+  },
+  {
+   "name": "ArraySpeciesConstructor",
+   "nargs": 1
+  },
+  {
+   "name": "GrowArrayElements",
+   "nargs": 2
+  },
+  {
+   "name": "IsArray",
+   "nargs": 1
+  },
+  {
+   "name": "NewArray",
+   "nargs": -1
+  },
+  {
+   "name": "NormalizeElements",
+   "nargs": 1
+  },
+  {
+   "name": "TransitionElementsKind",
+   "nargs": 2
+  },
+  {
+   "name": "TransitionElementsKindWithKind",
+   "nargs": 2
+  },
+  {
+   "name": "AtomicsLoad64",
+   "nargs": 2
+  },
+  {
+   "name": "AtomicsStore64",
+   "nargs": 3
+  },
+  {
+   "name": "AtomicsAdd",
+   "nargs": 3
+  },
+  {
+   "name": "AtomicsAnd",
+   "nargs": 3
+  },
+  {
+   "name": "AtomicsCompareExchange",
+   "nargs": 4
+  },
+  {
+   "name": "AtomicsExchange",
+   "nargs": 3
+  },
+  {
+   "name": "AtomicsNumWaitersForTesting",
+   "nargs": 2
+  },
+  {
+   "name": "AtomicsNumAsyncWaitersForTesting",
+   "nargs": 0
+  },
+  {
+   "name": "AtomicsNumUnresolvedAsyncPromisesForTesting",
+   "nargs": 2
+  },
+  {
+   "name": "AtomicsOr",
+   "nargs": 3
+  },
+  {
+   "name": "AtomicsSub",
+   "nargs": 3
+  },
+  {
+   "name": "AtomicsXor",
+   "nargs": 3
+  },
+  {
+   "name": "SetAllowAtomicsWait",
+   "nargs": 1
+  },
+  {
+   "name": "BigIntBinaryOp",
+   "nargs": 3
+  },
+  {
+   "name": "BigIntCompareToBigInt",
+   "nargs": 3
+  },
+  {
+   "name": "BigIntCompareToNumber",
+   "nargs": 3
+  },
+  {
+   "name": "BigIntCompareToString",
+   "nargs": 3
+  },
+  {
+   "name": "BigIntEqualToBigInt",
+   "nargs": 2
+  },
+  {
+   "name": "BigIntEqualToNumber",
+   "nargs": 2
+  },
+  {
+   "name": "BigIntEqualToString",
+   "nargs": 2
+  },
+  {
+   "name": "BigIntToBoolean",
+   "nargs": 1
+  },
+  {
+   "name": "BigIntToNumber",
+   "nargs": 1
+  },
+  {
+   "name": "BigIntUnaryOp",
+   "nargs": 2
+  },
+  {
+   "name": "ToBigInt",
+   "nargs": 1
+  },
+  {
+   "name": "DefineClass",
+   "nargs": -1
+  },
+  {
+   "name": "HomeObjectSymbol",
+   "nargs": 0
+  },
+  {
+   "name": "LoadFromSuper",
+   "nargs": 3
+  },
+  {
+   "name": "LoadKeyedFromSuper",
+   "nargs": 3
+  },
+  {
+   "name": "StoreKeyedToSuper",
+   "nargs": 4
+  },
+  {
+   "name": "StoreToSuper",
+   "nargs": 4
+  },
+  {
+   "name": "ThrowConstructorNonCallableError",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowNotSuperConstructor",
+   "nargs": 2
+  },
+  {
+   "name": "ThrowStaticPrototypeError",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowSuperAlreadyCalledError",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowSuperNotCalled",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowUnsupportedSuperError",
+   "nargs": 0
+  },
+  {
+   "name": "MapGrow",
+   "nargs": 1
+  },
+  {
+   "name": "MapShrink",
+   "nargs": 1
+  },
+  {
+   "name": "SetGrow",
+   "nargs": 1
+  },
+  {
+   "name": "SetShrink",
+   "nargs": 1
+  },
+  {
+   "name": "TheHole",
+   "nargs": 0
+  },
+  {
+   "name": "WeakCollectionDelete",
+   "nargs": 3
+  },
+  {
+   "name": "WeakCollectionSet",
+   "nargs": 4
+  },
+  {
+   "name": "CompileForOnStackReplacement",
+   "nargs": 0
+  },
+  {
+   "name": "CompileLazy",
+   "nargs": 1
+  },
+  {
+   "name": "CompileOptimized_Concurrent",
+   "nargs": 1
+  },
+  {
+   "name": "CompileOptimized_NotConcurrent",
+   "nargs": 1
+  },
+  {
+   "name": "EvictOptimizedCodeSlot",
+   "nargs": 1
+  },
+  {
+   "name": "FunctionFirstExecution",
+   "nargs": 1
+  },
+  {
+   "name": "InstantiateAsmJs",
+   "nargs": 4
+  },
+  {
+   "name": "NotifyDeoptimized",
+   "nargs": 0
+  },
+  {
+   "name": "ResolvePossiblyDirectEval",
+   "nargs": 6
+  },
+  {
+   "name": "DateCurrentTime",
+   "nargs": 0
+  },
+  {
+   "name": "ClearStepping",
+   "nargs": 0
+  },
+  {
+   "name": "CollectGarbage",
+   "nargs": 1
+  },
+  {
+   "name": "DebugAsyncFunctionEntered",
+   "nargs": 1
+  },
+  {
+   "name": "DebugAsyncFunctionSuspended",
+   "nargs": 1
+  },
+  {
+   "name": "DebugAsyncFunctionResumed",
+   "nargs": 1
+  },
+  {
+   "name": "DebugAsyncFunctionFinished",
+   "nargs": 2
+  },
+  {
+   "name": "DebugBreakAtEntry",
+   "nargs": 1
+  },
+  {
+   "name": "DebugCollectCoverage",
+   "nargs": 0
+  },
+  {
+   "name": "DebugGetLoadedScriptIds",
+   "nargs": 0
+  },
+  {
+   "name": "DebugOnFunctionCall",
+   "nargs": 2
+  },
+  {
+   "name": "DebugPopPromise",
+   "nargs": 0
+  },
+  {
+   "name": "DebugPrepareStepInSuspendedGenerator",
+   "nargs": 0
+  },
+  {
+   "name": "DebugPushPromise",
+   "nargs": 1
+  },
+  {
+   "name": "DebugToggleBlockCoverage",
+   "nargs": 1
+  },
+  {
+   "name": "DebugTogglePreciseCoverage",
+   "nargs": 1
+  },
+  {
+   "name": "FunctionGetInferredName",
+   "nargs": 1
+  },
+  {
+   "name": "GetBreakLocations",
+   "nargs": 1
+  },
+  {
+   "name": "GetGeneratorScopeCount",
+   "nargs": 1
+  },
+  {
+   "name": "GetGeneratorScopeDetails",
+   "nargs": 2
+  },
+  {
+   "name": "GetHeapUsage",
+   "nargs": 0
+  },
+  {
+   "name": "HandleDebuggerStatement",
+   "nargs": 0
+  },
+  {
+   "name": "IsBreakOnException",
+   "nargs": 1
+  },
+  {
+   "name": "LiveEditPatchScript",
+   "nargs": 2
+  },
+  {
+   "name": "ProfileCreateSnapshotDataBlob",
+   "nargs": 0
+  },
+  {
+   "name": "ScheduleBreak",
+   "nargs": 0
+  },
+  {
+   "name": "ScriptLocationFromLine2",
+   "nargs": 4
+  },
+  {
+   "name": "SetGeneratorScopeVariableValue",
+   "nargs": 4
+  },
+  {
+   "name": "IncBlockCounter",
+   "nargs": 2
+  },
+  {
+   "name": "ForInEnumerate",
+   "nargs": 1
+  },
+  {
+   "name": "ForInHasProperty",
+   "nargs": 2
+  },
+  {
+   "name": "Call",
+   "nargs": -1
+  },
+  {
+   "name": "FunctionGetScriptSource",
+   "nargs": 1
+  },
+  {
+   "name": "FunctionGetScriptId",
+   "nargs": 1
+  },
+  {
+   "name": "FunctionGetScriptSourcePosition",
+   "nargs": 1
+  },
+  {
+   "name": "FunctionGetSourceCode",
+   "nargs": 1
+  },
+  {
+   "name": "FunctionIsAPIFunction",
+   "nargs": 1
+  },
+  {
+   "name": "IsFunction",
+   "nargs": 1
+  },
+  {
+   "name": "AsyncFunctionAwaitCaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncFunctionAwaitUncaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncFunctionEnter",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncFunctionReject",
+   "nargs": 3
+  },
+  {
+   "name": "AsyncFunctionResolve",
+   "nargs": 3
+  },
+  {
+   "name": "AsyncGeneratorAwaitCaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncGeneratorAwaitUncaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncGeneratorHasCatchHandlerForPC",
+   "nargs": 1
+  },
+  {
+   "name": "AsyncGeneratorReject",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncGeneratorResolve",
+   "nargs": 3
+  },
+  {
+   "name": "AsyncGeneratorYield",
+   "nargs": 3
+  },
+  {
+   "name": "CreateJSGeneratorObject",
+   "nargs": 2
+  },
+  {
+   "name": "GeneratorClose",
+   "nargs": 1
+  },
+  {
+   "name": "GeneratorGetFunction",
+   "nargs": 1
+  },
+  {
+   "name": "GeneratorGetResumeMode",
+   "nargs": 1
+  },
+  {
+   "name": "ElementsTransitionAndStoreIC_Miss",
+   "nargs": 6
+  },
+  {
+   "name": "KeyedLoadIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "KeyedStoreIC_Miss",
+   "nargs": 5
+  },
+  {
+   "name": "StoreInArrayLiteralIC_Miss",
+   "nargs": 5
+  },
+  {
+   "name": "KeyedStoreIC_Slow",
+   "nargs": 3
+  },
+  {
+   "name": "LoadElementWithInterceptor",
+   "nargs": 2
+  },
+  {
+   "name": "LoadGlobalIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "LoadGlobalIC_Slow",
+   "nargs": 3
+  },
+  {
+   "name": "LoadIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "LoadNoFeedbackIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "LoadWithReceiverIC_Miss",
+   "nargs": 5
+  },
+  {
+   "name": "LoadWithReceiverNoFeedbackIC_Miss",
+   "nargs": 3
+  },
+  {
+   "name": "LoadPropertyWithInterceptor",
+   "nargs": 5
+  },
+  {
+   "name": "StoreCallbackProperty",
+   "nargs": 5
+  },
+  {
+   "name": "StoreGlobalIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "StoreGlobalICNoFeedback_Miss",
+   "nargs": 2
+  },
+  {
+   "name": "StoreGlobalIC_Slow",
+   "nargs": 5
+  },
+  {
+   "name": "StoreIC_Miss",
+   "nargs": 5
+  },
+  {
+   "name": "StoreInArrayLiteralIC_Slow",
+   "nargs": 5
+  },
+  {
+   "name": "StorePropertyWithInterceptor",
+   "nargs": 5
+  },
+  {
+   "name": "CloneObjectIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "KeyedHasIC_Miss",
+   "nargs": 4
+  },
+  {
+   "name": "HasElementWithInterceptor",
+   "nargs": 2
+  },
+  {
+   "name": "AccessCheck",
+   "nargs": 1
+  },
+  {
+   "name": "AllocateByteArray",
+   "nargs": 1
+  },
+  {
+   "name": "AllocateInYoungGeneration",
+   "nargs": 2
+  },
+  {
+   "name": "AllocateInOldGeneration",
+   "nargs": 2
+  },
+  {
+   "name": "AllocateSeqOneByteString",
+   "nargs": 1
+  },
+  {
+   "name": "AllocateSeqTwoByteString",
+   "nargs": 1
+  },
+  {
+   "name": "AllowDynamicFunction",
+   "nargs": 1
+  },
+  {
+   "name": "CreateAsyncFromSyncIterator",
+   "nargs": 1
+  },
+  {
+   "name": "CreateListFromArrayLike",
+   "nargs": 1
+  },
+  {
+   "name": "DoubleToStringWithRadix",
+   "nargs": 2
+  },
+  {
+   "name": "FatalProcessOutOfMemoryInAllocateRaw",
+   "nargs": 0
+  },
+  {
+   "name": "FatalProcessOutOfMemoryInvalidArrayLength",
+   "nargs": 0
+  },
+  {
+   "name": "GetAndResetRuntimeCallStats",
+   "nargs": -1
+  },
+  {
+   "name": "GetTemplateObject",
+   "nargs": 3
+  },
+  {
+   "name": "IncrementUseCounter",
+   "nargs": 1
+  },
+  {
+   "name": "BytecodeBudgetInterruptFromBytecode",
+   "nargs": 1
+  },
+  {
+   "name": "BytecodeBudgetInterruptFromCode",
+   "nargs": 1
+  },
+  {
+   "name": "NewError",
+   "nargs": 2
+  },
+  {
+   "name": "NewReferenceError",
+   "nargs": 2
+  },
+  {
+   "name": "NewSyntaxError",
+   "nargs": 2
+  },
+  {
+   "name": "NewTypeError",
+   "nargs": -1
+  },
+  {
+   "name": "OrdinaryHasInstance",
+   "nargs": 2
+  },
+  {
+   "name": "PromoteScheduledException",
+   "nargs": 0
+  },
+  {
+   "name": "ReportMessageFromMicrotask",
+   "nargs": 1
+  },
+  {
+   "name": "ReThrow",
+   "nargs": 1
+  },
+  {
+   "name": "RunMicrotaskCallback",
+   "nargs": 2
+  },
+  {
+   "name": "PerformMicrotaskCheckpoint",
+   "nargs": 0
+  },
+  {
+   "name": "StackGuard",
+   "nargs": 0
+  },
+  {
+   "name": "StackGuardWithGap",
+   "nargs": 1
+  },
+  {
+   "name": "Throw",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowApplyNonFunction",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowCalledNonCallable",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowConstructedNonConstructable",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowConstructorReturnedNonObject",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowInvalidStringLength",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowInvalidTypedArrayAlignment",
+   "nargs": 2
+  },
+  {
+   "name": "ThrowIteratorError",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowSpreadArgError",
+   "nargs": 2
+  },
+  {
+   "name": "ThrowIteratorResultNotAnObject",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowNotConstructor",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowPatternAssignmentNonCoercible",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowRangeError",
+   "nargs": -1
+  },
+  {
+   "name": "ThrowReferenceError",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowAccessedUninitializedVariable",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowStackOverflow",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowSymbolAsyncIteratorInvalid",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowSymbolIteratorInvalid",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowThrowMethodMissing",
+   "nargs": 0
+  },
+  {
+   "name": "ThrowTypeError",
+   "nargs": -1
+  },
+  {
+   "name": "ThrowTypeErrorIfStrict",
+   "nargs": -1
+  },
+  {
+   "name": "Typeof",
+   "nargs": 1
+  },
+  {
+   "name": "UnwindAndFindExceptionHandler",
+   "nargs": 0
+  },
+  {
+   "name": "FormatList",
+   "nargs": 2
+  },
+  {
+   "name": "FormatListToParts",
+   "nargs": 2
+  },
+  {
+   "name": "StringToLowerCaseIntl",
+   "nargs": 1
+  },
+  {
+   "name": "StringToUpperCaseIntl",
+   "nargs": 1
+  },
+  {
+   "name": "CreateArrayLiteral",
+   "nargs": 4
+  },
+  {
+   "name": "CreateArrayLiteralWithoutAllocationSite",
+   "nargs": 2
+  },
+  {
+   "name": "CreateObjectLiteral",
+   "nargs": 4
+  },
+  {
+   "name": "CreateObjectLiteralWithoutAllocationSite",
+   "nargs": 2
+  },
+  {
+   "name": "CreateRegExpLiteral",
+   "nargs": 4
+  },
+  {
+   "name": "DynamicImportCall",
+   "nargs": 2
+  },
+  {
+   "name": "GetImportMetaObject",
+   "nargs": 0
+  },
+  {
+   "name": "GetModuleNamespace",
+   "nargs": 1
+  },
+  {
+   "name": "ArrayBufferMaxByteLength",
+   "nargs": 0
+  },
+  {
+   "name": "GetHoleNaNLower",
+   "nargs": 0
+  },
+  {
+   "name": "GetHoleNaNUpper",
+   "nargs": 0
+  },
+  {
+   "name": "IsSmi",
+   "nargs": 1
+  },
+  {
+   "name": "IsValidSmi",
+   "nargs": 1
+  },
+  {
+   "name": "MaxSmi",
+   "nargs": 0
+  },
+  {
+   "name": "NumberToStringSlow",
+   "nargs": 1
+  },
+  {
+   "name": "StringParseFloat",
+   "nargs": 1
+  },
+  {
+   "name": "StringParseInt",
+   "nargs": 2
+  },
+  {
+   "name": "StringToNumber",
+   "nargs": 1
+  },
+  {
+   "name": "TypedArrayMaxLength",
+   "nargs": 0
+  },
+  {
+   "name": "AddDictionaryProperty",
+   "nargs": 3
+  },
+  {
+   "name": "AddPrivateField",
+   "nargs": 3
+  },
+  {
+   "name": "AddPrivateBrand",
+   "nargs": 3
+  },
+  {
+   "name": "AllocateHeapNumber",
+   "nargs": 0
+  },
+  {
+   "name": "CollectTypeProfile",
+   "nargs": 3
+  },
+  {
+   "name": "CompleteInobjectSlackTrackingForMap",
+   "nargs": 1
+  },
+  {
+   "name": "CopyDataProperties",
+   "nargs": 2
+  },
+  {
+   "name": "CopyDataPropertiesWithExcludedProperties",
+   "nargs": -1
+  },
+  {
+   "name": "CreateDataProperty",
+   "nargs": 3
+  },
+  {
+   "name": "CreateIterResultObject",
+   "nargs": 2
+  },
+  {
+   "name": "CreatePrivateAccessors",
+   "nargs": 2
+  },
+  {
+   "name": "DefineAccessorPropertyUnchecked",
+   "nargs": 5
+  },
+  {
+   "name": "DefineDataPropertyInLiteral",
+   "nargs": 6
+  },
+  {
+   "name": "DefineGetterPropertyUnchecked",
+   "nargs": 4
+  },
+  {
+   "name": "DefineSetterPropertyUnchecked",
+   "nargs": 4
+  },
+  {
+   "name": "DeleteProperty",
+   "nargs": 3
+  },
+  {
+   "name": "GetDerivedMap",
+   "nargs": 2
+  },
+  {
+   "name": "GetFunctionName",
+   "nargs": 1
+  },
+  {
+   "name": "GetOwnPropertyDescriptor",
+   "nargs": 2
+  },
+  {
+   "name": "GetOwnPropertyKeys",
+   "nargs": 2
+  },
+  {
+   "name": "GetProperty",
+   "nargs": -1
+  },
+  {
+   "name": "HasFastPackedElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasInPrototypeChain",
+   "nargs": 2
+  },
+  {
+   "name": "HasProperty",
+   "nargs": 2
+  },
+  {
+   "name": "InternalSetPrototype",
+   "nargs": 2
+  },
+  {
+   "name": "IsJSReceiver",
+   "nargs": 1
+  },
+  {
+   "name": "JSReceiverPreventExtensionsDontThrow",
+   "nargs": 1
+  },
+  {
+   "name": "JSReceiverPreventExtensionsThrow",
+   "nargs": 1
+  },
+  {
+   "name": "JSReceiverGetPrototypeOf",
+   "nargs": 1
+  },
+  {
+   "name": "JSReceiverSetPrototypeOfDontThrow",
+   "nargs": 2
+  },
+  {
+   "name": "JSReceiverSetPrototypeOfThrow",
+   "nargs": 2
+  },
+  {
+   "name": "LoadPrivateGetter",
+   "nargs": 1
+  },
+  {
+   "name": "LoadPrivateSetter",
+   "nargs": 1
+  },
+  {
+   "name": "NewObject",
+   "nargs": 2
+  },
+  {
+   "name": "ObjectCreate",
+   "nargs": 2
+  },
+  {
+   "name": "ObjectEntries",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectEntriesSkipFastPath",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectGetOwnPropertyNames",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectGetOwnPropertyNamesTryFast",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectHasOwnProperty",
+   "nargs": 2
+  },
+  {
+   "name": "ObjectIsExtensible",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectKeys",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectValues",
+   "nargs": 1
+  },
+  {
+   "name": "ObjectValuesSkipFastPath",
+   "nargs": 1
+  },
+  {
+   "name": "OptimizeObjectForAddingMultipleProperties",
+   "nargs": 2
+  },
+  {
+   "name": "SetDataProperties",
+   "nargs": 2
+  },
+  {
+   "name": "SetKeyedProperty",
+   "nargs": 3
+  },
+  {
+   "name": "SetNamedProperty",
+   "nargs": 3
+  },
+  {
+   "name": "SetOwnPropertyIgnoreAttributes",
+   "nargs": 4
+  },
+  {
+   "name": "StoreDataPropertyInLiteral",
+   "nargs": 3
+  },
+  {
+   "name": "ShrinkPropertyDictionary",
+   "nargs": 1
+  },
+  {
+   "name": "ToFastProperties",
+   "nargs": 1
+  },
+  {
+   "name": "ToLength",
+   "nargs": 1
+  },
+  {
+   "name": "ToName",
+   "nargs": 1
+  },
+  {
+   "name": "ToNumber",
+   "nargs": 1
+  },
+  {
+   "name": "ToNumeric",
+   "nargs": 1
+  },
+  {
+   "name": "ToObject",
+   "nargs": 1
+  },
+  {
+   "name": "ToString",
+   "nargs": 1
+  },
+  {
+   "name": "TryMigrateInstance",
+   "nargs": 1
+  },
+  {
+   "name": "Add",
+   "nargs": 2
+  },
+  {
+   "name": "Equal",
+   "nargs": 2
+  },
+  {
+   "name": "GreaterThan",
+   "nargs": 2
+  },
+  {
+   "name": "GreaterThanOrEqual",
+   "nargs": 2
+  },
+  {
+   "name": "LessThan",
+   "nargs": 2
+  },
+  {
+   "name": "LessThanOrEqual",
+   "nargs": 2
+  },
+  {
+   "name": "NotEqual",
+   "nargs": 2
+  },
+  {
+   "name": "StrictEqual",
+   "nargs": 2
+  },
+  {
+   "name": "StrictNotEqual",
+   "nargs": 2
+  },
+  {
+   "name": "ReferenceEqual",
+   "nargs": 2
+  },
+  {
+   "name": "EnqueueMicrotask",
+   "nargs": 1
+  },
+  {
+   "name": "PromiseHookAfter",
+   "nargs": 1
+  },
+  {
+   "name": "PromiseHookBefore",
+   "nargs": 1
+  },
+  {
+   "name": "PromiseHookInit",
+   "nargs": 2
+  },
+  {
+   "name": "AwaitPromisesInit",
+   "nargs": 5
+  },
+  {
+   "name": "AwaitPromisesInitOld",
+   "nargs": 5
+  },
+  {
+   "name": "PromiseMarkAsHandled",
+   "nargs": 1
+  },
+  {
+   "name": "PromiseRejectEventFromStack",
+   "nargs": 2
+  },
+  {
+   "name": "PromiseRevokeReject",
+   "nargs": 1
+  },
+  {
+   "name": "PromiseStatus",
+   "nargs": 1
+  },
+  {
+   "name": "RejectPromise",
+   "nargs": 3
+  },
+  {
+   "name": "ResolvePromise",
+   "nargs": 2
+  },
+  {
+   "name": "PromiseRejectAfterResolved",
+   "nargs": 2
+  },
+  {
+   "name": "PromiseResolveAfterResolved",
+   "nargs": 2
+  },
+  {
+   "name": "ConstructAggregateErrorHelper",
+   "nargs": 3
+  },
+  {
+   "name": "ConstructInternalAggregateErrorHelper",
+   "nargs": -1
+  },
+  {
+   "name": "CheckProxyGetSetTrapResult",
+   "nargs": 2
+  },
+  {
+   "name": "CheckProxyHasTrapResult",
+   "nargs": 2
+  },
+  {
+   "name": "CheckProxyDeleteTrapResult",
+   "nargs": 2
+  },
+  {
+   "name": "GetPropertyWithReceiver",
+   "nargs": 3
+  },
+  {
+   "name": "IsJSProxy",
+   "nargs": 1
+  },
+  {
+   "name": "JSProxyGetHandler",
+   "nargs": 1
+  },
+  {
+   "name": "JSProxyGetTarget",
+   "nargs": 1
+  },
+  {
+   "name": "SetPropertyWithReceiver",
+   "nargs": 4
+  },
+  {
+   "name": "IsRegExp",
+   "nargs": 1
+  },
+  {
+   "name": "RegExpExec",
+   "nargs": 4
+  },
+  {
+   "name": "RegExpExecMultiple",
+   "nargs": 4
+  },
+  {
+   "name": "RegExpInitializeAndCompile",
+   "nargs": 3
+  },
+  {
+   "name": "RegExpReplaceRT",
+   "nargs": 3
+  },
+  {
+   "name": "RegExpSplit",
+   "nargs": 3
+  },
+  {
+   "name": "StringReplaceNonGlobalRegExpWithFunction",
+   "nargs": 3
+  },
+  {
+   "name": "StringSplit",
+   "nargs": 3
+  },
+  {
+   "name": "DeclareEvalFunction",
+   "nargs": 2
+  },
+  {
+   "name": "DeclareEvalVar",
+   "nargs": 1
+  },
+  {
+   "name": "DeclareGlobals",
+   "nargs": 2
+  },
+  {
+   "name": "DeclareModuleExports",
+   "nargs": 2
+  },
+  {
+   "name": "DeleteLookupSlot",
+   "nargs": 1
+  },
+  {
+   "name": "LoadLookupSlot",
+   "nargs": 1
+  },
+  {
+   "name": "LoadLookupSlotInsideTypeof",
+   "nargs": 1
+  },
+  {
+   "name": "NewClosure",
+   "nargs": 2
+  },
+  {
+   "name": "NewClosure_Tenured",
+   "nargs": 2
+  },
+  {
+   "name": "NewFunctionContext",
+   "nargs": 1
+  },
+  {
+   "name": "NewRestParameter",
+   "nargs": 1
+  },
+  {
+   "name": "NewSloppyArguments",
+   "nargs": 1
+  },
+  {
+   "name": "NewStrictArguments",
+   "nargs": 1
+  },
+  {
+   "name": "PushBlockContext",
+   "nargs": 1
+  },
+  {
+   "name": "PushCatchContext",
+   "nargs": 2
+  },
+  {
+   "name": "PushWithContext",
+   "nargs": 2
+  },
+  {
+   "name": "StoreGlobalNoHoleCheckForReplLet",
+   "nargs": 2
+  },
+  {
+   "name": "StoreLookupSlot_Sloppy",
+   "nargs": 2
+  },
+  {
+   "name": "StoreLookupSlot_SloppyHoisting",
+   "nargs": 2
+  },
+  {
+   "name": "StoreLookupSlot_Strict",
+   "nargs": 2
+  },
+  {
+   "name": "ThrowConstAssignError",
+   "nargs": 0
+  },
+  {
+   "name": "FlattenString",
+   "nargs": 1
+  },
+  {
+   "name": "GetSubstitution",
+   "nargs": 5
+  },
+  {
+   "name": "InternalizeString",
+   "nargs": 1
+  },
+  {
+   "name": "StringAdd",
+   "nargs": 2
+  },
+  {
+   "name": "StringBuilderConcat",
+   "nargs": 3
+  },
+  {
+   "name": "StringCharCodeAt",
+   "nargs": 2
+  },
+  {
+   "name": "StringEqual",
+   "nargs": 2
+  },
+  {
+   "name": "StringEscapeQuotes",
+   "nargs": 1
+  },
+  {
+   "name": "StringGreaterThan",
+   "nargs": 2
+  },
+  {
+   "name": "StringGreaterThanOrEqual",
+   "nargs": 2
+  },
+  {
+   "name": "StringIncludes",
+   "nargs": 3
+  },
+  {
+   "name": "StringIndexOf",
+   "nargs": 3
+  },
+  {
+   "name": "StringIndexOfUnchecked",
+   "nargs": 3
+  },
+  {
+   "name": "StringLastIndexOf",
+   "nargs": 2
+  },
+  {
+   "name": "StringLessThan",
+   "nargs": 2
+  },
+  {
+   "name": "StringLessThanOrEqual",
+   "nargs": 2
+  },
+  {
+   "name": "StringMaxLength",
+   "nargs": 0
+  },
+  {
+   "name": "StringReplaceOneCharWithString",
+   "nargs": 3
+  },
+  {
+   "name": "StringCompareSequence",
+   "nargs": 3
+  },
+  {
+   "name": "StringSubstring",
+   "nargs": 3
+  },
+  {
+   "name": "StringToArray",
+   "nargs": 2
+  },
+  {
+   "name": "StringTrim",
+   "nargs": 2
+  },
+  {
+   "name": "CreatePrivateNameSymbol",
+   "nargs": 1
+  },
+  {
+   "name": "CreatePrivateBrandSymbol",
+   "nargs": 1
+  },
+  {
+   "name": "CreatePrivateSymbol",
+   "nargs": -1
+  },
+  {
+   "name": "SymbolDescriptiveString",
+   "nargs": 1
+  },
+  {
+   "name": "SymbolIsPrivate",
+   "nargs": 1
+  },
+  {
+   "name": "Abort",
+   "nargs": 1
+  },
+  {
+   "name": "AbortJS",
+   "nargs": 1
+  },
+  {
+   "name": "AbortCSAAssert",
+   "nargs": 1
+  },
+  {
+   "name": "ArraySpeciesProtector",
+   "nargs": 0
+  },
+  {
+   "name": "ClearFunctionFeedback",
+   "nargs": 1
+  },
+  {
+   "name": "ClearMegamorphicStubCache",
+   "nargs": 0
+  },
+  {
+   "name": "CompleteInobjectSlackTracking",
+   "nargs": 1
+  },
+  {
+   "name": "ConstructConsString",
+   "nargs": 2
+  },
+  {
+   "name": "ConstructDouble",
+   "nargs": 2
+  },
+  {
+   "name": "ConstructSlicedString",
+   "nargs": 2
+  },
+  {
+   "name": "DebugPrint",
+   "nargs": 1
+  },
+  {
+   "name": "DebugPrintPtr",
+   "nargs": 1
+  },
+  {
+   "name": "DebugTrace",
+   "nargs": 0
+  },
+  {
+   "name": "DebugTrackRetainingPath",
+   "nargs": -1
+  },
+  {
+   "name": "DeoptimizeFunction",
+   "nargs": 1
+  },
+  {
+   "name": "DeserializeWasmModule",
+   "nargs": 2
+  },
+  {
+   "name": "DisallowCodegenFromStrings",
+   "nargs": 1
+  },
+  {
+   "name": "DisallowWasmCodegen",
+   "nargs": 1
+  },
+  {
+   "name": "DisassembleFunction",
+   "nargs": 1
+  },
+  {
+   "name": "DynamicMapChecksEnabled",
+   "nargs": 0
+  },
+  {
+   "name": "EnableCodeLoggingForTesting",
+   "nargs": 0
+  },
+  {
+   "name": "EnsureFeedbackVectorForFunction",
+   "nargs": 1
+  },
+  {
+   "name": "FreezeWasmLazyCompilation",
+   "nargs": 1
+  },
+  {
+   "name": "GetCallable",
+   "nargs": 0
+  },
+  {
+   "name": "GetInitializerFunction",
+   "nargs": 1
+  },
+  {
+   "name": "GetOptimizationStatus",
+   "nargs": -1
+  },
+  {
+   "name": "GetUndetectable",
+   "nargs": 0
+  },
+  {
+   "name": "GetWasmExceptionId",
+   "nargs": 2
+  },
+  {
+   "name": "GetWasmExceptionValues",
+   "nargs": 1
+  },
+  {
+   "name": "GetWasmRecoveredTrapCount",
+   "nargs": 0
+  },
+  {
+   "name": "GlobalPrint",
+   "nargs": 1
+  },
+  {
+   "name": "HasDictionaryElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasDoubleElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasElementsInALargeObjectSpace",
+   "nargs": 1
+  },
+  {
+   "name": "HasFastElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFastProperties",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedBigInt64Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedBigUint64Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedFloat32Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedFloat64Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedInt16Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedInt32Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedInt8Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedUint16Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedUint32Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedUint8ClampedElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasFixedUint8Elements",
+   "nargs": 1
+  },
+  {
+   "name": "HasHoleyElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasObjectElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasPackedElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasSloppyArgumentsElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasSmiElements",
+   "nargs": 1
+  },
+  {
+   "name": "HasSmiOrObjectElements",
+   "nargs": 1
+  },
+  {
+   "name": "HaveSameMap",
+   "nargs": 2
+  },
+  {
+   "name": "HeapObjectVerify",
+   "nargs": 1
+  },
+  {
+   "name": "ICsAreEnabled",
+   "nargs": 0
+  },
+  {
+   "name": "InYoungGeneration",
+   "nargs": 1
+  },
+  {
+   "name": "IsAsmWasmCode",
+   "nargs": 1
+  },
+  {
+   "name": "IsBeingInterpreted",
+   "nargs": 0
+  },
+  {
+   "name": "IsConcurrentRecompilationSupported",
+   "nargs": 0
+  },
+  {
+   "name": "IsLiftoffFunction",
+   "nargs": 1
+  },
+  {
+   "name": "IsThreadInWasm",
+   "nargs": 0
+  },
+  {
+   "name": "IsWasmCode",
+   "nargs": 1
+  },
+  {
+   "name": "IsWasmTrapHandlerEnabled",
+   "nargs": 0
+  },
+  {
+   "name": "RegexpHasBytecode",
+   "nargs": 2
+  },
+  {
+   "name": "RegexpHasNativeCode",
+   "nargs": 2
+  },
+  {
+   "name": "RegexpTypeTag",
+   "nargs": 1
+  },
+  {
+   "name": "MapIteratorProtector",
+   "nargs": 0
+  },
+  {
+   "name": "NeverOptimizeFunction",
+   "nargs": 1
+  },
+  {
+   "name": "NotifyContextDisposed",
+   "nargs": 0
+  },
+  {
+   "name": "OptimizeFunctionOnNextCall",
+   "nargs": -1
+  },
+  {
+   "name": "OptimizeOsr",
+   "nargs": -1
+  },
+  {
+   "name": "NewRegExpWithBacktrackLimit",
+   "nargs": 3
+  },
+  {
+   "name": "PrepareFunctionForOptimization",
+   "nargs": -1
+  },
+  {
+   "name": "PrintWithNameForAssert",
+   "nargs": 2
+  },
+  {
+   "name": "RunningInSimulator",
+   "nargs": 0
+  },
+  {
+   "name": "RuntimeEvaluateREPL",
+   "nargs": 1
+  },
+  {
+   "name": "SerializeDeserializeNow",
+   "nargs": 0
+  },
+  {
+   "name": "SerializeWasmModule",
+   "nargs": 1
+  },
+  {
+   "name": "SetAllocationTimeout",
+   "nargs": -1
+  },
+  {
+   "name": "SetForceSlowPath",
+   "nargs": 1
+  },
+  {
+   "name": "SetIteratorProtector",
+   "nargs": 0
+  },
+  {
+   "name": "SetWasmCompileControls",
+   "nargs": 2
+  },
+  {
+   "name": "SetWasmInstantiateControls",
+   "nargs": 0
+  },
+  {
+   "name": "SetWasmThreadsEnabled",
+   "nargs": 1
+  },
+  {
+   "name": "SimulateNewspaceFull",
+   "nargs": 0
+  },
+  {
+   "name": "StringIteratorProtector",
+   "nargs": 0
+  },
+  {
+   "name": "SystemBreak",
+   "nargs": 0
+  },
+  {
+   "name": "TraceEnter",
+   "nargs": 0
+  },
+  {
+   "name": "TraceExit",
+   "nargs": 1
+  },
+  {
+   "name": "TurbofanStaticAssert",
+   "nargs": 1
+  },
+  {
+   "name": "UnblockConcurrentRecompilation",
+   "nargs": 0
+  },
+  {
+   "name": "WasmGetNumberOfInstances",
+   "nargs": 1
+  },
+  {
+   "name": "WasmNumCodeSpaces",
+   "nargs": 1
+  },
+  {
+   "name": "WasmTierDownModule",
+   "nargs": 1
+  },
+  {
+   "name": "WasmTierUpFunction",
+   "nargs": 2
+  },
+  {
+   "name": "WasmTierUpModule",
+   "nargs": 1
+  },
+  {
+   "name": "WasmTraceEnter",
+   "nargs": 0
+  },
+  {
+   "name": "WasmTraceExit",
+   "nargs": 1
+  },
+  {
+   "name": "WasmTraceMemory",
+   "nargs": 1
+  },
+  {
+   "name": "DeoptimizeNow",
+   "nargs": 0
+  },
+  {
+   "name": "ArrayBufferDetach",
+   "nargs": 1
+  },
+  {
+   "name": "TypedArrayCopyElements",
+   "nargs": 3
+  },
+  {
+   "name": "TypedArrayGetBuffer",
+   "nargs": 1
+  },
+  {
+   "name": "TypedArraySet",
+   "nargs": 2
+  },
+  {
+   "name": "TypedArraySortFast",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowWasmError",
+   "nargs": 1
+  },
+  {
+   "name": "ThrowWasmStackOverflow",
+   "nargs": 0
+  },
+  {
+   "name": "WasmI32AtomicWait",
+   "nargs": 4
+  },
+  {
+   "name": "WasmI64AtomicWait",
+   "nargs": 5
+  },
+  {
+   "name": "WasmAtomicNotify",
+   "nargs": 3
+  },
+  {
+   "name": "WasmMemoryGrow",
+   "nargs": 2
+  },
+  {
+   "name": "WasmStackGuard",
+   "nargs": 0
+  },
+  {
+   "name": "WasmThrowCreate",
+   "nargs": 2
+  },
+  {
+   "name": "WasmThrowTypeError",
+   "nargs": 0
+  },
+  {
+   "name": "WasmRefFunc",
+   "nargs": 1
+  },
+  {
+   "name": "WasmFunctionTableGet",
+   "nargs": 3
+  },
+  {
+   "name": "WasmFunctionTableSet",
+   "nargs": 4
+  },
+  {
+   "name": "WasmTableInit",
+   "nargs": 6
+  },
+  {
+   "name": "WasmTableCopy",
+   "nargs": 6
+  },
+  {
+   "name": "WasmTableGrow",
+   "nargs": 3
+  },
+  {
+   "name": "WasmTableFill",
+   "nargs": 4
+  },
+  {
+   "name": "WasmIsValidRefValue",
+   "nargs": 3
+  },
+  {
+   "name": "WasmCompileLazy",
+   "nargs": 2
+  },
+  {
+   "name": "WasmTriggerTierUp",
+   "nargs": 1
+  },
+  {
+   "name": "WasmDebugBreak",
+   "nargs": 0
+  },
+  {
+   "name": "WasmAllocateRtt",
+   "nargs": 2
+  },
+  {
+   "name": "JSFinalizationRegistryRegisterWeakCellWithUnregisterToken",
+   "nargs": 4
+  },
+  {
+   "name": "JSWeakRefAddToKeptObjects",
+   "nargs": 1
+  },
+  {
+   "name": "ShrinkFinalizationRegistryUnregisterTokenMap",
+   "nargs": 1
+  },
+  {
+   "name": "InlineIsArray",
+   "nargs": 1
+  },
+  {
+   "name": "InlineIncBlockCounter",
+   "nargs": 2
+  },
+  {
+   "name": "InlineCall",
+   "nargs": -1
+  },
+  {
+   "name": "InlineAsyncFunctionAwaitCaught",
+   "nargs": 2
+  },
+  {
+   "name": "InlineAsyncFunctionAwaitUncaught",
+   "nargs": 2
+  },
+  {
+   "name": "InlineAsyncFunctionEnter",
+   "nargs": 2
+  },
+  {
+   "name": "InlineAsyncFunctionReject",
+   "nargs": 3
+  },
+  {
+   "name": "InlineAsyncFunctionResolve",
+   "nargs": 3
+  },
+  {
+   "name": "InlineAsyncGeneratorAwaitCaught",
+   "nargs": 2
+  },
+  {
+   "name": "InlineAsyncGeneratorAwaitUncaught",
+   "nargs": 2
+  },
+  {
+   "name": "InlineAsyncGeneratorReject",
+   "nargs": 2
+  },
+  {
+   "name": "InlineAsyncGeneratorResolve",
+   "nargs": 3
+  },
+  {
+   "name": "InlineAsyncGeneratorYield",
+   "nargs": 3
+  },
+  {
+   "name": "InlineCreateJSGeneratorObject",
+   "nargs": 2
+  },
+  {
+   "name": "InlineGeneratorClose",
+   "nargs": 1
+  },
+  {
+   "name": "InlineGeneratorGetResumeMode",
+   "nargs": 1
+  },
+  {
+   "name": "InlineCreateAsyncFromSyncIterator",
+   "nargs": 1
+  },
+  {
+   "name": "InlineGetImportMetaObject",
+   "nargs": 0
+  },
+  {
+   "name": "InlineIsSmi",
+   "nargs": 1
+  },
+  {
+   "name": "InlineCopyDataProperties",
+   "nargs": 2
+  },
+  {
+   "name": "InlineCreateDataProperty",
+   "nargs": 3
+  },
+  {
+   "name": "InlineCreateIterResultObject",
+   "nargs": 2
+  },
+  {
+   "name": "InlineHasProperty",
+   "nargs": 2
+  },
+  {
+   "name": "InlineIsJSReceiver",
+   "nargs": 1
+  },
+  {
+   "name": "InlineToLength",
+   "nargs": 1
+  },
+  {
+   "name": "InlineToNumber",
+   "nargs": 1
+  },
+  {
+   "name": "InlineToObject",
+   "nargs": 1
+  },
+  {
+   "name": "InlineToString",
+   "nargs": 1
+  },
+  {
+   "name": "InlineIsRegExp",
+   "nargs": 1
+  },
+  {
+   "name": "InlineDeoptimizeNow",
+   "nargs": 0
+  }
+ ],
+ "intrinsics": [
+  {
+   "name": "AsyncFunctionAwaitCaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncFunctionAwaitUncaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncFunctionEnter",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncFunctionReject",
+   "nargs": 3
+  },
+  {
+   "name": "AsyncFunctionResolve",
+   "nargs": 3
+  },
+  {
+   "name": "AsyncGeneratorAwaitCaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncGeneratorAwaitUncaught",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncGeneratorReject",
+   "nargs": 2
+  },
+  {
+   "name": "AsyncGeneratorResolve",
+   "nargs": 3
+  },
+  {
+   "name": "AsyncGeneratorYield",
+   "nargs": 3
+  },
+  {
+   "name": "CreateJSGeneratorObject",
+   "nargs": 2
+  },
+  {
+   "name": "GeneratorGetResumeMode",
+   "nargs": 1
+  },
+  {
+   "name": "GeneratorClose",
+   "nargs": 1
+  },
+  {
+   "name": "GetImportMetaObject",
+   "nargs": 0
+  },
+  {
+   "name": "Call",
+   "nargs": -1
+  },
+  {
+   "name": "CopyDataProperties",
+   "nargs": 2
+  },
+  {
+   "name": "CreateIterResultObject",
+   "nargs": 2
+  },
+  {
+   "name": "CreateAsyncFromSyncIterator",
+   "nargs": 1
+  },
+  {
+   "name": "HasProperty",
+   "nargs": 2
+  },
+  {
+   "name": "IsArray",
+   "nargs": 1
+  },
+  {
+   "name": "IsJSReceiver",
+   "nargs": 1
+  },
+  {
+   "name": "IsSmi",
+   "nargs": 1
+  },
+  {
+   "name": "ToString",
+   "nargs": 1
+  },
+  {
+   "name": "ToLength",
+   "nargs": 1
+  },
+  {
+   "name": "ToObject",
+   "nargs": 1
+  }
+ ]
+}

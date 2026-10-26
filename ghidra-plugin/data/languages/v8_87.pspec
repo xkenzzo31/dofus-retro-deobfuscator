@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<processor_spec>
+  <properties>
+    <!-- Resolves the cpool operations of v8_87.slaspec for the decompiler. -->
+    <property key="pcodeInjectLibraryClass" value="v8_bytecode.V8_PcodeInjectLibrary"/>
+    <!-- The loader disassembles, creates the functions and types the heap image
+         itself; the generic analyzers would only misread the V8 heap. -->
+    <property key="DisableAllAnalyzers" value="value ignored, just turns them off"/>
+  </properties>
+  <programcounter register="pc"/>
+  <register_data>
+    <register name="acc" group="Interpreter"/>
+    <register name="context" group="Interpreter"/>
+    <register name="closure" group="Interpreter"/>
+    <register name="pending_message" group="Interpreter"/>
+    <register name="sp" hidden="true"/>
+    <register name="rbad" hidden="true"/>
+    <register name="argc" hidden="true"/>
+    <register name="bytecode_array" hidden="true"/>
+    <register name="bytecode_offset" hidden="true"/>
+    <register name="caller_fp" hidden="true"/>
+    <register name="caller_pc" hidden="true"/>
+  </register_data>
+</processor_spec>
